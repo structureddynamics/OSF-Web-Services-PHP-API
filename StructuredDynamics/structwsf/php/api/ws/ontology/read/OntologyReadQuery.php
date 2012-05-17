@@ -55,6 +55,8 @@
     * 
     * Note: you can get the list of all loaded ontologies by using the getLoadedOntologies() function
     * 
+    * **Required**: This function must be called before sending the query 
+    * 
     * @param mixed $ontology URI of the ontology to query
     * 
     * @see http://techwiki.openstructs.org/index.php/Ontology_Read#Web_Service_Endpoint_Information
@@ -68,6 +70,8 @@
     
     /**
     * Enable the reasoner for querying this ontology
+    * 
+    * This is the default behavior of this service.
     * 
     * @see http://techwiki.openstructs.org/index.php/Ontology_Read#Web_Service_Endpoint_Information
     * 
