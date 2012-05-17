@@ -18,7 +18,7 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class SparqlQuery extends WebServiceQuery
+  class SparqlQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor

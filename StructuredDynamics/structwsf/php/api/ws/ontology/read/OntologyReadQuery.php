@@ -18,7 +18,7 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class OntologyReadQuery extends WebServiceQuery
+  class OntologyReadQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
