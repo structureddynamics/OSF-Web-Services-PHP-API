@@ -55,7 +55,7 @@
     /**
     * SPARQL query to send to the endpoint.
     * 
-    * Note: this function is required. It should be invoked before sending the query with send().
+    * **Required**: This function must be called before sending the query 
     *  
     * @see http://techwiki.openstructs.org/index.php/SPARQL#Web_Service_Endpoint_Information
     * 
@@ -70,7 +70,7 @@
     * URI of the dataset to query. Only use this function when you don't have
     * FROM NAMED clauses in your SPARQL query.
     * 
-    * Note: this function is optional. It is not required to invoke it before sending the query with send().
+    * **Optional**: This function could be called before sending the query
     * 
     * @see http://techwiki.openstructs.org/index.php/SPARQL#Web_Service_Endpoint_Information
     * 
@@ -84,7 +84,7 @@
     /**
     * Specify the URI of the default graph to use for this SPARQL query.
     * 
-    * Note: this function is optional. It is not required to invoke it before sending the query with send().
+    * **Optional**: This function could be called before sending the query
     * 
     * @see http://techwiki.openstructs.org/index.php/SPARQL#Web_Service_Endpoint_Information
     * 
@@ -98,7 +98,7 @@
     /**
     * Specify the URI of the named graph to use for this SPARQL query
     *     
-    * Note: this function is optional. It is not required to invoke it before sending the query with send().
+    * **Optional**: This function could be called before sending the query
     * 
     * @see http://techwiki.openstructs.org/index.php/SPARQL#Web_Service_Endpoint_Information
     * 
