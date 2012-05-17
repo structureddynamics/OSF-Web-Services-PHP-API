@@ -34,7 +34,7 @@ structWSF network instance:
   //
   
   // Create the SearchQuery object
-  $search = new SearchQuery("http://www.mypeg.ca/ws/");
+  $search = new SearchQuery("http://localhost/ws/");
   
   //
   // Step #2: Define all the parameters/features/behaviors of the web service by invoking different methods of the class
@@ -97,7 +97,7 @@ Here is an example of how you can auto-load the classes of the structWSF PHP API
   use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
   
   // Create the SearchQuery object
-  $search = new SearchQuery("http://www.mypeg.ca/ws/");
+  $search = new SearchQuery("http://localhost/ws/");
   
   // Set the query parameter with the search keyword "elm"
   $search->query("elm");
@@ -119,3 +119,66 @@ Here is an example of how you can auto-load the classes of the structWSF PHP API
   ?>
 ```
 
+Web Services Usage
+==================
+Here are some example of how each of the web services can be used.
+
+Search
+------
+```php
+  <?php
+
+  // Use the SearchQuery class
+  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  
+  // Create the SearchQuery object
+  $search = new SearchQuery("http://demo.citizen-dan.org/ws/");
+  
+  // Set the query parameter with the search keyword "elm"
+  $search->query("school");
+  
+  // Send the search query to the endpoint
+  $search->send();
+  
+  // Get back the resultset returned by the endpoint
+  $resultset = $search->getResultset();
+  
+  // Print different serializations for that resultset
+  print_r($resultset->getResultset());
+ 
+  ?>
+```
+
+Crud: Read
+----------
+```php
+  <?php
+
+  // Use the CrudReadQuery class
+  use StructuredDynamics\structwsf\php\api\ws\crud\read\CrudReadQuery;
+  
+  // Create the CrudReadQuery object
+  $cread = new CrudReadQuery("http://demo.citizen-dan.org/ws/");
+  
+  // Get the description of the Broading_schools record
+  $cread->uri("http://purl.org/ontology/muni#Nursery_schools");
+  
+  // Exclude possible linksback
+  $cread->excludeLinksback();
+  
+  // Exclude possible reification statements
+  $cread->excludeReification();
+  
+  // Send the crud read query to the endpoint
+  $cread->send();
+  
+  print_r($cread);
+  
+  // Get back the resultset returned by the endpoint
+  $resultset = $cread->getResultset();
+  
+  // Print different serializations for that resultset
+  print_r($resultset->getResultset());
+ 
+  ?>
+```
