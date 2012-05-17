@@ -61,6 +61,8 @@
     /**
     * Set the keywords to use for this search query.
     * 
+    * **Optional**: This function could be called before sending the query
+    * 
     * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @param mixed $query Keywords to use to search for this query. Keywords can use some boolean operations. An empty string returns everything.
@@ -74,6 +76,8 @@
     
     /**
     * Set all the type filters to use for this search query
+    * 
+    * **Optional**: This function could be called before sending the query
     * 
     * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
     * 
@@ -102,6 +106,8 @@
     /**
     * Set all the dataset filters to use for this search query
     * 
+    * **Optional**: This function could be called before sending the query
+    * 
     * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @param mixed $datasets An array of datasets URI to use to filter the returned results.
@@ -128,6 +134,8 @@
     
     /**
     * Set all the attribute/value filters to use for this search query
+    * 
+    * **Optional**: This function could be called before sending the query
     * 
     * @param mixed $attributes Array of attribute/value filters. If the value is "all", then
     *                          the query will only filter on the attribute's URI. This param
@@ -191,6 +199,8 @@
     * Set the attributes boolean operator to AND. If you have multiple attribute/value filters defined for this
     * search query, then the Search endpoint will AND all of them.
     * 
+    * This is the default behavior of this service.
+    * 
     * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
@@ -206,6 +216,8 @@
     * array will be ignored, and won't be returned by the endpoint. This is normally
     * used when you know the properties you need for your application, and that you want
     * to limit the bandwidth and minimize the size of the resultset.
+    * 
+    * **Optional**: This function could be called before sending the query
     * 
     * @param mixed $attributes An array of attribute URIs to see in the resultset
     * 
@@ -227,6 +239,8 @@
     /**
     * Set the number of items to return in a single resultset 
     * 
+    * Default value is 10
+    * 
     * @param mixed $items The number of items to return in a single resultset 
     * 
     * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
@@ -246,6 +260,8 @@
     /**
     * Set the offset of the resultset to return. By example, to get the item 90 to 100, this 
     * parameter should be set to 90. 
+    * 
+    * Default page is 0
     *     
     * @param mixed $page The offset of the resultset to return. By example, to get the item 90 to 100, this parameter should be set to 90. 
     * 
@@ -265,6 +281,8 @@
     
     /**
     * Enable the inference for this query
+    * 
+    * This is the default behavior of this service.
     * 
     * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
     * 
@@ -302,6 +320,8 @@
     /**
     * Include the aggregate records in the resultset of this query
     * 
+    * This is the default behavior of this service.
+    * 
     * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
@@ -314,6 +334,8 @@
     /**
     * Specify a set of attributes URI for which we want their aggregated values.
     * This is used to get a list of values, and their counts for a given attribute.
+    * 
+    * **Optional**: This function could be called before sending the query
     * 
     * @param mixed $attributes Array of attributes URI for which we want their aggregates
     * 
@@ -335,6 +357,8 @@
     * Determines that the aggregated value returned by the endpoint is a literal. If the 
     * value is a URI (a reference to some record), then the literal value will be the 
     * preferred label of that referred record.
+    * 
+    * This is the default behavior of this service.
     * 
     * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
     * 
@@ -372,6 +396,8 @@
     /**
     * The distance filter is a series of parameter that are used to filter records 
     * of the dataset according to the distance they are located from a given lat;long point
+    * 
+    * **Optional**: This function could be called before sending the query
     * 
     * @param mixed $lat Latitude of the point of origin
     * @param mixed $long Longitude of the point of origin
@@ -414,6 +440,8 @@
     * The range filter is a series of parameter that are used to filter records of the 
     * dataset according to a rectangle bounds they are located in given their lat;long 
     * position.
+    * 
+    * **Optional**: This function could be called before sending the query
     * 
     * @param mixed $topLeftLat Latitude of the top left corner of the bounding box
     * @param mixed $topLeftLong Longitude of the top left corner of the bounding box
