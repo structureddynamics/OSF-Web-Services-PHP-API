@@ -37,7 +37,7 @@
 
     /** Base URL of the network (ex: http://localhost/ws/) */
     private $network = "http://localhost/ws/";
-
+    
     /** Supported mime types by the endpoint */
     private $supportedMimes = array("resultset",
                                     "text/xml", 
@@ -47,6 +47,15 @@
                                     "application/iron+json",
                                     "application/iron+csv");
 
+    /** HTTP status number of the query */
+    private $httpStatus = "200";
+    
+    /** HTTP status message of the query */
+    private $httpStatusMessage = "";
+    
+    /** HTTP status message description of the query */
+    private $httpStatusMessageDescription = "";
+                                    
     /** Parameters to use to send the query to the endpoint */
     protected $params = array();  
     
@@ -121,6 +130,10 @@
                                    $parameters, 
                                    $this->timeout);
                                    
+      $this->httpStatus = $wsq->getStatus();
+      $this->httpStatusMessage = $wsq->getStatusMessage();
+      $this->httpStatusMessageDescription = $wsq->getStatusMessageDescription();                                   
+                                   
       if($wsq->getStatus() == 200)
       {
         if($this->mime != "resultset")
@@ -140,7 +153,7 @@
             $this->resultset = $resultset;
           }
         }         
-      }
+      }      
       else
       {
         // Error
@@ -224,7 +237,62 @@
     public function registeredIp($ip)
     {
       $this->params["registered_ip"] = $ip; 
-    }    
+    } 
+    
+    /**
+    * Check if the query that has been sent is successful or not
+    * 
+    * @return TRUE if the query has been successful; FALSE otherwise
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function isSuccessful()   
+    {
+      if($this->httpStatus == "200")
+      {
+        return(TRUE);
+      }
+      else
+      {
+        return(FALSE);
+      }
+    }
+    
+    /**
+    * Get the HTTP status number of the query
+    * 
+    * @return Return a HTTP status code
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function getStatus()
+    {
+      return($this->httpStatus);
+    }
+    
+    /**
+    * Get the HTTP status message of the query
+    * 
+    * @return Return a HTTP status message
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function getStatusMessage()
+    {
+      return($this->httpStatusMessage);
+    }
+    
+    /**
+    * Get the HTTP status message description of the query
+    * 
+    * @return Return a HTTP status message description
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function getStatusMessageDescription()
+    {
+      return($this->httpStatusMessageDescription);
+    }
   }
   
 ?>

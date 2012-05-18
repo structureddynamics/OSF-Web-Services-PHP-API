@@ -182,3 +182,182 @@ Crud: Read
  
   ?>
 ```
+
+Crud: Create
+------------
+
+```php
+  <?php
+  
+  // Use the CrudCreateQuery class
+  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
+  
+  // Create the CrudCreateQuery object
+  $crudCreate = new CrudCreateQuery("http://localhost/ws/");
+  
+  // Specifies where we want to add the RDF content
+  $crudCreate->dataset("http://localhost/ws/dataset/my-new-dataset/");
+  
+  // Specifies the RDF content we want to add to this dataset
+  $crudCreate->document('<?xml version="1.0"?>
+                         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                           xmlns:dc="http://purl.org/dc/elements/1.1/">
+                           <rdf:Description rdf:about="http://www.w3.org/">
+                             <dc:title>World Wide Web Consortium</dc:title> 
+                           </rdf:Description>
+                         </rdf:RDF>');
+
+  // Specifies that the input document is serialized using RDF+XML
+  $crudCreate->documentMimeIsRdfXml();  
+  
+  // Make sure we index that new RDF data everywhere in the structWSF instance
+  $crudCreate->enableFullIndexationMode();
+  
+  // Import that new RDF data
+  try
+  {
+    $crudCreate->send();
+  }
+  catch(Exception $e){}
+
+  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  
+  if($crudCreate->isSuccessful())
+  {
+    // Now that it got imported, let's try to search for that new record using the Search endpoint.
+    
+    // Create the SearchQuery object
+    $search = new SearchQuery("http://localhost/ws/");
+    
+    // Set the query parameter with the search keyword "elm"
+    $search->query("Consortium");
+    
+    $search->excludeAggregates();
+    
+    // Send the search query to the endpoint
+    $search->send();
+    
+    // Get back the resultset returned by the endpoint
+    $resultset = $search->getResultset();
+    
+    // Print different serializations for that resultset
+    print_r($resultset->getResultset());      
+  }
+  else
+  {    
+    echo "Importation failed: ".$crudCreate->getStatus()." (".$crudCreate->getStatusMessage().")\n";
+    echo $crudCreate->getStatusMessageDescription();
+  }
+  ?>
+```  
+
+Auth: Lister
+------------
+```php
+  <?php
+  
+  // Use the AuthListerQuery class
+  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
+  
+  // Create the AuthListerQuery object
+  $authlister = new AuthListerQuery("http://demo.citizen-dan.org/ws/");
+  
+  // Specifies that we want to get all the dataset URIs available to the server that send this query.
+  $authlister->getDatasetsUri();
+  
+  // Send the auth lister query to the endpoint
+  $authlister->send();
+  
+  // Get back the resultset returned by the endpoint
+  $resultset = $authlister->getResultset();
+  
+  // Print different serializations for that resultset
+  print_r($resultset->getResultset());
+    
+  ?>
+```
+  
+Dataset: Create
+---------------
+```php
+  <?php
+
+  // Use the DatasetCreateQuery class
+  use \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery;
+  
+  // Create the DatasetCreateQuery object
+  $dcreate = new DatasetCreateQuery("http://localhost/ws/");
+  
+  // Set the URI of the new dataset
+  $dcreate->uri("http://localhost/ws/dataset/my-new-dataset/");
+  
+  // Set the title of the dataset
+  $dcreate->title("My Brand New Dataset");
+  
+  // Set the description of the dataset
+  $dcreate->description("This is something to look at!");
+  
+  // Set the creator's URI
+  $dcreate->creator("http://localhost/people/bob/");
+  
+  
+  // Get all the web services registered on this instance with a 
+  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
+  use \StructuredDynamics\structwsf\php\api\framework\Namespaces;
+  
+  // Create the AuthListerQuery object
+  $authlister = new AuthListerQuery("http://localhost/ws/");
+  
+  // Specifies that we want to get all the list of all registered web service endpoints.
+  $authlister->getRegisteredWebServiceEndpointsUri();
+  
+  // Send the auth lister query to the endpoint
+  $authlister->send();
+  
+  // Get back the resultset returned by the endpoint
+  $resultset = $authlister->getResultset()->getResultset();
+  
+  $webservices = array();
+  
+  // Get all the URIs from the resultset array
+  foreach($resultset["unspecified"] as $list)
+  {
+    foreach($list[Namespaces::$rdf."li"] as $item)
+    {
+      array_push($webservices, $item["uri"]);
+    }
+  }
+  
+  unset($authlister);
+  
+  // We make sure that this dataset will be accessible by all the 
+  // registered web service endpoints of the network.
+  $dcreate->targetWebservices($webservices);
+  
+  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  
+  // We make this new dataset world readable
+  $dcreate->globalPermissions(new CRUDPermission(FALSE, TRUE, FALSE, FALSE));
+  
+  // Send the crud read query to the endpoint
+  $dcreate->send();
+  
+  // Now we make sure we create the new dataset by looking into the system
+  // using the Auth Lister again
+  
+  // Create the AuthListerQuery object
+  $authlister = new AuthListerQuery("http://localhost/ws/");
+  
+  // Specifies that we want to get all the list of all registered web service endpoints.
+  $authlister->getDatasetUsersAccesses("http://localhost/ws/dataset/my-new-dataset/");
+  
+  // Send the auth lister query to the endpoint
+  $authlister->send();
+  
+  // Get back the resultset returned by the endpoint
+  $resultset = $authlister->getResultset();
+  
+  print_r($resultset);
+ 
+  ?>
+```
