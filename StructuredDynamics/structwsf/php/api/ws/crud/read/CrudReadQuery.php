@@ -4,7 +4,8 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\read\CrudReadQuery.php
-      OntologyReadQuery class description
+  
+      CrudReadQuery class description
 
       @author Frederick Giasson, Structured Dynamics LLC.
    */
