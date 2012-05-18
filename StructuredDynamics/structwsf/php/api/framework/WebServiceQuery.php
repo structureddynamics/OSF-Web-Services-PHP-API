@@ -129,10 +129,16 @@
         }
         else
         {
-          $resultset = new Resultset();
-          $resultset->importStructXMLResultset($wsq->getResultset());
-        
-          $this->resultset = $resultset;
+          $data = $wsq->getResultset();
+          
+          if($data != "")
+          {
+            $resultset = new Resultset();        
+            
+            $resultset->importStructXMLResultset($data);
+          
+            $this->resultset = $resultset;
+          }
         }         
       }
       else
