@@ -15,6 +15,10 @@
   /**
   * Crud Read Query to a structWSF Crud Read web service endpoint
   * 
+  * The CRUD: Read Web service is used to get the description of 
+  * a target instance record indexed in a dataset belonging to a WSF 
+  * (Web Services Framework). 
+  * 
   * @see http://techwiki.openstructs.org/index.php/CRUD:_Read
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  

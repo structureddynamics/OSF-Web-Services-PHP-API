@@ -14,6 +14,17 @@
   /**
   * Ontology Read Query to a structWSF SPARQL web service endpoint
   * 
+  * The Ontology Read service is used to query OWL ontologies. All kinds of information 
+  * can be read on different ontology entities such as: classes, object properties, 
+  * datatype properties, annotation properties and individuals. Reasoners can also be 
+  * used to include inferred facts in the service's resultset. A full list of actions 
+  * can be performed that enables you to leverage your ontologies, properly and 
+  * effectively.
+  * 
+  * This service is a Web service wrapper over the OWLAPI ontology library. Most of the 
+  * API has been implemented. So we can say that this Web service (with the other related 
+  * structWSF services) turns the OWLAPI into a Web service API. 
+  * 
   * @see http://techwiki.openstructs.org/index.php/Ontology_Read
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
@@ -117,7 +128,7 @@
   /**
   * Class used to define the parameters to use send a "GetLoadedOntologies" call 
   * to the Ontology: Read web service endpoint.
-  * 
+  *       
   * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getLoadedOntologies
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.

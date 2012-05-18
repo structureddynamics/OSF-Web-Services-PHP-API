@@ -14,6 +14,9 @@
   /**
   * SPARQL Query to a structWSF SPARQL web service endpoint
   * 
+  * The SPARQL Web service is used to send custom SPARQL queries against the 
+  * structWSF data structure. This is a general purpose querying Web service. 
+  * 
   * @see http://techwiki.openstructs.org/index.php/SPARQL
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  

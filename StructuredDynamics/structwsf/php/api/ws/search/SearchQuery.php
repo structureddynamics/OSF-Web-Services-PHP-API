@@ -14,6 +14,21 @@
   /**
   * Ontology Read Query to a structWSF SPARQL web service endpoint
   * 
+  * The Search Web service is used to perform full text searches on the structured 
+  * data indexed on a structWSF instance. A search query can be as simple as querying 
+  * the data store for a single keyword, or to query it using a series of complex 
+  * filters. Each search query can be applied to all, or a subset of, datasets 
+  * accessible by the requester. All of the full text queries comply with the 
+  * Lucene querying syntax.
+  * 
+  * Each Search query can be filtered by these different filtering criteria:
+  *  + Type of the record(s) being requested
+  *  + Dataset where the record(s) got indexed
+  *  + Presence of an attribute describing the record(s)
+  *  + A specific value, for a specific attribute describing the record(s)
+  *  + A distance from a lat/long coordinate (for geo-enabled structWSF instance)
+  *  + A range of lat/long coordinates (for geo-enabled structWSF instance) 
+  * 
   * @see http://techwiki.openstructs.org/index.php/Search
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
