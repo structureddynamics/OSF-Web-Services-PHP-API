@@ -12,7 +12,7 @@
   namespace StructuredDynamics\structwsf\php\api\ws\crud\read;
 
   /**
-  * Crud Read Query to a structWSF SPARQL web service endpoint
+  * Crud Read Query to a structWSF Crud Read web service endpoint
   * 
   * @see http://techwiki.openstructs.org/index.php/CRUD:_Read
   * 
