@@ -157,7 +157,10 @@
       else
       {
         // Error
-        throw new Exception('['.$wsq->error->level.']('.$wsq->error->id.')  '.$wsq->error->name.'. '.$wsq->error->description.'. '.$wsq->error->debugInfo);
+        if(isset($wsq->error))
+        {
+          throw new Exception('['.$wsq->error->level.']('.$wsq->error->id.')  '.$wsq->error->name.'. '.$wsq->error->description.'. '.$wsq->error->debugInfo);
+        }
       }
       
       unset($wsq);
