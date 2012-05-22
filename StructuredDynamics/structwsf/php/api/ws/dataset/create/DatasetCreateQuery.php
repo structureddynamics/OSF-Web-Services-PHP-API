@@ -131,7 +131,7 @@
     * 
     * @see http://techwiki.openstructs.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
     * 
-    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    * @author Frederick Giasson, Structured Dynamics LLC.
     */
     public function targetWebservices($webservicesUri)
     {
@@ -145,6 +145,11 @@
     * 
     * @param mixed $crudPermission A CRUDPermission object instance that define the global CRUD permissions 
     *                              to use for this new dataset.
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    * 
     */
     public function globalPermissions($crudPermission)
     {

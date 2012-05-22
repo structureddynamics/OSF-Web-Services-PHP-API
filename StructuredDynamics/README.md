@@ -20,6 +20,10 @@ Here is an example of how you can auto-load the classes of the structWSF PHP API
   $loader_framework = new SplClassLoader('StructuredDynamics\structwsf\php\api\framework');
   $loader_framework->register();
  
+  // Load the \framework namespace where all the supporting (utility) code is located
+  $loader_framework = new SplClassLoader('StructuredDynamics\structwsf\framework');
+  $loader_framework->register(); 
+ 
   // Use the SearchQuery class
   use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
   
