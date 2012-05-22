@@ -160,7 +160,7 @@ Crud: Read
   // Create the CrudReadQuery object
   $cread = new CrudReadQuery("http://demo.citizen-dan.org/ws/");
   
-  // Get the description of the Broading_schools record
+  // Get the description of the Nursery_schools record
   $cread->uri("http://purl.org/ontology/muni#Nursery_schools");
   
   // Exclude possible linksback
@@ -303,7 +303,7 @@ Dataset: Create
   
   // Get all the web services registered on this instance with a 
   use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  use \StructuredDynamics\structwsf\php\api\framework\Namespaces;
+  use \StructuredDynamics\structwsf\framework\Namespaces;
   
   // Create the AuthListerQuery object
   $authlister = new AuthListerQuery("http://localhost/ws/");
