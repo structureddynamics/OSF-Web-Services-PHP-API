@@ -10,11 +10,11 @@
 */
 
 
-namespace StructuredDynamics\structwsf\php\api\framework;
+namespace StructuredDynamics\structwsf\framework;
 
 use \SimpleXMLElement;
 
-use \StructuredDynamics\structwsf\php\api\framework\Namespaces;
+use \StructuredDynamics\structwsf\php\Namespaces;
 
 /** 
 * Internal Resultset representation of structWSF results

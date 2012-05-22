@@ -3,13 +3,13 @@
 /*! @ingroup StructWSFPHPAPIFramework Framework of the structWSF PHP API library */
 //@{
 
-/*! @file \StructuredDynamics\structwsf\php\api\framework\Namespaces.php
+/*! @file \StructuredDynamics\structwsf\framework\Namespaces.php
     List of main ontologies used
 
     @author Frederick Giasson, Structured Dynamics LLC.
  */
 
-namespace StructuredDynamics\structwsf\php\api\framework;
+namespace StructuredDynamics\structwsf\framework;
 
 /**
 * List of main ontologies used 
@@ -141,7 +141,7 @@ class Namespaces
     // Save the URI of the class or property passed in parameter
     $resource = substr($uri, $pos, strlen($uri) - $pos);    
   
-    foreach(get_class_vars('\StructuredDynamics\structwsf\php\api\framework\Namespaces') as $prefix => $u)    
+    foreach(get_class_vars('\StructuredDynamics\structwsf\framework\Namespaces') as $prefix => $u)    
     {    
       if($onto == Namespaces::$$prefix)
       {

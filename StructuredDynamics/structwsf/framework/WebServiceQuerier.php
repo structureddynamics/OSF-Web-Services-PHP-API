@@ -9,7 +9,7 @@
    @author Frederick Giasson, Structured Dynamics LLC.
 */
 
-namespace StructuredDynamics\structwsf\php\api\framework;
+namespace StructuredDynamics\structwsf\framework;
 
 /**
 * Query a RESTFul web service endpoint
