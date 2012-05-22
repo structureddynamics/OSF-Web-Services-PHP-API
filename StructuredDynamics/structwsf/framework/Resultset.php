@@ -14,7 +14,7 @@ namespace StructuredDynamics\structwsf\framework;
 
 use \SimpleXMLElement;
 
-use \StructuredDynamics\structwsf\php\Namespaces;
+use \StructuredDynamics\structwsf\framework\Namespaces;
 
 /** 
 * Internal Resultset representation of structWSF results
