@@ -251,6 +251,44 @@ Crud: Create
   ?>
 ```  
 
+
+CRUD: Delete
+---------------
+```php
+  <?php
+  
+  // Use the CrudDeleteQuery class
+  use \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudDeleteQuery;
+  
+  // Create the CrudDeleteQuery object
+  $crudDelete = new CrudDeleteQuery("http://localhost/ws/");
+  
+  // Specifies where the record we want to delete is indexed
+  $crudDelete->dataset("http://localhost/ws/dataset/my-new-dataset/");
+  
+  // Specifies the URI of the record we want to delete from the system
+  $crudDelete->uri("http://www.w3.org/");
+  
+  // Import that new RDF data
+  try
+  {
+    $crudDelete->send();
+  }
+  catch(Exception $e){}
+
+  if($crudDelete->isSuccessful())
+  {
+    echo "Record deleted";
+  }
+  else
+  {    
+    echo "Deletation failed: ".$crudDelete->getStatus()." (".$crudDelete->getStatusMessage().")\n";
+    echo $crudDelete->getStatusMessageDescription();
+  }  
+  
+  ?>
+```  
+
 Auth: Lister
 ------------
 ```php
