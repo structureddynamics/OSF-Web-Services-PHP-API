@@ -681,3 +681,31 @@ Dataset: Create
  
   ?>
 ```
+
+Dataset: Read
+---------------
+```php
+  <?php
+
+  use \StructuredDynamics\structwsf\php\api\ws\dataset\read\DatasetReadQuery;
+  
+  $dRead = new DatasetReadQuery("http://localhost/ws/");
+
+  // Specify the Dataset URI for which we want its description
+  $dRead->uri("http://localhost/ws/dataset/my-new-dataset-3/");
+  
+  $dRead->send();
+  
+  if($dRead->isSuccessful())
+  {
+    // Get the RDF+N3 serialization of the resultset    
+    echo $dRead->getResultset()->getResultsetRDFN3();
+  }
+  else
+  {
+    echo "Dataset read failed: ".$dRead->getStatus()." (".$dRead->getStatusMessage().")\n";
+    echo $dRead->getStatusMessageDescription();  
+  }
+  
+  ?>
+```  
