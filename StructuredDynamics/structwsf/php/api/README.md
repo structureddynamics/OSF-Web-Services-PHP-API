@@ -491,6 +491,37 @@ Auth: Registrar WS
   
   ?>
 ```  
+
+Auth: Validator
+---------------
+```php
+  <?php
+  
+  use \StructuredDynamics\structwsf\php\api\ws\auth\validator\AuthValidatorQuery;
+  
+  $authValidator = new AuthValidatorQuery("http://localhost/ws/");
+  
+  $authValidator->ip("127.0.0.1");
+  
+  $authValidator->datasets(array("http://localhost/ws/dataset/my-new-dataset-3/"));
+  
+  $authValidator->webServiceUri("http://localhost/wsf/ws/crud/read/");
+  
+  $authValidator->send();
+  
+  if($authValidator->isSuccessful())
+  {
+    echo "Query validated! Move on...";
+  }
+  else
+  {
+    echo "Query validation failed: ".$authValidator->getStatus()." (".$authValidator->getStatusMessage().")\n";
+    echo $authValidator->getStatusMessageDescription();  
+  }  
+  
+  ?>
+```  
+
   
 Dataset: Create
 ---------------
