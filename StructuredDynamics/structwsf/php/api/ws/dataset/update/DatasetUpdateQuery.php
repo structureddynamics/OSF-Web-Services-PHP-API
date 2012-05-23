@@ -4,7 +4,7 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\dataset\update\DatasetUpdateQuery.php
-      @brief DatasetCreateQuery class description
+      @brief DatasetUpdateQuery class description
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\dataset\update;
