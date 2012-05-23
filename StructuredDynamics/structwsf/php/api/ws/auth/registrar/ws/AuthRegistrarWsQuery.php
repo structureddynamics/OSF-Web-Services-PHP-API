@@ -53,7 +53,7 @@
     }
     
     /**
-    * Title Title of the web service to register to this structWSF instance
+    * Title of the web service to register to this structWSF instance
     * 
     * **Required**: This function must be called before sending the query 
     * 
