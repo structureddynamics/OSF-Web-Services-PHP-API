@@ -48,7 +48,7 @@
                                     "application/iron+csv");
 
     /** HTTP status number of the query */
-    private $httpStatus = "200";
+    private $httpStatus = "";
     
     /** HTTP status message of the query */
     private $httpStatusMessage = "";
