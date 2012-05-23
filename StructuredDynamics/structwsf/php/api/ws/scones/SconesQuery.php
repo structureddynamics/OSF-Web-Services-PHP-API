@@ -140,7 +140,7 @@
     */
     public function application($application)
     {
-      $this->params["application"] = urlEncode($application);
+      $this->params["application"] = urlencode($application);
     } 
    }       
  
