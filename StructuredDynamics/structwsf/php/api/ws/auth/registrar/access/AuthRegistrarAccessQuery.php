@@ -3,7 +3,7 @@
   /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery.php
+  /*! @file \StructuredDynamics\structwsf\php\api\ws\auth\registrar\access\AuthRegistrarAccessQuery.php
   
       AuthRegistrarAccessQuery class description
 
