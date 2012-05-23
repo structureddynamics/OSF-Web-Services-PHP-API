@@ -954,3 +954,56 @@ Scones
     
   ?>
 ```  
+
+Ontology: Create
+----------------
+```php
+  <?php
+  
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\create\OntologyCreateQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetLoadedOntologiesFunction;
+  
+  $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
+  
+  // Create the vcard ontology for which its description is located somewhere on the Web
+  $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
+  
+  // Enable advanced indexation to have access to it on all structWSF endpoints
+  $ontologyCreate->enableAdvancedIndexation();
+  
+  // Enable reasoner to persist inferred facts into all endpoints of structWSF
+  $ontologyCreate->enableReasoner();
+  
+  try                                                
+  {
+    // Import the new ontology
+    $ontologyCreate->send();
+  }
+  catch(Exception $e){}
+
+  if($ontologyCreate->isSuccessful())
+  {
+    // Now, let's use the ontology read service to make sure it got loaded.
+    $ontologyRead = new OntologyReadQuery("http://localhost/ws/");
+    
+    $ontologyRead->ontology("http://www.w3.org/2006/vcard/ns");
+
+    $getLoadedOntologies = new GetLoadedOntologiesFunction();
+    
+    $getLoadedOntologies->modeUris();
+    
+    $ontologyRead->getLoadedOntologies($getLoadedOntologies);
+    
+    $ontologyRead->send();
+    
+    echo $ontologyRead->getResultset()->getResultset();    
+  }
+  else
+  {
+    echo "Ontology importation failed: ".$ontologyCreate->getStatus()." (".$ontologyCreate->getStatusMessage().")\n";
+    echo $ontologyCreate->getStatusMessageDescription();       
+  }
+    
+  ?>
+```  
