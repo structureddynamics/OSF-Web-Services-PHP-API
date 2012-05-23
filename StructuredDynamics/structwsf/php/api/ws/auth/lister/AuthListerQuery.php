@@ -5,7 +5,7 @@
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery.php
   
-      AuthListerQuery class description
+      @brief AuthListerQuery class description
 
       @author Frederick Giasson, Structured Dynamics LLC.
    */

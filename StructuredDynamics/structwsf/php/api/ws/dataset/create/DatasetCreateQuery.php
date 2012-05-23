@@ -5,7 +5,7 @@
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery.php
   
-      DatasetCreateQuery class description
+      @brief DatasetCreateQuery class description
 
       @author Frederick Giasson, Structured Dynamics LLC.
    */

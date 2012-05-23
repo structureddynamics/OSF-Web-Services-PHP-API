@@ -4,7 +4,7 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\search\SearchQuery.php
-      SearchQuery class description
+      @brief SearchQuery class description
 
       @author Frederick Giasson, Structured Dynamics LLC.
    */               

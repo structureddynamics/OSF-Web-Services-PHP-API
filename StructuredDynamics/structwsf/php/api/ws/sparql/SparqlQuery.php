@@ -4,7 +4,7 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\sparql\SparqlQuery.php
-      SparqlQuery class description
+      @brief SparqlQuery class description
 
       @author Frederick Giasson, Structured Dynamics LLC.
    */

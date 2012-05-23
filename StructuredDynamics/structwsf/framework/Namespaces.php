@@ -4,7 +4,7 @@
 //@{
 
 /*! @file \StructuredDynamics\structwsf\framework\Namespaces.php
-    List of main ontologies used
+    @brief  List of main ontologies used
 
     @author Frederick Giasson, Structured Dynamics LLC.
  */

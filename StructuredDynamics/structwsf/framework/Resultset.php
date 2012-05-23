@@ -3,10 +3,10 @@
 /*! @ingroup StructWSFPHPAPIFramework Framework of the structWSF PHP API library */
 //@{
 
-/*! @file \StructuredDynamics\structwsf\php\api\framework\Resultset.php
-   An internal Resultset class
+/*! @file \StructuredDynamics\structwsf\framework\Resultset.php
+    @brief An internal Resultset class
   
-   @author Frederick Giasson, Structured Dynamics LLC.
+    @author Frederick Giasson, Structured Dynamics LLC.
 */
 
 
@@ -104,7 +104,7 @@ class Resultset
   /**
   * Constructor
   *    
-  * @param mixed Path where the structWSF instance is installed on the server
+  * @param mixed $wsf_base_path Path where the structWSF instance is installed on the server
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -119,6 +119,7 @@ class Resultset
   * Add a Subject object to the resultset
   * 
   * @param mixed $subject Subject object to add to the resultset
+  * @param mixed $dataset Dataset URI where to add the subject
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -209,7 +210,7 @@ class Resultset
   /**
   * Import a structXML resultset
   * 
-  * @param mixed $resultset structXML resultset to import
+  * @param mixed $structXMLResultset structXML resultset to import
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -446,8 +447,6 @@ class Resultset
   /**
   * Convert an internal structWSF resultset array structure in structXML 
   *    
-  * @param $resultset An internal resultset array structure. 
-  *          
   * @return a structWSF document
   *   
   * @author Frederick Giasson, Structured Dynamics LLC.
@@ -596,8 +595,6 @@ class Resultset
   /** 
   * Convert an internal structWSF resultset array structure in structJSON 
   *    
-  * @param $resultset An internal resultset array structure. 
-  *            
   * @return a structWSF document in JSON
   *    
   * @author Frederick Giasson, Structured Dynamics LLC.
@@ -840,8 +837,6 @@ class Resultset
   /**
   * Convert an internal structWSF resultset array structure in irON JSON 
   *    
-  * @param $resultset An internal resultset array structure. 
-  *            
   * @return a structWSF document in irON JSON 
   *    
   * @author Frederick Giasson, Structured Dynamics LLC.
@@ -885,8 +880,6 @@ class Resultset
   /** 
   * Convert an internal structWSF resultset array structure in irON commON 
   *    
-  * @param $resultset An internal resultset array structure. 
-  *            
   * @return a structWSF document in irON commON 
   *   
   * @author Frederick Giasson, Structured Dynamics LLC.
@@ -926,8 +919,6 @@ class Resultset
   /** 
   * Convert an internal structWSF resultset array structure in RDF+XML
   *    
-  * @param $resultset An internal resultset array structure. 
-  *            
   * @return a RDF+XML document
   *    
   * @see http://techwiki.openstructs.org/index.php/Internal_Resultset_Array
@@ -1078,8 +1069,6 @@ class Resultset
   /**
   * Convert an internal structWSF resultset array structure in RDF+N3
   *    
-  * @param $resultset An internal resultset array structure. 
-  *            
   * @return a RDF+N3 document
   *    
   * @see http://techwiki.openstructs.org/index.php/Internal_Resultset_Array

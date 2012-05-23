@@ -5,7 +5,7 @@
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\auth\registrar\access\AuthRegistrarAccessQuery.php
   
-      AuthRegistrarAccessQuery class description
+      @brief AuthRegistrarAccessQuery class description
 
       @author Frederick Giasson, Structured Dynamics LLC.
    */

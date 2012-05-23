@@ -4,7 +4,7 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery.php
-      OntologyReadQuery class description
+      @brief OntologyReadQuery class description
 
       @author Frederick Giasson, Structured Dynamics LLC.
    */

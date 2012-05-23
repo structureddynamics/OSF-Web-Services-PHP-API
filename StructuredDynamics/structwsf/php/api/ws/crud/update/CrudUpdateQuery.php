@@ -5,7 +5,7 @@
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\update\CrudUpdateQuery.php
   
-      CrudUpdateQuery class description
+      @brief CrudUpdateQuery class description
 
       @author Frederick Giasson, Structured Dynamics LLC.
    */
@@ -125,7 +125,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @param mixed $uris Dataset URI where to index the RDF document 
+    * @param mixed $uri Dataset URI where to index the RDF document 
     * 
     * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 

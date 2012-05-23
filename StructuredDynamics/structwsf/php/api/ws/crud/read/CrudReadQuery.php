@@ -5,7 +5,7 @@
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\read\CrudReadQuery.php
   
-      CrudReadQuery class description
+      @brief CrudReadQuery class description
 
       @author Frederick Giasson, Structured Dynamics LLC.
    */

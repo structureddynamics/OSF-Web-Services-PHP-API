@@ -5,9 +5,9 @@
 
 /*! @file \StructuredDynamics\structwsf\php\api\framework\CRUDPermission.php
 
-   An internal CRUDPermission class
+    @brief An internal CRUDPermission class
   
-   @author Frederick Giasson, Structured Dynamics LLC.
+    @author Frederick Giasson, Structured Dynamics LLC.
 */
 
 

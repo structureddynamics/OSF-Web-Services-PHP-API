@@ -3,9 +3,9 @@
   /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudCreateQuery.php
+  /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudDeleteQuery.php
   
-      CrudDeleteQuery class description
+      @brief CrudDeleteQuery class description
 
       @author Frederick Giasson, Structured Dynamics LLC.
    */
