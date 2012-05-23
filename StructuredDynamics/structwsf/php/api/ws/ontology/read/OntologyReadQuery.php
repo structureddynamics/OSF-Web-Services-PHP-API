@@ -80,7 +80,7 @@
     */
     public function ontology($ontology)
     {
-      $this->params["ontology"] = $ontology;
+      $this->params["ontology"] = urlencode($ontology);
     }
     
     /**
