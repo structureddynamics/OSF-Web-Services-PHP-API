@@ -5,8 +5,7 @@
 
 /*! @file \StructuredDynamics\structwsf\framework\Resultset.php
     @brief An internal Resultset class
-  
-    @author Frederick Giasson, Structured Dynamics LLC.
+
 */
 
 

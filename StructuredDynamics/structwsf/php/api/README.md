@@ -425,6 +425,80 @@ Auth: Lister
   ?>
 ```
 
+Auth Registrar Access
+---------------------
+```php
+  <?php
+
+  use \StructuredDynamics\structwsf\framework\Namespaces;
+  use \StructuredDynamics\structwsf\php\api\ws\auth\registrar\access\AuthRegistrarAccessQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
+  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+    
+  // Get all the web services registered on this instance with a 
+  
+  // Create the AuthListerQuery object
+  $authlister = new AuthListerQuery("http://localhost/ws/");
+  
+  // Specifies that we want to get all the list of all registered web service endpoints.
+  $authlister->getRegisteredWebServiceEndpointsUri();
+  
+  // Send the auth lister query to the endpoint
+  $authlister->send();
+  
+  // Get back the resultset returned by the endpoint
+  $resultset = $authlister->getResultset()->getResultset();
+  
+  $webservices = array();
+
+  // Get all the URIs from the resultset array
+  foreach($resultset["unspecified"] as $list)
+  {
+    foreach($list[Namespaces::$rdf."li"] as $item)
+    {
+      array_push($webservices, $item["uri"]);
+    }
+  }
+  
+  unset($authlister);
+
+  // Create a new Access record
+  $ara = new AuthRegistrarAccessQuery("http://localhost/ws/");
+  
+  $ara->create("192.168.0.1", "http://localhost/ws/dataset/my-new-dataset-3/", new CRUDPermission(TRUE, TRUE, TRUE, TRUE), $webservices);
+  
+  try
+  {
+    $ara->send();
+  }
+  catch(Exception $e){}
+
+  if($ara->isSuccessful())
+  {
+    // Now, let's make sure that  the record access is properly created.'
+    // Create the AuthListerQuery object
+    $authlister = new AuthListerQuery("http://localhost/ws/");
+    
+    // Specifies that we want to get all the list of all registered web service endpoints.
+    $authlister->getDatasetUsersAccesses("http://localhost/ws/dataset/my-new-dataset-3/");
+    
+    // Send the auth lister query to the endpoint
+    $authlister->send();
+    
+    // Get back the resultset returned by the endpoint
+    $resultset = $authlister->getResultset();
+    
+    print_r($resultset);      
+  }  
+  else
+  {
+    echo "Access record creation failed: ".$ara->getStatus()." (".$ara->getStatusMessage().")\n";
+    echo $ara->getStatusMessageDescription();    
+  }  
+  
+  ?>
+```  
+
 Auth: Registrar WS
 ------------------
 ```php

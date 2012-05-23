@@ -3,11 +3,8 @@
   /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudDeleteQuery.php
-  
+  /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudDeleteQuery.php  
       @brief CrudDeleteQuery class description
-
-      @author Frederick Giasson, Structured Dynamics LLC.
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\crud\delete;
@@ -18,6 +15,41 @@
   * The CRUD: Delete Web service is used to delete an existing instance record indexed 
   * in some target dataset of a WSF. When the instance record gets deleted, all of the 
   * information archived in the dataset is deleted as well. 
+  * 
+  * Here is a code example of how this class can be used by developers: 
+  * 
+  * @code
+  * 
+  *  // Use the CrudDeleteQuery class
+  *  use \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudDeleteQuery;
+  *  
+  *  // Create the CrudDeleteQuery object
+  *  $crudDelete = new CrudDeleteQuery("http://localhost/ws/");
+  *  
+  *  // Specifies where the record we want to delete is indexed
+  *  $crudDelete->dataset("http://localhost/ws/dataset/my-new-dataset/");
+  *  
+  *  // Specifies the URI of the record we want to delete from the system
+  *  $crudDelete->uri("http://www.w3.org/");
+  *  
+  *  // Import that new RDF data
+  *  try
+  *  {
+  *    $crudDelete->send();
+  *  }
+  *  catch(Exception $e){}
+  *
+  *  if($crudDelete->isSuccessful())
+  *  {
+  *    echo "Record deleted";
+  *  }
+  *  else
+  *  {    
+  *    echo "Deletation failed: ".$crudDelete->getStatus()." (".$crudDelete->getStatusMessage().")\n";
+  *    echo $crudDelete->getStatusMessageDescription();
+  *  } 
+  * 
+  * @endcode
   * 
   * @see http://techwiki.openstructs.org/index.php/CRUD:_Delete
   * 

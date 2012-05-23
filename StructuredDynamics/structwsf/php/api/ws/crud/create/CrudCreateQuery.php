@@ -3,11 +3,8 @@
   /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery.php
-  
+  /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery.php  
       @brief CrudCreateQuery class description
-
-      @author Frederick Giasson, Structured Dynamics LLC.
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\crud\create;
@@ -41,7 +38,73 @@
   * the CRUD: Update web service endpoint, this will results in the creation of a new set of 
   * resources with new blank nodes URIS. This means that resources specified as blank nodes 
   * can't be updated using this web service endpoint. The best practice is not using blank 
-  * nodes.
+  * nodes.   
+  * 
+  * Here is a code example of how this class can be used by developers: 
+  * 
+  * @code
+  * 
+  *  // Use the CrudCreateQuery class
+  *  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
+  *  
+  *  // Create the CrudCreateQuery object
+  *  $crudCreate = new CrudCreateQuery("http://localhost/ws/");
+  *  
+  *  // Specifies where we want to add the RDF content
+  *  $crudCreate->dataset("http://localhost/ws/dataset/my-new-dataset/");
+  *  
+  *  // Specifies the RDF content we want to add to this dataset
+  *  $crudCreate->document('<?xml version="1.0"?>
+  *                         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  *                           xmlns:dc="http://purl.org/dc/elements/1.1/">
+  *                           <rdf:Description rdf:about="http://www.w3.org/">
+  *                             <dc:title>World Wide Web Consortium</dc:title> 
+  *                           </rdf:Description>
+  *                         </rdf:RDF>');
+  *
+  *  // Specifies that the input document is serialized using RDF+XML
+  *  $crudCreate->documentMimeIsRdfXml();  
+  *  
+  *  // Make sure we index that new RDF data everywhere in the structWSF instance
+  *  $crudCreate->enableFullIndexationMode();
+  *  
+  *  // Import that new RDF data
+  *  try
+  *  {
+  *    $crudCreate->send();
+  *  }
+  *  catch(Exception $e){}
+  *
+  *  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  *  
+  *  if($crudCreate->isSuccessful())
+  *  {
+  *    // Now that it got imported, let's try to search for that new record using the Search endpoint.
+  *    
+  *    // Create the SearchQuery object
+  *    $search = new SearchQuery("http://localhost/ws/");
+  *    
+  *    // Set the query parameter with the search keyword "elm"
+  *    $search->query("Consortium");
+  *    
+  *    $search->excludeAggregates();
+  *    
+  *    // Send the search query to the endpoint
+  *    $search->send();
+  *    
+  *    // Get back the resultset returned by the endpoint
+  *    $resultset = $search->getResultset();
+  *    
+  *    // Print different serializations for that resultset
+  *    print_r($resultset->getResultset());      
+  *  }
+  *  else
+  *  {    
+  *    echo "Importation failed: ".$crudCreate->getStatus()." (".$crudCreate->getStatusMessage().")\n";
+  *    echo $crudCreate->getStatusMessageDescription();
+  *  }
+  * 
+  * @endcode
   * 
   * @see http://techwiki.openstructs.org/index.php/CRUD:_Create
   * 

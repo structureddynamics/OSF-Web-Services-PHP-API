@@ -5,8 +5,6 @@
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\search\SearchQuery.php
       @brief SearchQuery class description
-
-      @author Frederick Giasson, Structured Dynamics LLC.
    */               
                
   namespace StructuredDynamics\structwsf\php\api\ws\search;
@@ -28,6 +26,30 @@
   *  + A specific value, for a specific attribute describing the record(s)
   *  + A distance from a lat/long coordinate (for geo-enabled structWSF instance)
   *  + A range of lat/long coordinates (for geo-enabled structWSF instance) 
+  * 
+  * Here is a code example of how this class can be used by developers: 
+  * 
+  * @code
+  * 
+  *  // Use the SearchQuery class
+  *  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  *  
+  *  // Create the SearchQuery object
+  *  $search = new SearchQuery("http://demo.citizen-dan.org/ws/");
+  *  
+  *  // Set the query parameter with the search keyword "elm"
+  *  $search->query("school");
+  *  
+  *  // Send the search query to the endpoint
+  *  $search->send();
+  *  
+  *  // Get back the resultset returned by the endpoint
+  *  $resultset = $search->getResultset();
+  *  
+  *  // Print different serializations for that resultset
+  *  print_r($resultset->getResultset());
+  * 
+  * @endcode
   * 
   * @see http://techwiki.openstructs.org/index.php/Search
   * 

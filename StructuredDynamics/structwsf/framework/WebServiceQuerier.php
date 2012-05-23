@@ -5,8 +5,7 @@
 
 /*! @file \StructuredDynamics\structwsf\framework\WebServiceQuerier.php
     @brief Querying a RESTFull web service endpoint
-  
-    @author Frederick Giasson, Structured Dynamics LLC.
+
 */
 
 namespace StructuredDynamics\structwsf\framework;

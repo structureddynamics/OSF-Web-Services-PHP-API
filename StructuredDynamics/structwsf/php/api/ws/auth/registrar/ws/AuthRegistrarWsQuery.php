@@ -4,10 +4,7 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\auth\registrar\ws\AuthRegistrarWsQuery.php
-  
       @brief AuthRegistrarWsQuery class description
-
-      @author Frederick Giasson, Structured Dynamics LLC.
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\auth\registrar\ws;
@@ -18,6 +15,71 @@
   * The Auth Registrar: WS Web service is used to register a Web service endpoint 
   * to the WSF (Web Services Framework). Once a Web service is registered to a WSF, 
   * it can then be used by other Web services, become accessible to users, etc.  
+  * 
+  * Here is a code example of how this class can be used by developers: 
+  * 
+  * @code
+  * 
+  *  use \StructuredDynamics\structwsf\framework\Namespaces;                     
+  *  use \StructuredDynamics\structwsf\php\api\ws\auth\registrar\ws\AuthRegistrarWsQuery;
+  *  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
+  *  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  * 
+  *  // Register a new web service endpoint to the structWSF instance
+  *  $arws = new AuthRegistrarWsQuery("http://localhost/ws/");
+  * 
+  *  // Define the title 
+  *  $arws->title("A new web service endpoint");
+  *    
+  *  // Define the endpoint's URI
+  *  $arws->endpointUri("http://localhost/wsf/ws/new/");
+  *  
+  *  // Define the access URL
+  *  $arws->endpointUrl("http://localhost/ws/new/");
+  *  
+  *  // Specifies that READ permission are needed to use this web service endpoint
+  *  $arws->crudUsage(new CRUDPermission(FALSE, TRUE, FALSE, FALSE));
+  *  
+  *  try
+  *  {
+  *    $arws->send();
+  *  }
+  *  catch(Exception $e){}
+  * 
+  *  if($arws->isSuccessful())
+  *  {
+  *    // Now, let's use the auth: lister endpoint to make sure we can see it in the structWSF instance
+  *    $authlister = new AuthListerQuery("http://localhost/ws/");
+  *    
+  *    // Specifies that we want to get all the list of all registered web service endpoints.
+  *    $authlister->getRegisteredWebServiceEndpointsUri();
+  *    
+  *    // Send the auth lister query to the endpoint
+  *    $authlister->send();
+  *    
+  *    // Get back the resultset returned by the endpoint
+  *    $resultset = $authlister->getResultset()->getResultset();
+  *    
+  *    $webservices = array();
+  * 
+  *    // Get all the URIs from the resultset array
+  *    foreach($resultset["unspecified"] as $list)
+  *    {
+  *      foreach($list[Namespaces::$rdf."li"] as $item)
+  *      {
+  *        array_push($webservices, $item["uri"]);
+  *      }
+  *    }    
+  *    
+  *    print_r($webservices);
+  *  }
+  *  else
+  *  {
+  *    echo "Web service registration failed: ".$arws->getStatus()." (".$arws->getStatusMessage().")\n";
+  *    echo $arws->getStatusMessageDescription();  
+  *  }  
+  * 
+  * @endcode
   * 
   * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_WS
   * 
@@ -66,8 +128,8 @@
     public function title($title)
     {
       $this->params["title"] = urlencode($title);
-    }
-    
+    }  
+       
     /**
     * URL of the web service endpoint where to send the HTTP queries
     * 
@@ -129,7 +191,7 @@
                                         ($crudPermission->getRead() ? "True" : "False").";".
                                         ($crudPermission->getUpdate() ? "True" : "False").";".
                                         ($crudPermission->getDelete() ? "True" : "False"));       
-    }
+    }      
    }       
  
 //@}    

@@ -5,8 +5,6 @@
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\sparql\SparqlQuery.php
       @brief SparqlQuery class description
-
-      @author Frederick Giasson, Structured Dynamics LLC.
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\sparql;
@@ -16,6 +14,12 @@
   * 
   * The SPARQL Web service is used to send custom SPARQL queries against the 
   * structWSF data structure. This is a general purpose querying Web service. 
+  * 
+  * Here is a code example of how this class can be used by developers: 
+  * 
+  * @code
+  * 
+  * @endcode
   * 
   * @see http://techwiki.openstructs.org/index.php/SPARQL
   * 

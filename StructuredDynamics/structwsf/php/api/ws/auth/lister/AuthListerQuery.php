@@ -4,10 +4,7 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery.php
-  
       @brief AuthListerQuery class description
-
-      @author Frederick Giasson, Structured Dynamics LLC.
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\auth\lister;
@@ -23,6 +20,30 @@
   * This Web service is used to list all the things that are registered / authenticated in a 
   * Web Service Framework network. 
   * 
+  * Here is a code example of how this class can be used by developers: 
+  * 
+  * @code
+  * 
+  *  // Use the AuthListerQuery class
+  *  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
+  *  
+  *  // Create the AuthListerQuery object
+  *  $authlister = new AuthListerQuery("http://demo.citizen-dan.org/ws/");
+  *  
+  *  // Specifies that we want to get all the dataset URIs available to the server that send this query.
+  *  $authlister->getDatasetsUri();
+  *  
+  *  // Send the auth lister query to the endpoint
+  *  $authlister->send();
+  *  
+  *  // Get back the resultset returned by the endpoint
+  *  $resultset = $authlister->getResultset();
+  *  
+  *  // Print different serializations for that resultset
+  *  print_r($resultset->getResultset());
+  * 
+  * @endcode
+  *  
   * @see http://techwiki.openstructs.org/index.php/Auth:_Lister
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  

@@ -4,10 +4,7 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\auth\validator\AuthValidatorQuery.php
-  
       @brief AuthValidatorQuery class description
-
-      @author Frederick Giasson, Structured Dynamics LLC.
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\auth\validator;

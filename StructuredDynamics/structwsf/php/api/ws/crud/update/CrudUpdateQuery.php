@@ -4,10 +4,7 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\update\CrudUpdateQuery.php
-  
       @brief CrudUpdateQuery class description
-
-      @author Frederick Giasson, Structured Dynamics LLC.
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\crud\update;
@@ -40,6 +37,114 @@
   * resources with new blank nodes URIS. This means that resources specified as blank nodes 
   * can't be updated using this web service endpoint. The best practice is not using blank 
   * nodes.
+  * 
+  * Here is a code example of how this class can be used by developers: 
+  * 
+  * @code
+  * 
+  *  // Use the CrudCreateQuery class
+  *  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
+  *  
+  *  // Use the CrudUpdateQuery class
+  *  use \StructuredDynamics\structwsf\php\api\ws\crud\update\CrudUpdateQuery;
+  *
+  *  // Use the SearchQuery class  
+  *  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  *  
+  *  
+  *  // First, let's create our object that we will then modify.
+  *  
+  *  // Create the CrudCreateQuery object
+  *  $crudCreate = new CrudCreateQuery("http://localhost/ws/");
+  *  
+  *  // Specifies where we want to add the RDF content
+  *  $crudCreate->dataset("http://localhost/ws/dataset/my-new-dataset/");
+  *  
+  *  // Specifies the RDF content we want to add to this dataset
+  *  $crudCreate->document('<?xml version="1.0"?>
+  *                         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  *                           xmlns:dc="http://purl.org/dc/elements/1.1/">
+  *                           <rdf:Description rdf:about="http://www.w3.org/">
+  *                             <dc:title>World Wide Web Consortium</dc:title> 
+  *                           </rdf:Description>
+  *                         </rdf:RDF>');
+  *
+  *  // Specifies that the input document is serialized using RDF+XML
+  *  $crudCreate->documentMimeIsRdfXml();  
+  *  
+  *  // Make sure we index that new RDF data everywhere in the structWSF instance
+  *  $crudCreate->enableFullIndexationMode();
+  *  
+  *  // Import that new RDF data
+  *  try
+  *  {
+  *    $crudCreate->send();
+  *  }
+  *  catch(Exception $e){}
+  *
+  *  if($crudCreate->isSuccessful())
+  *  {
+  *    // Now that it got created, let's try to modify it.
+  *    
+  *    // Create the CrudUpdateQuery object
+  *    $crudUpdate = new CrudUpdateQuery("http://localhost/ws/");
+  *    
+  *    // Specifies where we want to add the RDF content
+  *    $crudUpdate->dataset("http://localhost/ws/dataset/my-new-dataset/");
+  *    
+  *    // Specifies the RDF content we want to add to this dataset
+  *    $crudUpdate->document('<?xml version="1.0"?>
+  *                           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  *                             xmlns:dc="http://purl.org/dc/elements/1.1/">
+  *                             <rdf:Description rdf:about="http://www.w3.org/">
+  *                               <dc:title>CRUD: Update testing (was: World Wide Web Consortium)</dc:title> 
+  *                             </rdf:Description>
+  *                           </rdf:RDF>');
+  *
+  *    // Specifies that the input document is serialized using RDF+XML
+  *    $crudUpdate->documentMimeIsRdfXml();  
+  *    
+  *    // Import that new RDF data
+  *    try
+  *    {
+  *      $crudUpdate->send();
+  *    }
+  *    catch(Exception $e){}
+  *
+  *    if($crudUpdate->isSuccessful())
+  *    {    
+  *      // If the document has been properly updated, let's try to search for it.
+  *      
+  *      // Create the SearchQuery object
+  *      $search = new SearchQuery("http://localhost/ws/");
+  *      
+  *      // Set the query parameter with the search keyword "elm"
+  *      $search->query("Update testing");
+  *      
+  *      $search->excludeAggregates();
+  *      
+  *      // Send the search query to the endpoint
+  *      $search->send();
+  *      
+  *      // Get back the resultset returned by the endpoint
+  *      $resultset = $search->getResultset();
+  *      
+  *      // Print different serializations for that resultset
+  *      print_r($resultset->getResultset());      
+  *    }
+  *    else
+  *    {
+  *      echo "Update failed: ".$crudUpdate->getStatus()." (".$crudUpdate->getStatusMessage().")\n";
+  *      echo $crudUpdate->getStatusMessageDescription();      
+  *    }
+  *  }
+  *  else
+  *  {    
+  *    echo "Creation failed: ".$crudCreate->getStatus()." (".$crudCreate->getStatusMessage().")\n";
+  *    echo $crudCreate->getStatusMessageDescription();
+  *  }
+  *  
+  * @endcode
   * 
   * @see http://techwiki.openstructs.org/index.php/CRUD:_Update
   * 

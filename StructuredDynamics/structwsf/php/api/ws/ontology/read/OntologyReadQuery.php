@@ -5,8 +5,6 @@
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery.php
       @brief OntologyReadQuery class description
-
-      @author Frederick Giasson, Structured Dynamics LLC.
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\ontology\read;
@@ -24,6 +22,12 @@
   * This service is a Web service wrapper over the OWLAPI ontology library. Most of the 
   * API has been implemented. So we can say that this Web service (with the other related 
   * structWSF services) turns the OWLAPI into a Web service API. 
+  * 
+  * Here is a code example of how this class can be used by developers: 
+  * 
+  * @code
+  * 
+  * @endcode
   * 
   * @see http://techwiki.openstructs.org/index.php/Ontology_Read
   * 

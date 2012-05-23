@@ -4,10 +4,7 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\read\CrudReadQuery.php
-  
       @brief CrudReadQuery class description
-
-      @author Frederick Giasson, Structured Dynamics LLC.
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\crud\read;
@@ -18,6 +15,38 @@
   * The CRUD: Read Web service is used to get the description of 
   * a target instance record indexed in a dataset belonging to a WSF 
   * (Web Services Framework). 
+  * 
+  * Here is a code example of how this class can be used by developers: 
+  * 
+  * @code
+  * 
+  *  // Use the CrudReadQuery class
+  *  use StructuredDynamics\structwsf\php\api\ws\crud\read\CrudReadQuery;
+  *  
+  *  // Create the CrudReadQuery object
+  *  $cread = new CrudReadQuery("http://demo.citizen-dan.org/ws/");
+  *  
+  *  // Get the description of the Nursery_schools record
+  *  $cread->uri("http://purl.org/ontology/muni#Nursery_schools");
+  *  
+  *  // Exclude possible linksback
+  *  $cread->excludeLinksback();
+  *  
+  *  // Exclude possible reification statements
+  *  $cread->excludeReification();
+  *  
+  *  // Send the crud read query to the endpoint
+  *  $cread->send();
+  *  
+  *  print_r($cread);
+  *  
+  *  // Get back the resultset returned by the endpoint
+  *  $resultset = $cread->getResultset();
+  *  
+  *  // Print different serializations for that resultset
+  *  print_r($resultset->getResultset());
+  *  
+  * @endcode
   * 
   * @see http://techwiki.openstructs.org/index.php/CRUD:_Read
   * 

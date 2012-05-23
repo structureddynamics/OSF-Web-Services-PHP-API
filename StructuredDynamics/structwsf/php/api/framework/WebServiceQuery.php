@@ -5,8 +5,6 @@
 
   /*! @file \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery.php
       @brief Defines the WebServiceQuery class
-   
-      @author Frederick Giasson, Structured Dynamics LLC.
   */
 
   namespace StructuredDynamics\structwsf\php\api\framework;
