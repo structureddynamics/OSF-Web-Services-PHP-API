@@ -10,7 +10,7 @@
   namespace StructuredDynamics\structwsf\php\api\ws\ontology\read;
 
   /**
-  * Ontology Read Query to a structWSF SPARQL web service endpoint
+  * Ontology Read Query to a structWSF Ontology Read web service endpoint
   * 
   * The Ontology Read service is used to query OWL ontologies. All kinds of information 
   * can be read on different ontology entities such as: classes, object properties, 
