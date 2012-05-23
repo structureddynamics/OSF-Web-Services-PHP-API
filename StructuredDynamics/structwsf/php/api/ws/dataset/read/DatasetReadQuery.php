@@ -4,7 +4,7 @@
   //@{
 
   /*! @file \StructuredDynamics\structwsf\php\api\ws\dataset\read\DatasetReadQuery.php
-      @brief DatasetCreateQuery class description
+      @brief DatasetDeleteQuery class description
    */
 
   namespace StructuredDynamics\structwsf\php\api\ws\dataset\read;
