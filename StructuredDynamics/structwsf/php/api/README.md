@@ -798,3 +798,126 @@ Dataset: Delete
     
   ?>
 ```  
+
+Dataset: Update
+---------------
+```php
+  <?php
+  
+  use \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\dataset\update\DatasetUpdateQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\dataset\read\DatasetReadQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
+  use \StructuredDynamics\structwsf\framework\Namespaces;
+  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+      
+  // First, let's create a new dataset to update after
+  
+  // Create the DatasetCreateQuery object
+  $dcreate = new DatasetCreateQuery("http://localhost/ws/");
+  
+  // Set the URI of the new dataset
+  $dcreate->uri("http://localhost/ws/dataset/my-new-dataset-6/");
+  
+  // Set the title of the dataset
+  $dcreate->title("My Brand New Dataset to update!");
+  
+  // Set the description of the dataset
+  $dcreate->description("This is something to look at!");
+  
+  // Set the creator's URI
+  $dcreate->creator("http://localhost/people/bob/");
+  
+  
+  // Get all the web services registered on this instance with a 
+  
+  // Create the AuthListerQuery object
+  $authlister = new AuthListerQuery("http://localhost/ws/");
+  
+  // Specifies that we want to get all the list of all registered web service endpoints.
+  $authlister->getRegisteredWebServiceEndpointsUri();
+  
+  // Send the auth lister query to the endpoint
+  $authlister->send();
+  
+  // Get back the resultset returned by the endpoint
+  $resultset = $authlister->getResultset()->getResultset();
+  
+  $webservices = array();
+  
+  // Get all the URIs from the resultset array
+  foreach($resultset["unspecified"] as $list)
+  {
+    foreach($list[Namespaces::$rdf."li"] as $item)
+    {
+      array_push($webservices, $item["uri"]);
+    }
+  }
+  
+  unset($authlister);
+  
+  // We make sure that this dataset will be accessible by all the 
+  // registered web service endpoints of the network.
+  $dcreate->targetWebservices($webservices);
+  
+  // We make this new dataset world readable
+  $dcreate->globalPermissions(new CRUDPermission(FALSE, TRUE, FALSE, FALSE));
+  
+  // Send the crud read query to the endpoint
+  $dcreate->send();   
+  
+  $dupdate = new DatasetUpdateQuery("http://localhost/ws/");
+  
+  // Set the URI of the dataset to update
+  $dupdate->uri("http://localhost/ws/dataset/my-new-dataset-6/");
+  
+  // Set the title of the dataset
+  $dupdate->title("My Brand New Updated Dataset!");
+  
+  // Set the description of the dataset
+  // Here we want to keep the same as the old one
+  $dupdate->description("This is something to look at!");
+  
+  // Set the contributors to this dataset. Keep Bob, and add Kelly.
+  $dupdate->contributors(array("http://localhost/people/bob/", "http://localhost/people/kelly/"));  
+  
+  // Specify the date it got modifed, with our own date format.
+  $dupdate->modified(date('l jS \of F Y h:i:s A'));
+  
+  // Update the description of the dataset
+  try
+  {
+    $dupdate->send();
+  }
+  catch(Exception $e){}
+
+  if($dupdate->isSuccessful())
+  {
+    // Now that it is updated, use the Dataset Read endpoint to get the description
+    // of our updated dataset in RDF+XML
+    $dRead = new DatasetReadQuery("http://localhost/ws/");
+
+    // Specify the Dataset URI for which we want its description
+    $dRead->uri("http://localhost/ws/dataset/my-new-dataset-6/");
+    
+    $dRead->send();
+    
+    if($dRead->isSuccessful())
+    {
+      // Get the RDF+XML serialization of the resultset    
+      echo $dRead->getResultset()->getResultsetRDFXML();
+    }    
+    else
+    {
+      echo "Dataset read failed: ".$dRead->getStatus()." (".$dRead->getStatusMessage().")\n";
+      echo $dRead->getStatusMessageDescription();       
+    }
+  } 
+  else
+  {
+    echo "Dataset update failed: ".$dupdate->getStatus()." (".$dupdate->getStatusMessage().")\n";
+    echo $dupdate->getStatusMessageDescription();     
+  }  
+  
+  ?>
+``` 
