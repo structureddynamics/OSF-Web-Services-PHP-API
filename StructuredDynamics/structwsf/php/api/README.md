@@ -921,3 +921,36 @@ Dataset: Update
   
   ?>
 ``` 
+
+Scones
+---------------
+```php
+  <?php
+  
+  use \StructuredDynamics\structwsf\php\api\ws\scones\SconesQuery;
+  
+  $scones = new SconesQuery("http://localhost/ws/");
+  
+  // Specify the document (in this case, a web page) you want to tag using that Scones instance.
+  $scones->document("http://fgiasson.com");
+  
+  try
+  {
+    // Tag the document
+    $scones->send();
+  }
+  catch(Exception $e){}
+
+  if($scones->isSuccessful())
+  {
+    // Output the Gate tagged document.
+    echo $scones->getResultset();
+  }
+  else
+  {
+    echo "Scones tagging failed: ".$scones->getStatus()." (".$scones->getStatusMessage().")\n";
+    echo $scones->getStatusMessageDescription();       
+  }
+    
+  ?>
+```  
