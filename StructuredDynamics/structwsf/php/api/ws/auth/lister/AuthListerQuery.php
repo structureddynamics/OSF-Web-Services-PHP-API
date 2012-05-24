@@ -166,6 +166,20 @@
     {
       $this->params["target_webservice"] = "none";
     }
+    
+    /**
+    * Specifies which target web service you want to include in the resultset
+    * 
+    * @param mixed $uri URI of the web service endpoint to include
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function includeTargerWebServiceUri($uri)
+    {
+      $this->params["target_webservice"] = urlencode($uri);
+    }
    }       
  
 //@}    
