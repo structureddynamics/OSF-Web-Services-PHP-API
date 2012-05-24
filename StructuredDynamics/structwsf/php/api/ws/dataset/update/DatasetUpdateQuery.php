@@ -100,18 +100,14 @@
   *  $dupdate->modified(date('l jS \of F Y h:i:s A'));
   *  
   *  // Update the description of the dataset
-  *  try
-  *  {
-  *    $dupdate->send();
-  *  }
-  *  catch(Exception $e){}
-
+  *  $dupdate->send();
+  * 
   *  if($dupdate->isSuccessful())
   *  {
   *    // Now that it is updated, use the Dataset Read endpoint to get the description
   *    // of our updated dataset in RDF+XML
   *    $dRead = new DatasetReadQuery("http://localhost/ws/");
-
+  *
   *    // Specify the Dataset URI for which we want its description
   *    $dRead->uri("http://localhost/ws/dataset/my-new-dataset-6/");
   *    

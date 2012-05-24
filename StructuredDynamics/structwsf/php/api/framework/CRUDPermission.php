@@ -61,5 +61,7 @@ class CRUDPermission
     return($this->delete);
   }
 }
+
+//@}   
   
 ?>

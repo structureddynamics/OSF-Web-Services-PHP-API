@@ -214,11 +214,7 @@ Crud: Create
   $crudCreate->enableFullIndexationMode();
   
   // Import that new RDF data
-  try
-  {
-    $crudCreate->send();
-  }
-  catch(Exception $e){}
+  $crudCreate->send();
 
   use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
   
@@ -269,11 +265,7 @@ CRUD: Delete
   $crudDelete->uri("http://www.w3.org/");
   
   // Import that new RDF data
-  try
-  {
-    $crudDelete->send();
-  }
-  catch(Exception $e){}
+  $crudDelete->send();
 
   if($crudDelete->isSuccessful())
   {
@@ -328,11 +320,7 @@ CRUD: Update
   $crudCreate->enableFullIndexationMode();
   
   // Import that new RDF data
-  try
-  {
-    $crudCreate->send();
-  }
-  catch(Exception $e){}
+  $crudCreate->send();
 
   if($crudCreate->isSuccessful())
   {
@@ -357,11 +345,7 @@ CRUD: Update
     $crudUpdate->documentMimeIsRdfXml();  
     
     // Import that new RDF data
-    try
-    {
-      $crudUpdate->send();
-    }
-    catch(Exception $e){}
+    $crudUpdate->send();
 
     if($crudUpdate->isSuccessful())
     {    
@@ -467,11 +451,7 @@ Auth Registrar Access
   
   $ara->create("192.168.0.1", "http://localhost/ws/dataset/my-new-dataset-3/", new CRUDPermission(TRUE, TRUE, TRUE, TRUE), $webservices);
   
-  try
-  {
-    $ara->send();
-  }
-  catch(Exception $e){}
+  $ara->send();
 
   if($ara->isSuccessful())
   {
@@ -524,11 +504,7 @@ Auth: Registrar WS
   // Specifies that READ permission are needed to use this web service endpoint
   $arws->crudUsage(new CRUDPermission(FALSE, TRUE, FALSE, FALSE));
   
-  try
-  {
-    $arws->send();
-  }
-  catch(Exception $e){}
+  $arws->send();
 
   if($arws->isSuccessful())
   {
@@ -884,11 +860,7 @@ Dataset: Update
   $dupdate->modified(date('l jS \of F Y h:i:s A'));
   
   // Update the description of the dataset
-  try
-  {
-    $dupdate->send();
-  }
-  catch(Exception $e){}
+  $dupdate->send();
 
   if($dupdate->isSuccessful())
   {
@@ -933,12 +905,8 @@ Scones
   // Specify the document (in this case, a web page) you want to tag using that Scones instance.
   $scones->document("http://fgiasson.com");
   
-  try
-  {
-    // Tag the document
-    $scones->send();
-  }
-  catch(Exception $e){}
+  // Tag the document
+  $scones->send();
 
   if($scones->isSuccessful())
   {
@@ -975,12 +943,8 @@ Ontology: Create
   // Enable reasoner to persist inferred facts into all endpoints of structWSF
   $ontologyCreate->enableReasoner();
   
-  try                                                
-  {
-    // Import the new ontology
-    $ontologyCreate->send();
-  }
-  catch(Exception $e){}
+  // Import the new ontology
+  $ontologyCreate->send();
 
   if($ontologyCreate->isSuccessful())
   {
@@ -1005,5 +969,62 @@ Ontology: Create
     echo $ontologyCreate->getStatusMessageDescription();       
   }
     
+  ?>
+```  
+
+Ontology: Delete
+----------------
+```php
+  <?php
+
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\create\OntologyCreateQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\delete\OntologyDeleteQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\delete\DeleteClassFunction;
+  
+  $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
+  
+  // Create the vcard ontology for which its description is located somewhere on the Web
+  $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
+  
+  // Enable advanced indexation to have access to it on all structWSF endpoints
+  $ontologyCreate->enableAdvancedIndexation();
+  
+  // Enable reasoner to persist inferred facts into all endpoints of structWSF
+  $ontologyCreate->enableReasoner();
+  
+  // Import the new ontology
+  $ontologyCreate->send();
+
+  if(!$ontologyCreate->isSuccessful())
+  {
+    // Now delete one of the class of this ontology
+    $ontologyDelete = new OntologyDeleteQuery("http://localhost/ws/");
+    
+    $ontologyDelete->ontology("http://www.w3.org/2006/vcard/ns");
+    
+    $deleteClassFunction = new DeleteClassFunction();
+    
+    $deleteClassFunction->uri("http://www.w3.org/2006/vcard/ns#Address");
+    
+    $ontologyDelete->deleteClass($deleteClassFunction);
+
+    $ontologyDelete->send();
+    
+    if($ontologyDelete->isSuccessful())
+    {
+      echo "Class successfully delete";
+    }
+    else
+    {
+      echo "Ontology class deletation failed: ".$ontologyDelete->getStatus()." (".$ontologyDelete->getStatusMessage().")\n";
+      echo $ontologyDelete->getStatusMessageDescription();      
+    }
+  }
+  else
+  {
+    echo "Ontology importation failed: ".$ontologyCreate->getStatus()." (".$ontologyCreate->getStatusMessage().")\n";
+    echo $ontologyCreate->getStatusMessageDescription();       
+  }
+  
   ?>
 ```  

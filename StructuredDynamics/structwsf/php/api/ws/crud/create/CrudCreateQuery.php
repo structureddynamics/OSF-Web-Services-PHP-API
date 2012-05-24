@@ -69,11 +69,7 @@
   *  $crudCreate->enableFullIndexationMode();
   *  
   *  // Import that new RDF data
-  *  try
-  *  {
-  *    $crudCreate->send();
-  *  }
-  *  catch(Exception $e){}
+  *  $crudCreate->send();
   *
   *  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
   *  

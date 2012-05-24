@@ -76,11 +76,7 @@
   *  $crudCreate->enableFullIndexationMode();
   *  
   *  // Import that new RDF data
-  *  try
-  *  {
-  *    $crudCreate->send();
-  *  }
-  *  catch(Exception $e){}
+  *  $crudCreate->send();
   *
   *  if($crudCreate->isSuccessful())
   *  {
@@ -105,11 +101,7 @@
   *    $crudUpdate->documentMimeIsRdfXml();  
   *    
   *    // Import that new RDF data
-  *    try
-  *    {
-  *      $crudUpdate->send();
-  *    }
-  *    catch(Exception $e){}
+  *    $crudUpdate->send();
   *
   *    if($crudUpdate->isSuccessful())
   *    {    

@@ -46,20 +46,16 @@
   *  // Enable reasoner to persist inferred facts into all endpoints of structWSF
   *  $ontologyCreate->enableReasoner();
   *  
-  *  try                                                
-  *  {
-  *    // Import the new ontology
-  *    $ontologyCreate->send();
-  *  }
-  *  catch(Exception $e){}
-
+  *  // Import the new ontology
+  *  $ontologyCreate->send();
+  * 
   *  if($ontologyCreate->isSuccessful())
   *  {
   *    // Now, let's use the ontology read service to make sure it got loaded.
   *    $ontologyRead = new OntologyReadQuery("http://localhost/ws/");
   *    
   *    $ontologyRead->ontology("http://www.w3.org/2006/vcard/ns");
-
+  * 
   *    $getLoadedOntologies = new GetLoadedOntologiesFunction();
   *    
   *    $getLoadedOntologies->modeUris();

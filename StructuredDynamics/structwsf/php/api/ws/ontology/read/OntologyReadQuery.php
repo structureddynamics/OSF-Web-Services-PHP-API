@@ -137,11 +137,8 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
-  class GetLoadedOntologiesFunction
+  class GetLoadedOntologiesFunction extends \StructuredDynamics\structwsf\php\api\framework\OntologyFunctionCall
   {
-    /** parameters of the call */
-    private $params = "";
-    
     function __construct()
     {
       $this->params["mode"] = "uris";

@@ -33,11 +33,7 @@
   *  $crudDelete->uri("http://www.w3.org/");
   *  
   *  // Import that new RDF data
-  *  try
-  *  {
-  *    $crudDelete->send();
-  *  }
-  *  catch(Exception $e){}
+  *  $crudDelete->send();
   *
   *  if($crudDelete->isSuccessful())
   *  {

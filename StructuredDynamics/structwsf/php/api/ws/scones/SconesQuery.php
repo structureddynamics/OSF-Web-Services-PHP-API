@@ -40,12 +40,8 @@
   *  // Specify the document (in this case, a web page) you want to tag using that Scones instance.
   *  $scones->document("http://fgiasson.com");
   *  
-  *  try
-  *  {
-  *    // Tag the document
-  *    $scones->send();
-  *  }
-  *  catch(Exception $e){}
+  *  // Tag the document
+  *  $scones->send();
   *
   *  if($scones->isSuccessful())
   *  {

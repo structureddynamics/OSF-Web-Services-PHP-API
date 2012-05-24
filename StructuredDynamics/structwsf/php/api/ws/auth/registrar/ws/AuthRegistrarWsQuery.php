@@ -40,11 +40,7 @@
   *  // Specifies that READ permission are needed to use this web service endpoint
   *  $arws->crudUsage(new CRUDPermission(FALSE, TRUE, FALSE, FALSE));
   *  
-  *  try
-  *  {
-  *    $arws->send();
-  *  }
-  *  catch(Exception $e){}
+  *  $arws->send();
   * 
   *  if($arws->isSuccessful())
   *  {

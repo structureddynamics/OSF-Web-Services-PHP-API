@@ -74,11 +74,7 @@
   *  
   *  $ara->create("192.168.0.1", "http://localhost/ws/dataset/my-new-dataset-3/", new CRUDPermission(TRUE, TRUE, TRUE, TRUE), $webservices);
   *  
-  *  try
-  *  {
-  *    $ara->send();
-  *  }
-  *  catch(Exception $e){}
+  *  $ara->send();
   * 
   *  if($ara->isSuccessful())
   *  {
