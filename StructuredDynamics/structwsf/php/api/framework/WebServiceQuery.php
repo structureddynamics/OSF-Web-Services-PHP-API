@@ -55,7 +55,15 @@
     private $httpStatusMessageDescription = "";
                                     
     /** Parameters to use to send the query to the endpoint */
-    protected $params = array();  
+    protected $params = array(); 
+    
+    /** 
+    * Internal error of the queried web service. The error doesn't necessarly come from the
+    * queried web service endpoint in the case of a compound web service.
+    * 
+    * This is an instance of the QuerierError() object.
+    */
+    public $error; 
     
     function __construct(){}
     
@@ -130,7 +138,8 @@
                                    
       $this->httpStatus = $wsq->getStatus();
       $this->httpStatusMessage = $wsq->getStatusMessage();
-      $this->httpStatusMessageDescription = $wsq->getStatusMessageDescription();                                   
+      $this->httpStatusMessageDescription = $wsq->getStatusMessageDescription();        
+      $this->error = $wsq->error;                           
                                    
       if($wsq->getStatus() == 200)
       {
