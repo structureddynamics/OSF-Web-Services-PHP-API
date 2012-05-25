@@ -120,27 +120,25 @@
     * 
     * **Required**: This function must be called before sending the query 
     * 
-    * @param mixed $ontology URI of the ontology to query
+    * @param mixed $ontologyUri URI of the ontology to query
     * 
     * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
-    public function ontology($ontology)
+    public function ontology($ontologyUri)
     {
-      $this->params["ontology"] = urlencode($ontology);
+      $this->params["ontology"] = urlencode($ontologyUri);
     }
    
     /**
     * Delete an ontology from the system
     * 
-    * @param mixed $function A reference to a GetLoadedOntologiesFunction object instance.
-    * 
     * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteOntology
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
-    public function deleteOntology(&$function)
+    public function deleteOntology()
     {
       $this->params["function"] = "deleteOntology";
     }
