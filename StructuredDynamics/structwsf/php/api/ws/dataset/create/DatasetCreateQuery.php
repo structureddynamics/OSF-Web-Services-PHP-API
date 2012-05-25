@@ -215,7 +215,7 @@
     */
     public function targetWebservices($webservicesUri)
     {
-      $this->params["description"] = urlencode(implode(";", $webservicesUri));
+      $this->params["webservices"] = urlencode(implode(";", $webservicesUri));
     }   
     
     /**
