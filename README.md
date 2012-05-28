@@ -1027,4 +1027,53 @@ Ontology: Delete
   }
   
   ?>
+```   
+
+Ontology: Read
+---------------
+```php
+  <?php
+  
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetClassesFunction;
+  
+  // Create the Ontology Read query
+  $ontologyRead = new OntologyReadQuery("http://demo.citizen-dan.org/ws/");
+  
+  // Enable the reasoner for this query
+  $ontologyRead->enableReasoner();
+  
+  // Specify the MUNI ontology from the citizen demo website
+  $ontologyRead->ontology("file://localhost/data/ontologies/files/demo.citizen-dan.org/muni.owl");
+  
+  // Specify that we want RDF+XML data as output
+  $ontologyRead->mime("application/rdf+xml");
+  
+  // Prepare the function call to send to the endpoint.
+  $getClassesFunction = new GetClassesFunction();
+  
+  // Sepcify that we want all the classes URIs from this ontology
+  $getClassesFunction->getClassesUris();
+  
+  // Specify that we only want to first 20 results
+  $getClassesFunction->limit(20);
+  $getClassesFunction->offset(0);
+  
+  // Prepare the getClasses call
+  $ontologyRead->getClasses($getClassesFunction);
+  
+  // Send the query
+  $ontologyRead->send();
+  
+  if($ontologyRead->isSuccessful())
+  {
+    echo $ontologyRead->getResultset();
+  }
+  else
+  {
+    echo "Ontology importation failed: ".$ontologyRead->getStatus()." (".$ontologyRead->getStatusMessage().")\n";
+    echo $ontologyRead->getStatusMessageDescription();       
+  }  
+  
+  ?>
 ```  
