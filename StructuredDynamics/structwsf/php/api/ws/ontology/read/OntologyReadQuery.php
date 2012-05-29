@@ -161,7 +161,7 @@
     */
     public function getLoadedOntologies(&$function)
     {
-      if(get_class($function) == "GetLoadedOntologiesFunction")
+      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetLoadedOntologiesFunction')
       {
         $this->params["function"] = "getLoadedOntologies";
         
@@ -182,7 +182,7 @@
     */
     public function getOntologies(&$function)
     {
-      if(get_class($function) == "GetOntologiesFunction")
+      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetOntologiesFunction')
       {
         $this->params["function"] = "getOntologies";
         
