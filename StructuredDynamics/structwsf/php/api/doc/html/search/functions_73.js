@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['saveontology',['saveOntology',['../a00041.html#a73d17531fc504e5fbdbe33d13af9e261',1,'StructuredDynamics::structwsf::php::api::ws::ontology::update::OntologyUpdateQuery']]],
+  ['send',['send',['../a00050.html#a12bcef5130168b80d3d52dc82213f19a',1,'StructuredDynamics::structwsf::php::api::framework::WebServiceQuery']]],
+  ['setaggregateattributeobjecttypetouri',['setAggregateAttributeObjectTypeToUri',['../a00045.html#ae94ff82c97c4db00dbbaf97b6714e2db',1,'StructuredDynamics::structwsf::php::api::ws::search::SearchQuery']]],
+  ['setaggregateattributesobjecttypetoliteral',['setAggregateAttributesObjectTypeToLiteral',['../a00045.html#a399a7324f436102c0ceecd5adf220668',1,'StructuredDynamics::structwsf::php::api::ws::search::SearchQuery']]],
+  ['setaltlabel',['setAltLabel',['../a00047.html#aaba22f4e9009066c2121fc84f11a7c66',1,'StructuredDynamics::structwsf::framework::Subject']]],
+  ['setattributesbooleanoperatortoand',['setAttributesBooleanOperatorToAnd',['../a00045.html#a8515485002b70a746c886c7f3dedbb99',1,'StructuredDynamics::structwsf::php::api::ws::search::SearchQuery']]],
+  ['setattributesbooleanoperatortoor',['setAttributesBooleanOperatorToOr',['../a00045.html#af175d5d806af6a146c7fdc47bdbda03d',1,'StructuredDynamics::structwsf::php::api::ws::search::SearchQuery']]],
+  ['setdataattribute',['setDataAttribute',['../a00047.html#ab0e239799ed69a32003b324c1a6b37ae',1,'StructuredDynamics::structwsf::framework::Subject']]],
+  ['setdescription',['setDescription',['../a00047.html#a31fad3e39336ea079ea758e051866627',1,'StructuredDynamics::structwsf::framework::Subject']]],
+  ['setendpoint',['setEndpoint',['../a00050.html#abab265adeddb116a65a24dc0fa1eafb2',1,'StructuredDynamics::structwsf::php::api::framework::WebServiceQuery']]],
+  ['setmethodget',['setMethodGet',['../a00050.html#ae903e56349dfdbe40aeb3dbd942d8eda',1,'StructuredDynamics::structwsf::php::api::framework::WebServiceQuery']]],
+  ['setmethodpost',['setMethodPost',['../a00050.html#a92513bc178dec866bf47c2ac039a1573',1,'StructuredDynamics::structwsf::php::api::framework::WebServiceQuery']]],
+  ['setnetwork',['setNetwork',['../a00050.html#afa190688763aa28f93e61df6f9fc358d',1,'StructuredDynamics::structwsf::php::api::framework::WebServiceQuery']]],
+  ['setobjectattribute',['setObjectAttribute',['../a00047.html#a3ddd1e17b0769098219b1bd43c98ff89',1,'StructuredDynamics::structwsf::framework::Subject']]],
+  ['setpreflabel',['setPrefLabel',['../a00047.html#aace6f385457a190e3f43aba67d2be427',1,'StructuredDynamics::structwsf::framework::Subject']]],
+  ['setprefurl',['setPrefURL',['../a00047.html#ae7dfb16a7fd8e7aa20ddb6896d2460dd',1,'StructuredDynamics::structwsf::framework::Subject']]],
+  ['setresultset',['setResultset',['../a00043.html#a3b22fa80438d17f20d4d226343b03d72',1,'StructuredDynamics::structwsf::framework::Resultset']]],
+  ['setsubject',['setSubject',['../a00047.html#a2f3a2cc4e10c4c11726474e66d6ebc32',1,'StructuredDynamics::structwsf::framework::Subject']]],
+  ['setsupportedmimes',['setSupportedMimes',['../a00050.html#a6f361e641e2a30b2fa55423af34d6812',1,'StructuredDynamics::structwsf::php::api::framework::WebServiceQuery']]],
+  ['settype',['setType',['../a00047.html#ade096bf521b5d05dcaff2ba1a42e9f71',1,'StructuredDynamics::structwsf::framework::Subject']]]
+];
