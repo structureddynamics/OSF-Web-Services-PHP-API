@@ -64,11 +64,11 @@ class WebServiceQuerier
   /**
   *   Constructor
   *  
-  *   @param[in] $url URL of the web service endpoint to query
-  *   @param[in] $method HTTP method to use to query the endpoint (GET or POST)
-  *   @param[in] $mime Mime type of the resultset that has to be returned by the web service endpoint
-  *   @param[in] $parameters Parameters to send to the endpoint 
-  *   @param[in] $timeout Timeout (in milliseconds) before ending the query to a remote web service.
+  *   @param $url URL of the web service endpoint to query
+  *   @param $method HTTP method to use to query the endpoint (GET or POST)
+  *   @param $mime Mime type of the resultset that has to be returned by the web service endpoint
+  *   @param $parameters Parameters to send to the endpoint 
+  *   @param $timeout Timeout (in milliseconds) before ending the query to a remote web service.
   *    
   *   @return returns returns a human readable description of the class
   *    
@@ -352,12 +352,12 @@ class QuerierError
   /**
   *  Constructor 
   *    
-  *  @param[in] $id ID of the error
-  *  @param[in] $level Level of the error (notice, warning, fatal)
-  *  @param[in] $webservice URI of the web service that caused this error
-  *  @param[in] $name Name of the error
-  *  @param[in] $description Description of the error
-  *  @param[in] $debugInfo Debug information for this error
+  *  @param $id ID of the error
+  *  @param $level Level of the error (notice, warning, fatal)
+  *  @param $webservice URI of the web service that caused this error
+  *  @param $name Name of the error
+  *  @param $description Description of the error
+  *  @param $debugInfo Debug information for this error
   *    
   *  @return returns NULL
   *  

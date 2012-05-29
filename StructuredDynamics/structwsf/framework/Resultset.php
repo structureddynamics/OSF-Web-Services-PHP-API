@@ -1225,7 +1225,7 @@ class Resultset
   /**
   * Encode content to be included in XML files
   *           
-  * @param[in] $string The content string to be encoded
+  * @param $string The content string to be encoded
   *    
   * @return returns the encoded string
   *  
@@ -1244,7 +1244,7 @@ class Resultset
   /**
   * Encode a string to put in a JSON value
   *            
-  * @param[in] $string The string to escape
+  * @param $string The string to escape
   *    
   * @return returns the escaped string
   *    
@@ -1374,7 +1374,7 @@ class Subject
   /** URI of the suject */
   private $uri = "";
 
-  /*! Internal array description of the subject. */
+  /** Internal array description of the subject. */
   private $description = array();
 
   /**
