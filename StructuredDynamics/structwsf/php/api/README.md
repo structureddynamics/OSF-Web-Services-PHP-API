@@ -123,266 +123,6 @@ Web Services Usage
 ==================
 Here are some example of how each of the web services can be used.
 
-Search
-------
-```php
-  <?php
-
-  // Use the SearchQuery class
-  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
-  
-  // Create the SearchQuery object
-  $search = new SearchQuery("http://demo.citizen-dan.org/ws/");
-  
-  // Set the query parameter with the search keyword "elm"
-  $search->query("school");
-  
-  // Send the search query to the endpoint
-  $search->send();
-  
-  // Get back the resultset returned by the endpoint
-  $resultset = $search->getResultset();
-  
-  // Print different serializations for that resultset
-  print_r($resultset->getResultset());
- 
-  ?>
-```
-
-Crud: Read
-----------
-```php
-  <?php
-
-  // Use the CrudReadQuery class
-  use StructuredDynamics\structwsf\php\api\ws\crud\read\CrudReadQuery;
-  
-  // Create the CrudReadQuery object
-  $cread = new CrudReadQuery("http://demo.citizen-dan.org/ws/");
-  
-  // Get the description of the Nursery_schools record
-  $cread->uri("http://purl.org/ontology/muni#Nursery_schools");
-  
-  // Exclude possible linksback
-  $cread->excludeLinksback();
-  
-  // Exclude possible reification statements
-  $cread->excludeReification();
-  
-  // Send the crud read query to the endpoint
-  $cread->send();
-  
-  print_r($cread);
-  
-  // Get back the resultset returned by the endpoint
-  $resultset = $cread->getResultset();
-  
-  // Print different serializations for that resultset
-  print_r($resultset->getResultset());
- 
-  ?>
-```
-
-Crud: Create
-------------
-
-```php
-  <?php
-  
-  // Use the CrudCreateQuery class
-  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
-  
-  // Create the CrudCreateQuery object
-  $crudCreate = new CrudCreateQuery("http://localhost/ws/");
-  
-  // Specifies where we want to add the RDF content
-  $crudCreate->dataset("http://localhost/ws/dataset/my-new-dataset/");
-  
-  // Specifies the RDF content we want to add to this dataset
-  $crudCreate->document('<?xml version="1.0"?>
-                         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                           xmlns:dc="http://purl.org/dc/elements/1.1/">
-                           <rdf:Description rdf:about="http://www.w3.org/">
-                             <dc:title>World Wide Web Consortium</dc:title> 
-                           </rdf:Description>
-                         </rdf:RDF>');
-
-  // Specifies that the input document is serialized using RDF+XML
-  $crudCreate->documentMimeIsRdfXml();  
-  
-  // Make sure we index that new RDF data everywhere in the structWSF instance
-  $crudCreate->enableFullIndexationMode();
-  
-  // Import that new RDF data
-  $crudCreate->send();
-
-  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
-  
-  if($crudCreate->isSuccessful())
-  {
-    // Now that it got imported, let's try to search for that new record using the Search endpoint.
-    
-    // Create the SearchQuery object
-    $search = new SearchQuery("http://localhost/ws/");
-    
-    // Set the query parameter with the search keyword "elm"
-    $search->query("Consortium");
-    
-    $search->excludeAggregates();
-    
-    // Send the search query to the endpoint
-    $search->send();
-    
-    // Get back the resultset returned by the endpoint
-    $resultset = $search->getResultset();
-    
-    // Print different serializations for that resultset
-    print_r($resultset->getResultset());      
-  }
-  else
-  {    
-    echo "Importation failed: ".$crudCreate->getStatus()." (".$crudCreate->getStatusMessage().")\n";
-    echo $crudCreate->getStatusMessageDescription();
-  }
-  ?>
-```  
-
-CRUD: Delete
----------------
-```php
-  <?php
-  
-  // Use the CrudDeleteQuery class
-  use \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudDeleteQuery;
-  
-  // Create the CrudDeleteQuery object
-  $crudDelete = new CrudDeleteQuery("http://localhost/ws/");
-  
-  // Specifies where the record we want to delete is indexed
-  $crudDelete->dataset("http://localhost/ws/dataset/my-new-dataset/");
-  
-  // Specifies the URI of the record we want to delete from the system
-  $crudDelete->uri("http://www.w3.org/");
-  
-  // Import that new RDF data
-  $crudDelete->send();
-
-  if($crudDelete->isSuccessful())
-  {
-    echo "Record deleted";
-  }
-  else
-  {    
-    echo "Deletation failed: ".$crudDelete->getStatus()." (".$crudDelete->getStatusMessage().")\n";
-    echo $crudDelete->getStatusMessageDescription();
-  }  
-  
-  ?>
-```  
-
-
-CRUD: Update
----------------
-```php
-  <?php
-  
-  // Use the CrudCreateQuery class
-  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
-  
-  // Use the CrudUpdateQuery class
-  use \StructuredDynamics\structwsf\php\api\ws\crud\update\CrudUpdateQuery;
-
-  // Use the SearchQuery class  
-  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
-  
-  
-  // First, let's create our object that we will then modify.
-  
-  // Create the CrudCreateQuery object
-  $crudCreate = new CrudCreateQuery("http://localhost/ws/");
-  
-  // Specifies where we want to add the RDF content
-  $crudCreate->dataset("http://localhost/ws/dataset/my-new-dataset/");
-  
-  // Specifies the RDF content we want to add to this dataset
-  $crudCreate->document('<?xml version="1.0"?>
-                         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                           xmlns:dc="http://purl.org/dc/elements/1.1/">
-                           <rdf:Description rdf:about="http://www.w3.org/">
-                             <dc:title>World Wide Web Consortium</dc:title> 
-                           </rdf:Description>
-                         </rdf:RDF>');
-
-  // Specifies that the input document is serialized using RDF+XML
-  $crudCreate->documentMimeIsRdfXml();  
-  
-  // Make sure we index that new RDF data everywhere in the structWSF instance
-  $crudCreate->enableFullIndexationMode();
-  
-  // Import that new RDF data
-  $crudCreate->send();
-
-  if($crudCreate->isSuccessful())
-  {
-    // Now that it got created, let's try to modify it.
-    
-    // Create the CrudUpdateQuery object
-    $crudUpdate = new CrudUpdateQuery("http://localhost/ws/");
-    
-    // Specifies where we want to add the RDF content
-    $crudUpdate->dataset("http://localhost/ws/dataset/my-new-dataset/");
-    
-    // Specifies the RDF content we want to add to this dataset
-    $crudUpdate->document('<?xml version="1.0"?>
-                           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:dc="http://purl.org/dc/elements/1.1/">
-                             <rdf:Description rdf:about="http://www.w3.org/">
-                               <dc:title>CRUD: Update testing (was: World Wide Web Consortium)</dc:title> 
-                             </rdf:Description>
-                           </rdf:RDF>');
-
-    // Specifies that the input document is serialized using RDF+XML
-    $crudUpdate->documentMimeIsRdfXml();  
-    
-    // Import that new RDF data
-    $crudUpdate->send();
-
-    if($crudUpdate->isSuccessful())
-    {    
-      // If the document has been properly updated, let's try to search for it.
-      
-      // Create the SearchQuery object
-      $search = new SearchQuery("http://localhost/ws/");
-      
-      // Set the query parameter with the search keyword "elm"
-      $search->query("Update testing");
-      
-      $search->excludeAggregates();
-      
-      // Send the search query to the endpoint
-      $search->send();
-      
-      // Get back the resultset returned by the endpoint
-      $resultset = $search->getResultset();
-      
-      // Print different serializations for that resultset
-      print_r($resultset->getResultset());      
-    }
-    else
-    {
-      echo "Update failed: ".$crudUpdate->getStatus()." (".$crudUpdate->getStatusMessage().")\n";
-      echo $crudUpdate->getStatusMessageDescription();      
-    }
-  }
-  else
-  {    
-    echo "Creation failed: ".$crudCreate->getStatus()." (".$crudCreate->getStatusMessage().")\n";
-    echo $crudCreate->getStatusMessageDescription();
-  }  
-  
-  ?>
-```  
-
 Auth: Lister
 ------------
 ```php
@@ -570,8 +310,8 @@ Auth: Validator
   }  
   
   ?>
-```  
-  
+```
+
 Dataset: Create
 ---------------
 ```php
@@ -682,95 +422,6 @@ Dataset: Read
     echo $dRead->getStatusMessageDescription();  
   }
   
-  ?>
-```  
-
-Dataset: Delete
----------------
-```php
-  <?php
-  
-  use \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\dataset\delete\DatasetDeleteQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  use \StructuredDynamics\structwsf\framework\Namespaces;
-  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
-      
-  // First, let's create a new dataset to delete after
-  
-  // Create the DatasetCreateQuery object
-  $dcreate = new DatasetCreateQuery("http://localhost/ws/");
-  
-  // Set the URI of the new dataset
-  $dcreate->uri("http://localhost/ws/dataset/my-new-dataset-5/");
-  
-  // Set the title of the dataset
-  $dcreate->title("My Brand New Dataset to delete!");
-  
-  // Set the description of the dataset
-  $dcreate->description("This is something to look at!");
-  
-  // Set the creator's URI
-  $dcreate->creator("http://localhost/people/bob/");
-  
-  
-  // Get all the web services registered on this instance with a 
-  
-  // Create the AuthListerQuery object
-  $authlister = new AuthListerQuery("http://localhost/ws/");
-  
-  // Specifies that we want to get all the list of all registered web service endpoints.
-  $authlister->getRegisteredWebServiceEndpointsUri();
-  
-  // Send the auth lister query to the endpoint
-  $authlister->send();
-  
-  // Get back the resultset returned by the endpoint
-  $resultset = $authlister->getResultset()->getResultset();
-  
-  $webservices = array();
-  
-  // Get all the URIs from the resultset array
-  foreach($resultset["unspecified"] as $list)
-  {
-    foreach($list[Namespaces::$rdf."li"] as $item)
-    {
-      array_push($webservices, $item["uri"]);
-    }
-  }
-  
-  unset($authlister);
-  
-  // We make sure that this dataset will be accessible by all the 
-  // registered web service endpoints of the network.
-  $dcreate->targetWebservices($webservices);
-  
-  // We make this new dataset world readable
-  $dcreate->globalPermissions(new CRUDPermission(FALSE, TRUE, FALSE, FALSE));
-  
-  // Send the crud read query to the endpoint
-  $dcreate->send();
-  
-  // Now, let's delete that dataset!  
-  $dDelete = new DatasetDeleteQuery("http://localhost/ws/");
-  
-  // Specify the URI of the dataset we want to remove
-  $dDelete->uri("http://localhost/ws/dataset/my-new-dataset-5/");
-  
-  // Send que request
-  $dDelete->send();
-  
-  if($dDelete->isSuccessful())
-  {
-    // Get the RDF+N3 serialization of the resultset    
-    echo "Dataset deleted!";
-  }
-  else
-  {
-    echo "Dataset deletation failed: ".$dDelete->getStatus()." (".$dDelete->getStatusMessage().")\n";
-    echo $dDelete->getStatusMessageDescription();  
-  }
-    
   ?>
 ```  
 
@@ -893,35 +544,327 @@ Dataset: Update
   ?>
 ```  
 
-Scones
+Dataset: Delete
 ---------------
 ```php
   <?php
   
-  use \StructuredDynamics\structwsf\php\api\ws\scones\SconesQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\dataset\delete\DatasetDeleteQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
+  use \StructuredDynamics\structwsf\framework\Namespaces;
+  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+      
+  // First, let's create a new dataset to delete after
   
-  $scones = new SconesQuery("http://localhost/ws/");
+  // Create the DatasetCreateQuery object
+  $dcreate = new DatasetCreateQuery("http://localhost/ws/");
   
-  // Specify the document (in this case, a web page) you want to tag using that Scones instance.
-  $scones->document("http://fgiasson.com");
+  // Set the URI of the new dataset
+  $dcreate->uri("http://localhost/ws/dataset/my-new-dataset-5/");
   
-  // Tag the document
-  $scones->send();
-
-  if($scones->isSuccessful())
+  // Set the title of the dataset
+  $dcreate->title("My Brand New Dataset to delete!");
+  
+  // Set the description of the dataset
+  $dcreate->description("This is something to look at!");
+  
+  // Set the creator's URI
+  $dcreate->creator("http://localhost/people/bob/");
+  
+  
+  // Get all the web services registered on this instance with a 
+  
+  // Create the AuthListerQuery object
+  $authlister = new AuthListerQuery("http://localhost/ws/");
+  
+  // Specifies that we want to get all the list of all registered web service endpoints.
+  $authlister->getRegisteredWebServiceEndpointsUri();
+  
+  // Send the auth lister query to the endpoint
+  $authlister->send();
+  
+  // Get back the resultset returned by the endpoint
+  $resultset = $authlister->getResultset()->getResultset();
+  
+  $webservices = array();
+  
+  // Get all the URIs from the resultset array
+  foreach($resultset["unspecified"] as $list)
   {
-    // Output the Gate tagged document.
-    echo $scones->getResultset();
+    foreach($list[Namespaces::$rdf."li"] as $item)
+    {
+      array_push($webservices, $item["uri"]);
+    }
+  }
+  
+  unset($authlister);
+  
+  // We make sure that this dataset will be accessible by all the 
+  // registered web service endpoints of the network.
+  $dcreate->targetWebservices($webservices);
+  
+  // We make this new dataset world readable
+  $dcreate->globalPermissions(new CRUDPermission(FALSE, TRUE, FALSE, FALSE));
+  
+  // Send the crud read query to the endpoint
+  $dcreate->send();
+  
+  // Now, let's delete that dataset!  
+  $dDelete = new DatasetDeleteQuery("http://localhost/ws/");
+  
+  // Specify the URI of the dataset we want to remove
+  $dDelete->uri("http://localhost/ws/dataset/my-new-dataset-5/");
+  
+  // Send que request
+  $dDelete->send();
+  
+  if($dDelete->isSuccessful())
+  {
+    // Get the RDF+N3 serialization of the resultset    
+    echo "Dataset deleted!";
   }
   else
   {
-    echo "Scones tagging failed: ".$scones->getStatus()." (".$scones->getStatusMessage().")\n";
-    echo $scones->getStatusMessageDescription();       
+    echo "Dataset deletation failed: ".$dDelete->getStatus()." (".$dDelete->getStatusMessage().")\n";
+    echo $dDelete->getStatusMessageDescription();  
   }
     
   ?>
+```
+
+Crud: Create
+------------
+
+```php
+  <?php
+  
+  // Use the CrudCreateQuery class
+  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
+  
+  // Create the CrudCreateQuery object
+  $crudCreate = new CrudCreateQuery("http://localhost/ws/");
+  
+  // Specifies where we want to add the RDF content
+  $crudCreate->dataset("http://localhost/ws/dataset/my-new-dataset/");
+  
+  // Specifies the RDF content we want to add to this dataset
+  $crudCreate->document('<?xml version="1.0"?>
+                         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                           xmlns:dc="http://purl.org/dc/elements/1.1/">
+                           <rdf:Description rdf:about="http://www.w3.org/">
+                             <dc:title>World Wide Web Consortium</dc:title> 
+                           </rdf:Description>
+                         </rdf:RDF>');
+
+  // Specifies that the input document is serialized using RDF+XML
+  $crudCreate->documentMimeIsRdfXml();  
+  
+  // Make sure we index that new RDF data everywhere in the structWSF instance
+  $crudCreate->enableFullIndexationMode();
+  
+  // Import that new RDF data
+  $crudCreate->send();
+
+  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  
+  if($crudCreate->isSuccessful())
+  {
+    // Now that it got imported, let's try to search for that new record using the Search endpoint.
+    
+    // Create the SearchQuery object
+    $search = new SearchQuery("http://localhost/ws/");
+    
+    // Set the query parameter with the search keyword "elm"
+    $search->query("Consortium");
+    
+    $search->excludeAggregates();
+    
+    // Send the search query to the endpoint
+    $search->send();
+    
+    // Get back the resultset returned by the endpoint
+    $resultset = $search->getResultset();
+    
+    // Print different serializations for that resultset
+    print_r($resultset->getResultset());      
+  }
+  else
+  {    
+    echo "Importation failed: ".$crudCreate->getStatus()." (".$crudCreate->getStatusMessage().")\n";
+    echo $crudCreate->getStatusMessageDescription();
+  }
+  ?>
 ```  
 
+Crud: Read
+----------
+```php
+  <?php
+
+  // Use the CrudReadQuery class
+  use StructuredDynamics\structwsf\php\api\ws\crud\read\CrudReadQuery;
+  
+  // Create the CrudReadQuery object
+  $cread = new CrudReadQuery("http://demo.citizen-dan.org/ws/");
+  
+  // Get the description of the Nursery_schools record
+  $cread->uri("http://purl.org/ontology/muni#Nursery_schools");
+  
+  // Exclude possible linksback
+  $cread->excludeLinksback();
+  
+  // Exclude possible reification statements
+  $cread->excludeReification();
+  
+  // Send the crud read query to the endpoint
+  $cread->send();
+  
+  print_r($cread);
+  
+  // Get back the resultset returned by the endpoint
+  $resultset = $cread->getResultset();
+  
+  // Print different serializations for that resultset
+  print_r($resultset->getResultset());
+ 
+  ?>
+```
+
+CRUD: Update
+---------------
+```php
+  <?php
+  
+  // Use the CrudCreateQuery class
+  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
+  
+  // Use the CrudUpdateQuery class
+  use \StructuredDynamics\structwsf\php\api\ws\crud\update\CrudUpdateQuery;
+
+  // Use the SearchQuery class  
+  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  
+  
+  // First, let's create our object that we will then modify.
+  
+  // Create the CrudCreateQuery object
+  $crudCreate = new CrudCreateQuery("http://localhost/ws/");
+  
+  // Specifies where we want to add the RDF content
+  $crudCreate->dataset("http://localhost/ws/dataset/my-new-dataset/");
+  
+  // Specifies the RDF content we want to add to this dataset
+  $crudCreate->document('<?xml version="1.0"?>
+                         <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                           xmlns:dc="http://purl.org/dc/elements/1.1/">
+                           <rdf:Description rdf:about="http://www.w3.org/">
+                             <dc:title>World Wide Web Consortium</dc:title> 
+                           </rdf:Description>
+                         </rdf:RDF>');
+
+  // Specifies that the input document is serialized using RDF+XML
+  $crudCreate->documentMimeIsRdfXml();  
+  
+  // Make sure we index that new RDF data everywhere in the structWSF instance
+  $crudCreate->enableFullIndexationMode();
+  
+  // Import that new RDF data
+  $crudCreate->send();
+
+  if($crudCreate->isSuccessful())
+  {
+    // Now that it got created, let's try to modify it.
+    
+    // Create the CrudUpdateQuery object
+    $crudUpdate = new CrudUpdateQuery("http://localhost/ws/");
+    
+    // Specifies where we want to add the RDF content
+    $crudUpdate->dataset("http://localhost/ws/dataset/my-new-dataset/");
+    
+    // Specifies the RDF content we want to add to this dataset
+    $crudUpdate->document('<?xml version="1.0"?>
+                           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                             xmlns:dc="http://purl.org/dc/elements/1.1/">
+                             <rdf:Description rdf:about="http://www.w3.org/">
+                               <dc:title>CRUD: Update testing (was: World Wide Web Consortium)</dc:title> 
+                             </rdf:Description>
+                           </rdf:RDF>');
+
+    // Specifies that the input document is serialized using RDF+XML
+    $crudUpdate->documentMimeIsRdfXml();  
+    
+    // Import that new RDF data
+    $crudUpdate->send();
+
+    if($crudUpdate->isSuccessful())
+    {    
+      // If the document has been properly updated, let's try to search for it.
+      
+      // Create the SearchQuery object
+      $search = new SearchQuery("http://localhost/ws/");
+      
+      // Set the query parameter with the search keyword "elm"
+      $search->query("Update testing");
+      
+      $search->excludeAggregates();
+      
+      // Send the search query to the endpoint
+      $search->send();
+      
+      // Get back the resultset returned by the endpoint
+      $resultset = $search->getResultset();
+      
+      // Print different serializations for that resultset
+      print_r($resultset->getResultset());      
+    }
+    else
+    {
+      echo "Update failed: ".$crudUpdate->getStatus()." (".$crudUpdate->getStatusMessage().")\n";
+      echo $crudUpdate->getStatusMessageDescription();      
+    }
+  }
+  else
+  {    
+    echo "Creation failed: ".$crudCreate->getStatus()." (".$crudCreate->getStatusMessage().")\n";
+    echo $crudCreate->getStatusMessageDescription();
+  }  
+  
+  ?>
+``` 
+
+CRUD: Delete
+---------------
+```php
+  <?php
+  
+  // Use the CrudDeleteQuery class
+  use \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudDeleteQuery;
+  
+  // Create the CrudDeleteQuery object
+  $crudDelete = new CrudDeleteQuery("http://localhost/ws/");
+  
+  // Specifies where the record we want to delete is indexed
+  $crudDelete->dataset("http://localhost/ws/dataset/my-new-dataset/");
+  
+  // Specifies the URI of the record we want to delete from the system
+  $crudDelete->uri("http://www.w3.org/");
+  
+  // Import that new RDF data
+  $crudDelete->send();
+
+  if($crudDelete->isSuccessful())
+  {
+    echo "Record deleted";
+  }
+  else
+  {    
+    echo "Deletation failed: ".$crudDelete->getStatus()." (".$crudDelete->getStatusMessage().")\n";
+    echo $crudDelete->getStatusMessageDescription();
+  }  
+  
+  ?>
+```
 
 Ontology: Create
 ----------------
@@ -972,6 +915,137 @@ Ontology: Create
   ?>
 ```  
 
+Ontology: Read
+---------------
+```php
+  <?php
+  
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetClassesFunction;
+  
+  // Create the Ontology Read query
+  $ontologyRead = new OntologyReadQuery("http://demo.citizen-dan.org/ws/");
+  
+  // Enable the reasoner for this query
+  $ontologyRead->enableReasoner();
+  
+  // Specify the MUNI ontology from the citizen demo website
+  $ontologyRead->ontology("file://localhost/data/ontologies/files/demo.citizen-dan.org/muni.owl");
+  
+  // Specify that we want RDF+XML data as output
+  $ontologyRead->mime("application/rdf+xml");
+  
+  // Prepare the function call to send to the endpoint.
+  $getClassesFunction = new GetClassesFunction();
+  
+  // Sepcify that we want all the classes URIs from this ontology
+  $getClassesFunction->getClassesUris();
+  
+  // Specify that we only want to first 20 results
+  $getClassesFunction->limit(20);
+  $getClassesFunction->offset(0);
+  
+  // Prepare the getClasses call
+  $ontologyRead->getClasses($getClassesFunction);
+  
+  // Send the query
+  $ontologyRead->send();
+  
+  if($ontologyRead->isSuccessful())
+  {
+    echo $ontologyRead->getResultset();
+  }
+  else
+  {
+    echo "Ontology importation failed: ".$ontologyRead->getStatus()." (".$ontologyRead->getStatusMessage().")\n";
+    echo $ontologyRead->getStatusMessageDescription();       
+  }  
+  
+  ?>
+```  
+
+Ontology: Update
+----------------
+```php
+  <?php
+  
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\create\OntologyCreateQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\update\OntologyUpdateQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\update\CreateOrUpdateEntityFunction;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\update\UpdateEntityUriFunction;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
+  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetClassFunction;
+  
+  // First, let's create an initial ontology
+  $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
+  
+  // Create the vcard ontology for which its description is located somewhere on the Web
+  $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
+  
+  // Enable advanced indexation to have access to it on all structWSF endpoints
+  $ontologyCreate->enableAdvancedIndexation();
+  
+  // Enable reasoner to persist inferred facts into all endpoints of structWSF
+  $ontologyCreate->enableReasoner();
+  
+  // Import the new ontology
+  $ontologyCreate->send();
+
+  if($ontologyCreate->isSuccessful())
+  {
+    // Now, let's change the URI of the class "http://www.w3.org/2006/vcard/ns#Address"
+    // to http://www.w3.org/2006/vcard/ns#Addr
+
+    $ontologyUpdate = new OntologyUpdateQuery("http://localhost/ws/");
+    
+    $ontologyUpdate->ontology("http://www.w3.org/2006/vcard/ns");
+    
+    $updateEntityUriFunction = new UpdateEntityUriFunction();
+    
+    $updateEntityUriFunction->oldUri("http://www.w3.org/2006/vcard/ns#Address");
+    
+    $updateEntityUriFunction->newUri("http://www.w3.org/2006/vcard/ns#Addr");
+    
+    $ontologyUpdate->updateEntityUri($updateEntityUriFunction);
+    
+    $ontologyUpdate->send();
+    
+    if($ontologyUpdate->isSuccessful())
+    {
+      // Now, let's read information about the Address class, using its 
+      // brand new URI.
+      $ontologyRead = new OntologyReadQuery("http://localhost/ws/");
+      
+      $ontologyRead->mime("application/rdf+n3");
+      
+      $ontologyRead->ontology("http://www.w3.org/2006/vcard/ns");
+
+      $getClass = new GetClassFunction();
+      
+      $getClass->uri("http://www.w3.org/2006/vcard/ns#Addr");
+      
+      $ontologyRead->getClass($getClass);
+      
+      $ontologyRead->send();      
+      
+      echo $ontologyRead->getResultset();
+      print_r(var_export($ontologyRead, TRUE));
+      
+    }
+    else
+    {
+      echo "Ontology update failed: ".$ontologyUpdate->getStatus()." (".$ontologyUpdate->getStatusMessage().")\n";
+      echo $ontologyUpdate->getStatusMessageDescription();         
+    } 
+  }
+  else
+  {
+    echo "Ontology importation failed: ".$ontologyCreate->getStatus()." (".$ontologyCreate->getStatusMessage().")\n";
+    echo $ontologyCreate->getStatusMessageDescription();       
+  }  
+  
+  ?>
+``` 
 
 Ontology: Delete
 ----------------
@@ -1028,53 +1102,59 @@ Ontology: Delete
   }
   
   ?>
-```  
+``` 
 
-Ontology: Read
+Search
+------
+```php
+  <?php
+
+  // Use the SearchQuery class
+  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  
+  // Create the SearchQuery object
+  $search = new SearchQuery("http://demo.citizen-dan.org/ws/");
+  
+  // Set the query parameter with the search keyword "elm"
+  $search->query("school");
+  
+  // Send the search query to the endpoint
+  $search->send();
+  
+  // Get back the resultset returned by the endpoint
+  $resultset = $search->getResultset();
+  
+  // Print different serializations for that resultset
+  print_r($resultset->getResultset());
+ 
+  ?>
+```
+
+Scones
 ---------------
 ```php
   <?php
   
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetClassesFunction;
+  use \StructuredDynamics\structwsf\php\api\ws\scones\SconesQuery;
   
-  // Create the Ontology Read query
-  $ontologyRead = new OntologyReadQuery("http://demo.citizen-dan.org/ws/");
+  $scones = new SconesQuery("http://localhost/ws/");
   
-  // Enable the reasoner for this query
-  $ontologyRead->enableReasoner();
+  // Specify the document (in this case, a web page) you want to tag using that Scones instance.
+  $scones->document("http://fgiasson.com");
   
-  // Specify the MUNI ontology from the citizen demo website
-  $ontologyRead->ontology("file://localhost/data/ontologies/files/demo.citizen-dan.org/muni.owl");
-  
-  // Specify that we want RDF+XML data as output
-  $ontologyRead->mime("application/rdf+xml");
-  
-  // Prepare the function call to send to the endpoint.
-  $getClassesFunction = new GetClassesFunction();
-  
-  // Sepcify that we want all the classes URIs from this ontology
-  $getClassesFunction->getClassesUris();
-  
-  // Specify that we only want to first 20 results
-  $getClassesFunction->limit(20);
-  $getClassesFunction->offset(0);
-  
-  // Prepare the getClasses call
-  $ontologyRead->getClasses($getClassesFunction);
-  
-  // Send the query
-  $ontologyRead->send();
-  
-  if($ontologyRead->isSuccessful())
+  // Tag the document
+  $scones->send();
+
+  if($scones->isSuccessful())
   {
-    echo $ontologyRead->getResultset();
+    // Output the Gate tagged document.
+    echo $scones->getResultset();
   }
   else
   {
-    echo "Ontology importation failed: ".$ontologyRead->getStatus()." (".$ontologyRead->getStatusMessage().")\n";
-    echo $ontologyRead->getStatusMessageDescription();       
-  }  
-  
+    echo "Scones tagging failed: ".$scones->getStatus()." (".$scones->getStatusMessage().")\n";
+    echo $scones->getStatusMessageDescription();       
+  }
+    
   ?>
 ```  
