@@ -9,7 +9,8 @@
 
   namespace StructuredDynamics\structwsf\php\api\framework;
 
-  use \Exception;  
+  use \Exception;
+  use \StructuredDynamics\structwsf\framework\WebServiceQuerier; 
   
   /**
   * Class that defined all the methods and variables needed to send a structWSF query
