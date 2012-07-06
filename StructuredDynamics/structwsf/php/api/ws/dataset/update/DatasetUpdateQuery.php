@@ -163,6 +163,7 @@
       $this->setEndpoint("dataset/update/");
       
       // Set default parameters for this query
+      $this->sourceInterface("default");      
     }
     
     /**
@@ -243,6 +244,18 @@
     {
       $this->params["modified"] = urlencode($date);
     }
+    
+    /**
+    * Source interface to use for this web service query.
+    * 
+    * @param mixed $interface Name of the interface to use.
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function sourceInterface($interface)
+    {
+      $this->params["interface"] = $interface;
+    }      
    }       
  
 //@}    

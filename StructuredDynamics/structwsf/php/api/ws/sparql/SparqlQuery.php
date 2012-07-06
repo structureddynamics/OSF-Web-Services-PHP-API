@@ -57,6 +57,7 @@
       $this->dataset("");
       $this->defaultGraphUri("");
       $this->namedGraphUri("");
+      $this->sourceInterface("default");      
     }
 
     /**
@@ -115,6 +116,18 @@
     {
       $this->params["named-graph-uri"] = $namedGraph;
     }
+    
+    /**
+    * Source interface to use for this web service query.
+    * 
+    * @param mixed $interface Name of the interface to use.
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function sourceInterface($interface)
+    {
+      $this->params["interface"] = $interface;
+    }      
   }
   
 //@}  

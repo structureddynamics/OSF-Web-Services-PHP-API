@@ -78,25 +78,8 @@
       $this->setEndpoint("crud/delete/");
       
       // Set default parameters for this query
-
-    }
-    
-    /**
-    * Set the RDF document where instance record(s) are described. The size of this document 
-    * is limited to 8MB on the default system (may be lower or higher on different systems).
-    * 
-    * **Required**: This function must be called before sending the query 
-    * 
-    * @param mixed $document RDF+XML or RDF+N3 documents to import into the system
-    * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Delete#Web_Service_Endpoint_Information
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.* 
-    */
-    public function document($document)
-    {
-      $this->params["document"] = urlencode($document);
-    }  
+      $this->sourceInterface("default");
+    } 
     
     /**
     * Specifies the URI of the record to be deleted from the system
@@ -127,6 +110,18 @@
     {
       $this->params["dataset"] = urlencode($uri);
     } 
+    
+    /**
+    * Source interface to use for this web service query.
+    * 
+    * @param mixed $interface Name of the interface to use.
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function sourceInterface($interface)
+    {
+      $this->params["interface"] = $interface;
+    }      
    }       
  
 //@}    

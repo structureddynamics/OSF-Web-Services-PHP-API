@@ -92,7 +92,8 @@
       $this->disableInference();
       $this->includeAggregates();
       $this->setAggregateAttributesObjectTypeToLiteral();
-      $this->numberOfAggregateAttributesObject(10);      
+      $this->numberOfAggregateAttributesObject(10);   
+      $this->sourceInterface("default");
     }
   
     /**
@@ -492,6 +493,18 @@
     public function rangeFilter($topLeftLat, $topLeftLong, $bottomRightLat, $bottomRightLong)
     {
       $this->params["range_filter"] = "$topLeftLat;$topLeftLong;$bottomRightLat;$bottomRightLong";
+    }
+    
+    /**
+    * Source interface to use for this web service query.
+    * 
+    * @param mixed $interface Name of the interface to use.
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function sourceInterface($interface)
+    {
+      $this->params["interface"] = $interface;
     }    
   }
   

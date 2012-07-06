@@ -11,6 +11,7 @@
 
   use \Exception;
   use \StructuredDynamics\structwsf\framework\WebServiceQuerier; 
+  use \StructuredDynamics\structwsf\framework\Resultset; 
   
   /**
   * Class that defined all the methods and variables needed to send a structWSF query
