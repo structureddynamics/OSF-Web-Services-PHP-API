@@ -112,32 +112,20 @@
     }
     
     /**
-    * Specifies the URI of the Web service resource endpoint that as been queried. 
-    * 
-    * **Required**: This function must be called before sending the query 
-    * 
+    * Specifies the URI of the Web service resource endpoint that as been queried.
+    *
+    * **Required**: This function must be called before sending the query
+    *
     * @param mixed $uri URI of the Web service resource endpoint that as been queried
-    * 
+    *
     * @see http://techwiki.openstructs.org/index.php/Auth:_Validator#Web_Service_Endpoint_Information
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC. 
+    *
+    * @author Frederick Giasson, Structured Dynamics LLC.
     */
     public function webServiceUri($uri)
     {
-      $this->params["ws_uri"] = urlencode($uri); 
-    }
-    
-    /**
-    * Source interface to use for this web service query.
-    * 
-    * @param mixed $interface Name of the interface to use.
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.
-    */
-    public function sourceInterface($interface)
-    {
-      $this->params["interface"] = $interface;
-    }      
+      $this->params["ws_uri"] = urlencode($uri);
+    }    
    }       
  
 //@}    

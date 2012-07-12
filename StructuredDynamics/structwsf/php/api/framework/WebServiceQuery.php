@@ -65,7 +65,7 @@
     * 
     * This is an instance of the QuerierError() object.
     */
-    public $error; 
+    public $error;             
     
     function __construct(){}
     
@@ -296,6 +296,32 @@
     public function getStatusMessageDescription()
     {
       return($this->httpStatusMessageDescription);
+    }
+    
+    /**
+    * Source interface to use for this web service query.
+    * 
+    * @param mixed $interface Name of the interface to use.
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function sourceInterface($interface)
+    {
+      $this->params["interface"] = $interface;
+    }
+    
+    /**
+    * Version of the Source interface for which we want to send a query.
+    * This is the version of the source interface that the user knows
+    * how to use.
+    * 
+    * @param mixed $interface Name of the interface to use.
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function sourceInterfaceVersion($version)
+    {
+      $this->params["version"] = $version;
     }
   }
   
