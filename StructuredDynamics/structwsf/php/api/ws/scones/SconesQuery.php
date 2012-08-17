@@ -84,7 +84,7 @@
                                     
       $this->setMethodPost();
 
-      $this->mime("resultset");
+      $this->mime("text/xml");
       
       $this->setEndpoint("scones/");
       
