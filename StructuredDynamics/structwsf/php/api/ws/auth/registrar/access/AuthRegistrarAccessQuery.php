@@ -165,7 +165,9 @@
                                         
       $this->params["ws_uris"] = urlencode(implode(";", $webservicesUris));   
       
-      $this->params["dataset"] = urlencode($datasetUri);                                                                             
+      $this->params["dataset"] = urlencode($datasetUri);    
+      
+      $this->params["action"] = "create";
     }
       
     /**
@@ -182,8 +184,27 @@
     {
       $this->params["registered_ip"] = urlencode($userIP);   
       
-      $this->params["dataset"] = urlencode($datasetUri);   
+      $this->params["dataset"] = urlencode($datasetUri); 
+      
+      $this->params["action"] = "delete_target";
     }
+    
+      
+    /**
+    * Delete a specific access record
+    * 
+    * @param mixed $accessRecordUri URI of the access record to deleten from the system
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function deleteSpecific($accessRecordUri)
+    {
+      $this->params["target_access_uri"] = urlencode($accessRecordUri);   
+      
+      $this->params["action"] = "delete_specific";
+    }    
 
     /**
     * Delete a target access permissions record for a specific IP address and a specific dataset 
@@ -196,7 +217,9 @@
     */
     public function deleteAll($datasetUri)
     {
-      $this->params["dataset"] = urlencode($datasetUri);   
+      $this->params["dataset"] = urlencode($datasetUri);
+      
+      $this->params["action"] = "delete_all";
     }
     
    /**
@@ -232,7 +255,9 @@
                                         
       $this->params["ws_uris"] = urlencode(implode(";", $webservicesUris));   
       
-      $this->params["dataset"] = urlencode($datasetUri);                                                                             
+      $this->params["dataset"] = urlencode($datasetUri); 
+      
+      $this->params["action"] = "update";
     }     
    }       
  
