@@ -228,6 +228,12 @@
     */
     public function contributors($contributorsUris)
     {
+      // Encode potential ";" characters
+      foreach($contributorsUris as $key => $curi)
+      {
+        $contributorsUris[$key] = str_replace(";", "%3B", $curi);
+      }      
+      
       $this->params["contributors"] = urlencode(implode(";", $contributorsUris));
     }
     

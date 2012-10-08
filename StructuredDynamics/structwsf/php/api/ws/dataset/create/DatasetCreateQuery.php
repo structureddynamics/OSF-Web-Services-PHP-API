@@ -216,6 +216,12 @@
     */
     public function targetWebservices($webservicesUri)
     {
+      // Encode potential ";" characters
+      foreach($webservicesUri as $key => $wsuri)
+      {
+        $webservicesUri[$key] = str_replace(";", "%3B", $wsuri);
+      }
+            
       $this->params["webservices"] = urlencode(implode(";", $webservicesUri));
     }   
     

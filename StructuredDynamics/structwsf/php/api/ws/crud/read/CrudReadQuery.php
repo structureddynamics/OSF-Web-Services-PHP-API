@@ -6,7 +6,7 @@
   /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\read\CrudReadQuery.php
       @brief CrudReadQuery class description
    */
-
+                                                                    
   namespace StructuredDynamics\structwsf\php\api\ws\crud\read;
 
   /**
@@ -134,6 +134,12 @@
       }
       else
       {
+        // Encode potential ";" characters
+        foreach($uris as $key => $uri)
+        {
+          $uris[$key] = str_replace(";", "%3B", $uri);
+        }        
+        
         $this->params["dataset"] = urlencode(implode(";", $uris));
       }
     } 
@@ -219,7 +225,7 @@
         $attributes[$key] = str_replace(";", "%3B", $attribute);
       }
       
-      $this->params["include_attributes_list"] = implode(";", $attributes);      
+      $this->params["include_attributes_list"] = urlencode(implode(";", $attributes));      
     }    
    }       
  

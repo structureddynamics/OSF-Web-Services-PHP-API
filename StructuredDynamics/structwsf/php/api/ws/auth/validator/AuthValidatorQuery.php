@@ -108,6 +108,12 @@
     */
     public function datasets($datasetsUris)
     {
+      // Encode potential ";" characters
+      foreach($datasetsUris as $key => $dataset)
+      {
+        $datasetsUris[$key] = str_replace(";", "%3B", $dataset);
+      }      
+      
       $this->params["datasets"] = urlencode(implode(";", $datasetsUris)); 
     }
     

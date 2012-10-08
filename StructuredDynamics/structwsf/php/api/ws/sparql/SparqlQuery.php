@@ -71,7 +71,7 @@
     */
     public function query($query)
     {
-      $this->params["query"] = $query;
+      $this->params["query"] = urlencode($query);
     }
     
     /**
@@ -86,7 +86,7 @@
     */
     public function dataset($dataset)
     {
-      $this->params["dataset"] = $dataset;
+      $this->params["dataset"] = urlencode($dataset);
     }
     
     /**
@@ -100,7 +100,7 @@
     */
     public function defaultGraphUri($defaultGraph)
     {
-      $this->params["default-graph-uri"] = $defaultGraph;
+      $this->params["default-graph-uri"] = urlencode($defaultGraph);
     }
 
     /**
@@ -114,7 +114,7 @@
     */
     public function namedGraphUri($namedGraph)
     {
-      $this->params["named-graph-uri"] = $namedGraph;
+      $this->params["named-graph-uri"] = urlencode($namedGraph);
     } 
   }
   

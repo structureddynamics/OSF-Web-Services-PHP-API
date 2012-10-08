@@ -109,7 +109,7 @@
     */
     public function query($query)
     {
-      $this->params["query"] = $query;
+      $this->params["query"] = urlencode($query);
     }
     
     /**
@@ -138,7 +138,7 @@
         }
       }
       
-      $this->params["types"] = implode(";", $types);
+      $this->params["types"] = urlencode(implode(";", $types));
     }
     
     /**
@@ -167,7 +167,7 @@
         }
       }
       
-      $this->params["datasets"] = implode(";", $datasets);
+      $this->params["datasets"] = urlencode(implode(";", $datasets));
     }
     
     /**
@@ -207,9 +207,10 @@
           {
             foreach($values as $value)
             {
-              $filter = urlencode($attribute)."::".urlencode($value);
+              $attribute = str_replace(";", "%3B", $attribute);
+              $value = str_replace(";", "%3B", $value);
               
-              str_replace(";", "%3B", $filter);
+              $filter = urlencode($attribute)."::".urlencode($value);
               
               array_push($attrs, $filter);
             }
@@ -217,7 +218,7 @@
         }
       }
       
-      $this->params["attributes"] = implode(";", $attrs);
+      $this->params["attributes"] = urlencode(implode(";", $attrs));
     }
     
     /**
@@ -271,7 +272,7 @@
         $attributes[$key] = str_replace(";", "%3B", $attribute);
       }
       
-      $this->params["include_attributes_list"] = implode(";", $attributes);      
+      $this->params["include_attributes_list"] = urlencode(implode(";", $attributes));      
     }
     
     /**
@@ -383,12 +384,13 @@
     */
     public function aggregateAttributes($attributes)
     {
+      // Encode potential ";" characters
       foreach($attributes as $key => $attribute)
       {
-        $attributes[$key] = urlencode($attribute);
+        $attributes[$key] = str_replace(";", "%3B", $attribute);
       }
       
-      $this->params["aggregate_attributes"] = implode(";", $attributes);         
+      $this->params["aggregate_attributes"] = urlencode(implode(";", $attributes));         
     }
     
     /**
