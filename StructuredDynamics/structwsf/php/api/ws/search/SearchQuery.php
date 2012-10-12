@@ -495,6 +495,31 @@
     public function rangeFilter($topLeftLat, $topLeftLong, $bottomRightLat, $bottomRightLong)
     {
       $this->params["range_filter"] = "$topLeftLat;$topLeftLong;$bottomRightLat;$bottomRightLong";
+    }
+    
+    /**
+    * Add a sort criteria to the Search query
+    * 
+    * @param mixed $sortProperty Property to sort on. Can be: "type", "uri", "dataset", 
+    *                            "score", "preflabel" or any other url-encoded attribute 
+    *                            URIs that are defined with a maximum cardinality of 1.
+    * @param mixed $sortOrder Order of the sort for that property. Can be "desc" or "asc"
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function addSort($sortProperty, $sortOrder)
+    {
+      if(!isset($this->params["sort"]))
+      {
+        $this->params["sort"] = "";
+      }
+      
+      if($this->params["sort"] != "")
+      {
+        $this->params["sort"] .= ";";
+      }
+      
+      $this->params["sort"] .= urlencode($sortProperty." ".strtolower($sortOrder));      
     }   
   }
   
