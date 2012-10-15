@@ -150,6 +150,8 @@
     public function uri($uri)
     {
       $this->params["uri"] = urlencode($uri);
+      
+      return($this);
     }  
     
     /**
@@ -166,6 +168,8 @@
     public function title($title)
     {
       $this->params["title"] = urlencode($title);
+      
+      return($this);
     }
     
     /**
@@ -182,6 +186,8 @@
     public function description($description)
     {
       $this->params["description"] = urlencode($description);
+      
+      return($this);
     }    
     
     /**
@@ -198,6 +204,8 @@
     public function creator($creatorUri)
     {
       $this->params["creator"] = urlencode($creatorUri);
+      
+      return($this);
     }
     
     /**
@@ -223,6 +231,8 @@
       }
             
       $this->params["webservices"] = urlencode(implode(";", $webservicesUri));
+      
+      return($this);
     }   
     
     /**
@@ -244,6 +254,8 @@
                                                      ($crudPermission->getRead() ? "True" : "False").";".
                                                      ($crudPermission->getUpdate() ? "True" : "False").";".
                                                      ($crudPermission->getDelete() ? "True" : "False"));
+                                                     
+      return($this);
     }          
    }       
    

@@ -152,6 +152,8 @@
     public function document($document)
     {
       $this->params["document"] = urlencode($document);
+      
+      return($this);
     }  
     
     /**
@@ -166,6 +168,8 @@
     public function documentMimeIsRdfXml()
     {
       $this->params["mime"] = urlencode("application/rdf+xml");
+      
+      return($this);
     }
     
     /**
@@ -180,6 +184,8 @@
     public function documentMimeIsRdfN3()
     {
       $this->params["mime"] = urlencode("application/rdf+n3");
+      
+      return($this);
     }
     
     /**
@@ -194,6 +200,8 @@
     public function enableFullIndexationMode()
     {
       $this->params["mode"] = "full";
+      
+      return($this);
     }
     
     /**
@@ -206,6 +214,8 @@
     public function enableTripleStoreIndexationMode()
     {
       $this->params["mode"] = "triplestore";
+      
+      return($this);
     }
     
     /**
@@ -218,6 +228,8 @@
     public function enableSearchIndexationMode()
     {
       $this->params["mode"] = "searchindex";
+      
+      return($this);
     }    
     
     /**
@@ -234,6 +246,8 @@
     public function dataset($uri)
     {
       $this->params["dataset"] = urlencode($uri);
+      
+      return($this);
     }       
    }       
  

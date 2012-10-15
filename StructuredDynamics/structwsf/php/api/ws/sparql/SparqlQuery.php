@@ -72,6 +72,8 @@
     public function query($query)
     {
       $this->params["query"] = urlencode($query);
+      
+      return($this);
     }
     
     /**
@@ -87,6 +89,8 @@
     public function dataset($dataset)
     {
       $this->params["dataset"] = urlencode($dataset);
+      
+      return($this);
     }
     
     /**
@@ -101,6 +105,8 @@
     public function defaultGraphUri($defaultGraph)
     {
       $this->params["default-graph-uri"] = urlencode($defaultGraph);
+      
+      return($this);
     }
 
     /**
@@ -115,6 +121,8 @@
     public function namedGraphUri($namedGraph)
     {
       $this->params["named-graph-uri"] = urlencode($namedGraph);
+      
+      return($this);
     } 
   }
   

@@ -165,6 +165,8 @@
       }      
       
       unset($wsq);
+      
+      return($this);
     }
     
     /**
@@ -183,6 +185,8 @@
       }
             
       $this->supportedMimes = $mimes;
+      
+      return($this);
     }
     
     /**
@@ -197,6 +201,8 @@
     protected function setNetwork($network)
     {
       $this->network = $network;
+      
+      return($this);
     }
     
     /**
@@ -213,6 +219,8 @@
       {
         $this->mime = $mime;
       }
+      
+      return($this);
     }
     
     /**
@@ -229,6 +237,8 @@
       {
         $this->timeout = $milliseconds;
       }
+      
+      return($this);
     }  
     
     /**
@@ -241,6 +251,8 @@
     public function registeredIp($ip)
     {
       $this->params["registered_ip"] = $ip; 
+      
+      return($this);
     } 
     
     /**
@@ -260,6 +272,8 @@
       {
         return(FALSE);
       }
+      
+      return($this);
     }
     
     /**
@@ -271,7 +285,7 @@
     */
     public function getStatus()
     {
-      return($this->httpStatus);
+      return($this->httpStatus);       
     }
     
     /**
@@ -308,6 +322,8 @@
     public function sourceInterface($interface)
     {
       $this->params["interface"] = $interface;
+      
+      return($this);
     }
     
     /**
@@ -322,6 +338,8 @@
     public function sourceInterfaceVersion($version)
     {
       $this->params["version"] = $version;
+      
+      return($this);
     }
   }
   

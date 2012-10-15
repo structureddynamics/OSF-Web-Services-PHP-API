@@ -168,6 +168,8 @@
       $this->params["dataset"] = urlencode($datasetUri);    
       
       $this->params["action"] = "create";
+      
+      return($this);
     }
       
     /**
@@ -187,6 +189,8 @@
       $this->params["dataset"] = urlencode($datasetUri); 
       
       $this->params["action"] = "delete_target";
+      
+      return($this);
     }
     
       
@@ -204,6 +208,8 @@
       $this->params["target_access_uri"] = urlencode($accessRecordUri);   
       
       $this->params["action"] = "delete_specific";
+      
+      return($this);
     }    
 
     /**
@@ -220,6 +226,8 @@
       $this->params["dataset"] = urlencode($datasetUri);
       
       $this->params["action"] = "delete_all";
+      
+      return($this);
     }
     
    /**
@@ -258,6 +266,8 @@
       $this->params["dataset"] = urlencode($datasetUri); 
       
       $this->params["action"] = "update";
+      
+      return($this);
     }     
    }       
  

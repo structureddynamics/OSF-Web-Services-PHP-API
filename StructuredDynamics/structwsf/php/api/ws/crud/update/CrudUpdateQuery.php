@@ -187,6 +187,8 @@
     public function document($document)
     {
       $this->params["document"] = urlencode($document);
+      
+      return($this);
     }  
     
     /**
@@ -215,6 +217,8 @@
     public function documentMimeIsRdfN3()
     {
       $this->params["mime"] = urlencode("application/rdf+n3");
+      
+      return($this);
     }     
     
     /**
@@ -231,6 +235,8 @@
     public function dataset($uri)
     {
       $this->params["dataset"] = urlencode($uri);
+      
+      return($this);
     }  
    }       
  

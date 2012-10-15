@@ -152,6 +152,8 @@
     public function uri($uri)
     {
       $this->params["uri"] = urlencode($uri);
+      
+      return($this);
     }       
    }       
  

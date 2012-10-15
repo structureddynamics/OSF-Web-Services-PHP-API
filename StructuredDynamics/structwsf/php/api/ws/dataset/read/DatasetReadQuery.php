@@ -92,6 +92,8 @@
     public function uri($uri)
     {
       $this->params["uri"] = urlencode($uri);
+      
+      return($this);
     }  
     
     /**
@@ -105,6 +107,8 @@
     public function includeMeta()
     {
       $this->params["meta"] = "True";
+      
+      return($this);
     }
     
     /**
@@ -120,6 +124,8 @@
     public function excludeMeta()
     {
       $this->params["meta"] = "False";
+      
+      return($this);
     }     
    }       
  

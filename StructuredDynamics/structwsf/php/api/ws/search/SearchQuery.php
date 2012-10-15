@@ -110,6 +110,8 @@
     public function query($query)
     {
       $this->params["query"] = urlencode($query);
+      
+      return($this);
     }
     
     /**
@@ -139,6 +141,8 @@
       }
       
       $this->params["types"] = urlencode(implode(";", $types));
+      
+      return($this);
     }
     
     /**
@@ -168,6 +172,8 @@
       }
       
       $this->params["datasets"] = urlencode(implode(";", $datasets));
+      
+      return($this);
     }
     
     /**
@@ -219,6 +225,8 @@
       }
       
       $this->params["attributes"] = urlencode(implode(";", $attrs));
+      
+      return($this);
     }
     
     /**
@@ -232,6 +240,8 @@
     public function setAttributesBooleanOperatorToOr()
     {
       $this->params["attributes_boolean_operator"] = "or";
+      
+      return($this);
     }
     
     /**
@@ -247,6 +257,8 @@
     public function setAttributesBooleanOperatorToAnd()
     {
       $this->params["attributes_boolean_operator"] = "and";
+      
+      return($this);
     }
               
     /**
@@ -272,7 +284,9 @@
         $attributes[$key] = str_replace(";", "%3B", $attribute);
       }
       
-      $this->params["include_attributes_list"] = urlencode(implode(";", $attributes));      
+      $this->params["include_attributes_list"] = urlencode(implode(";", $attributes));   
+      
+      return($this);   
     }
     
     /**
@@ -294,6 +308,8 @@
       }
       
       $this->params["items"] = $items;
+      
+      return($this);
     }
 
     /**
@@ -316,6 +332,8 @@
       }
       
       $this->params["page"] = $page;
+      
+      return($this);
     }
     
     /**
@@ -330,6 +348,8 @@
     public function enableInference()
     {
       $this->params["inference"] = "on";
+      
+      return($this);
     }
     
     /**
@@ -342,6 +362,8 @@
     public function disableInference()
     {
       $this->params["inference"] = "off";
+      
+      return($this);
     }
     
     /**
@@ -354,6 +376,8 @@
     public function excludeAggregates()
     {
       $this->params["include_aggregates"] = "false";
+      
+      return($this);
     }
     
     /**
@@ -368,6 +392,8 @@
     public function includeAggregates()
     {
       $this->params["include_aggregates"] = "true";
+      
+      return($this);
     }
     
     /**
@@ -390,7 +416,9 @@
         $attributes[$key] = str_replace(";", "%3B", $attribute);
       }
       
-      $this->params["aggregate_attributes"] = urlencode(implode(";", $attributes));         
+      $this->params["aggregate_attributes"] = urlencode(implode(";", $attributes));        
+      
+      return($this); 
     }
     
     /**
@@ -406,7 +434,9 @@
     */
     public function setAggregateAttributesObjectTypeToLiteral()
     {
-      $this->params["aggregate_attributes_object_type"] = "literal";         
+      $this->params["aggregate_attributes_object_type"] = "literal"; 
+      
+      return($this);        
     }
     
     /**
@@ -420,7 +450,9 @@
     */
     public function setAggregateAttributeObjectTypeToUri()
     {
-      $this->params["aggregate_attributes_object_type"] = "uri";         
+      $this->params["aggregate_attributes_object_type"] = "uri";    
+      
+      return($this);     
     }
     
     public function numberOfAggregateAttributesObject($nb)
@@ -431,6 +463,8 @@
       }
       
       $this->params["aggregate_attributes_object_nb"] = $nb; 
+      
+      return($this);
     }
     
     /**
@@ -474,6 +508,8 @@
       }
       
       $this->params["distance_filter"] = "$lat;$long;$distasnce;$type"; 
+      
+      return($this);
     }
     
     /**
@@ -495,6 +531,8 @@
     public function rangeFilter($topLeftLat, $topLeftLong, $bottomRightLat, $bottomRightLong)
     {
       $this->params["range_filter"] = "$topLeftLat;$topLeftLong;$bottomRightLat;$bottomRightLong";
+      
+      return($this);
     }
     
     /**
@@ -520,6 +558,8 @@
       }
       
       $this->params["sort"] .= urlencode($sortProperty." ".strtolower($sortOrder));      
+      
+      return($this);
     }   
   }
   

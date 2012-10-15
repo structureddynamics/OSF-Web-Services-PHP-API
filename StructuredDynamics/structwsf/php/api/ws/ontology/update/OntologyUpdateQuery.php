@@ -167,6 +167,8 @@
     public function ontology($ontologyUri)
     {
       $this->params["ontology"] = urlencode($ontologyUri);
+      
+      return($this);
     }    
     
     /**
@@ -184,6 +186,8 @@
     public function enableReasoner()
     {
       $this->params["reasoner"] = "True";
+      
+      return($this);
     }
     
     /**
@@ -197,6 +201,8 @@
     public function disableReasoner()
     {
       $this->params["reasoner"] = "False";
+      
+      return($this);
     }
     
     /**
@@ -232,6 +238,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }     
               
     /**
@@ -253,6 +261,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }
     
     /**
@@ -285,6 +295,8 @@
     public function saveOntology()
     {
       $this->params["function"] = "saveOntology";
+      
+      return($this);
     }    
   }
   
@@ -319,6 +331,8 @@
     public function document($document)
     {
       $this->params["document"] = urlencode($document);
+      
+      return($this);
     }    
     
     /**
@@ -336,6 +350,8 @@
     public function enableAdvancedIndexation()
     {
       $this->params["advancedIndexation"] = "True";
+      
+      return($this);
     }
     
     /**
@@ -351,6 +367,8 @@
     public function disableAdvancedIndexation()
     {
       $this->params["advancedIndexation"] = "False";
+      
+      return($this);
     } 
   }  
   
@@ -386,6 +404,8 @@
     public function oldUri($uri)
     {
       $this->params["olduri"] = urlencode($uri);
+      
+      return($this);
     } 
     
            
@@ -404,6 +424,8 @@
     public function newUri($uri)
     {
       $this->params["newuri"] = urlencode($uri);
+      
+      return($this);
     }        
     
     /**
@@ -421,6 +443,8 @@
     public function enableAdvancedIndexation()
     {
       $this->params["advancedIndexation"] = "True";
+      
+      return($this);
     }
     
     /**
@@ -436,6 +460,8 @@
     public function disableAdvancedIndexation()
     {
       $this->params["advancedIndexation"] = "False";
+      
+      return($this);
     }       
   }    
  

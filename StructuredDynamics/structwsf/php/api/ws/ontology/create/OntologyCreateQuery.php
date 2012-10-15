@@ -131,6 +131,8 @@
     public function uri($ontologyUri)
     {
       $this->params["uri"] = urlencode($ontologyUri);
+      
+      return($this);
     }
     
     /**
@@ -152,6 +154,8 @@
                                                      ($crudPermission->getRead() ? "True" : "False").";".
                                                      ($crudPermission->getUpdate() ? "True" : "False").";".
                                                      ($crudPermission->getDelete() ? "True" : "False"));
+                                                     
+      return($this);
     }    
     
     /**
@@ -169,6 +173,8 @@
     public function enableAdvancedIndexation()
     {
       $this->params["advancedIndexation"] = "True";
+      
+      return($this);
     }
     
     /**
@@ -184,6 +190,8 @@
     public function disableAdvancedIndexation()
     {
       $this->params["advancedIndexation"] = "False";
+      
+      return($this);
     }   
     
     /**
@@ -201,6 +209,8 @@
     public function enableReasoner()
     {
       $this->params["reasoner"] = "True";
+      
+      return($this);
     }
     
     /**
@@ -214,6 +224,8 @@
     public function disableReasoner()
     {
       $this->params["reasoner"] = "False";
+      
+      return($this);
     }     
   }
  

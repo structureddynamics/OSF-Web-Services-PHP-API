@@ -93,6 +93,8 @@
     public function uri($uri)
     {
       $this->params["uri"] = urlencode($uri);
+      
+      return($this);
     }
     
     /**
@@ -109,6 +111,8 @@
     public function dataset($uri)
     {
       $this->params["dataset"] = urlencode($uri);
+      
+      return($this);
     }   
    }       
  

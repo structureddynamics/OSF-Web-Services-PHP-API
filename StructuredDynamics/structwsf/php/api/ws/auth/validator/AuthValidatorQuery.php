@@ -91,6 +91,8 @@
     public function ip($ip)
     {
       $this->params["ip"] = urlencode($ip);
+      
+      return($this);
     }
     
     /**
@@ -115,6 +117,8 @@
       }      
       
       $this->params["datasets"] = urlencode(implode(";", $datasetsUris)); 
+      
+      return($this);
     }
     
     /**
@@ -131,6 +135,8 @@
     public function webServiceUri($uri)
     {
       $this->params["ws_uri"] = urlencode($uri);
+      
+      return($this);
     }    
    }       
  

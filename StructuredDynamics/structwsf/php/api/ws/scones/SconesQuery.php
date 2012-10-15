@@ -119,6 +119,8 @@
     public function document($document)
     {
       $this->params["document"] = urlencode($document);
+      
+      return($this);
     }  
     
     /**
@@ -137,6 +139,8 @@
     public function application($application)
     {
       $this->params["application"] = urlencode($application);
+      
+      return($this);
     }      
    }       
  

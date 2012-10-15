@@ -71,6 +71,38 @@ structWSF network instance:
   ?>
 ```   
 
+The structWSF PHP API does also support chaining of methods. Here is a chained version
+of the code above:
+
+```php
+  <?php
+  
+  //
+  // Step #1: Instantiate the class of the web service then want to query
+  //
+  
+  // Create the SearchQuery object
+  $search = new SearchQuery("http://localhost/ws/");
+  
+  //
+  // Step #2: Define all the parameters/features/behaviors of the web service by invoking different methods of the class
+  //
+  
+  $resultset = $search->enableInference
+                      ->excludeAggregates()
+                      ->items(20)
+                      ->page(40)
+                      ->query("forest")
+                      ->send()
+                      ->getResultset();
+  
+  // Print the PHP array serialization for that resultset
+  print_r($resultset->getResultset());    
+  
+  ?>
+```   
+
+
 Auto-loading of Classes
 -----------------------
 

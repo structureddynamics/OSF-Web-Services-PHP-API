@@ -130,6 +130,8 @@
     public function ontology($ontologyUri)
     {
       $this->params["ontology"] = urlencode($ontologyUri);
+      
+      return($this);
     }
    
     /**
@@ -142,6 +144,8 @@
     public function deleteOntology()
     {
       $this->params["function"] = "deleteOntology";
+      
+      return($this);
     }
     
     /**
@@ -161,6 +165,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }    
     
     /**
@@ -180,6 +186,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }     
     
     /**
@@ -199,6 +207,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }             
   }
   

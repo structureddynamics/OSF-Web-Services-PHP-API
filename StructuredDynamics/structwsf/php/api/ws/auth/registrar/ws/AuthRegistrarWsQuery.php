@@ -125,6 +125,8 @@
     public function title($title)
     {
       $this->params["title"] = urlencode($title);
+      
+      return($this);
     }  
        
     /**
@@ -141,6 +143,8 @@
     public function endpointUrl($url)
     {
       $this->params["endpoint"] = urlencode($url);
+      
+      return($this);
     }
         
     /**
@@ -162,6 +166,8 @@
     public function endpointUri($uri)
     {
       $this->params["ws_uri"] = urlencode($uri);
+      
+      return($this);
     }
     
     /**
@@ -188,6 +194,8 @@
                                         ($crudPermission->getRead() ? "True" : "False").";".
                                         ($crudPermission->getUpdate() ? "True" : "False").";".
                                         ($crudPermission->getDelete() ? "True" : "False"));       
+                                        
+      return($this);
     }          
    }       
  

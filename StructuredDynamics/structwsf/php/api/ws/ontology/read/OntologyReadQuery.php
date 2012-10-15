@@ -122,6 +122,8 @@
     public function ontology($ontologyUri)
     {
       $this->params["ontology"] = urlencode($ontologyUri);
+      
+      return($this);
     }
     
     /**
@@ -136,6 +138,8 @@
     public function enableReasoner()
     {
       $this->params["reasoner"] = "True";
+      
+      return($this);
     }
     
     /**
@@ -148,6 +152,8 @@
     public function disableReasoner()
     {
       $this->params["reasoner"] = "False";
+      
+      return($this);
     }
    
     /**
@@ -167,6 +173,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }
        
     /**
@@ -188,6 +196,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }    
        
     /**
@@ -202,6 +212,8 @@
     public function getSerialized()
     {
       $this->params["function"] = "getSerialized";
+      
+      return($this);
     } 
     
     /**
@@ -218,6 +230,8 @@
     public function getSerializedClassHierarchy()
     {
       $this->params["function"] = "getSerializedClassHierarchy";
+      
+      return($this);
     }  
     
     /**
@@ -234,6 +248,8 @@
     public function getSerializedPropertyHierarchy()
     {
       $this->params["function"] = "getSerializedPropertyHierarchy";
+      
+      return($this);
     }  
     
     /**
@@ -251,6 +267,8 @@
     public function getIronXMLSchema()
     {
       $this->params["function"] = "getIronXMLSchema";
+      
+      return($this);
     }  
     
     
@@ -268,6 +286,8 @@
     public function getIronJsonSchema()
     {
       $this->params["function"] = "getIronJsonSchema";
+      
+      return($this);
     }      
     
     /**
@@ -287,6 +307,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }     
     
     /**
@@ -307,6 +329,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }  
     
     /**
@@ -327,6 +351,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }
     
     /**
@@ -347,6 +373,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }    
     
     /**
@@ -367,6 +395,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }    
     
     /**
@@ -387,6 +417,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }    
     
     /**
@@ -406,6 +438,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }   
     
     /**
@@ -426,6 +460,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }    
     
     /**
@@ -446,6 +482,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }    
     
     /**
@@ -466,6 +504,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }   
     
     /**
@@ -486,6 +526,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }  
     
     /**
@@ -506,6 +548,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }
         
     /**
@@ -525,6 +569,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }     
         
     /**
@@ -545,6 +591,8 @@
         
         $this->params["parameters"] = $function->getParameters();
       }
+      
+      return($this);
     }        
   }
   

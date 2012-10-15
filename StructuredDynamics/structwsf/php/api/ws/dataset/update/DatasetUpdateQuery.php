@@ -180,6 +180,8 @@
     public function uri($uri)
     {
       $this->params["uri"] = urlencode($uri);
+      
+      return($this);
     }  
     
     /**
@@ -196,6 +198,8 @@
     public function title($title)
     {
       $this->params["title"] = urlencode($title);
+      
+      return($this);
     }
     
     /**
@@ -212,6 +216,8 @@
     public function description($description)
     {
       $this->params["description"] = urlencode($description);
+      
+      return($this);
     }    
     
     /**
@@ -235,6 +241,8 @@
       }      
       
       $this->params["contributors"] = urlencode(implode(";", $contributorsUris));
+      
+      return($this);
     }
     
     /**
@@ -249,6 +257,8 @@
     public function modified($date)
     {
       $this->params["modified"] = urlencode($date);
+      
+      return($this);
     }    
    }       
  

@@ -106,6 +106,8 @@
       {
         $this->params["uri"] = urlencode(implode(";", $uris));
       }
+      
+      return($this);
     }  
     
     /**
@@ -142,6 +144,8 @@
         
         $this->params["dataset"] = urlencode(implode(";", $uris));
       }
+      
+      return($this);
     } 
     
     /**
@@ -155,6 +159,8 @@
     public function includeLinksback()
     {
       $this->params["include_linksback"] = "True";
+      
+      return($this);
     } 
     
     /**
@@ -170,6 +176,8 @@
     public function excludeLinksback()
     {
       $this->params["include_linksback"] = "False";
+      
+      return($this);
     }         
     
     /**
@@ -184,6 +192,8 @@
     public function includeReification()
     {
       $this->params["include_reification"] = "True";
+      
+      return($this);
     }     
     
     /**
@@ -200,6 +210,8 @@
     public function excludeReification()
     {
       $this->params["include_reification"] = "False";
+      
+      return($this);
     }     
     
     /**
@@ -226,6 +238,8 @@
       }
       
       $this->params["include_attributes_list"] = urlencode(implode(";", $attributes));      
+      
+      return($this);
     }    
    }       
  

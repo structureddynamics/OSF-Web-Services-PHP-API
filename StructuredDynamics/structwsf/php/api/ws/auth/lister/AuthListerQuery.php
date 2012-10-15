@@ -93,6 +93,8 @@
     public function getDatasetsUri()
     {
       $this->params["mode"] = "dataset";
+      
+      return($this);
     }
 
     /**
@@ -106,6 +108,8 @@
     public function getRegisteredWebServiceEndpointsUri()
     {
       $this->params["mode"] = "ws";
+      
+      return($this);
     }
 
     /**
@@ -122,6 +126,8 @@
     {
       $this->params["mode"] = "access_dataset";
       $this->params["dataset"] = urlencode($datasetUri);
+      
+      return($this);
     }     
     
     /**
@@ -138,6 +144,8 @@
     {
       $this->params["mode"] = "access_user";
       $this->registeredIp($ip);
+      
+      return($this);
     }  
     
     /**
@@ -154,6 +162,8 @@
     public function includeAllWebServiceUris()
     {
       $this->params["target_webservice"] = "all";
+      
+      return($this);
     }
 
     /**
@@ -166,6 +176,8 @@
     public function includeNoWebServiceUris()
     {
       $this->params["target_webservice"] = "none";
+      
+      return($this);
     }
     
     /**
@@ -180,6 +192,8 @@
     public function includeTargerWebServiceUri($uri)
     {
       $this->params["target_webservice"] = urlencode($uri);
+      
+      return($this);
     }      
    }       
  
