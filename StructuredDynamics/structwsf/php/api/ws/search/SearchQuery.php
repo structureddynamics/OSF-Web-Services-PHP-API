@@ -10,8 +10,6 @@
   namespace StructuredDynamics\structwsf\php\api\ws\search;
   
   /**
-  * Ontology Read Query to a structWSF SPARQL web service endpoint
-  * 
   * The Search Web service is used to perform full text searches on the structured 
   * data indexed on a structWSF instance. A search query can be as simple as querying 
   * the data store for a single keyword, or to query it using a series of complex 
@@ -561,7 +559,242 @@
       
       return($this);
     }   
+    
+    /**
+    * Extended filters are used to define more complex search filtered searches. This
+    * parameter uses a more complex syntax which enable the grouping of filter criterias
+    * and the usage of the AND, OR and NOT boolean operators. The grouping is done with
+    * the parenthesis. Each filter is composed of a url-encoded attribute URI to use 
+    * as filters, followed by a colomn and the value to filter with. The full lucene
+    * syntax can be used to define the value to filter. If all values are required, the
+    * "*" (start) operator should be used as the value. If the value of an attribute
+    * needs to be considered a URI, then the "[uri]" syntax should be added at the end
+    * of the attribute filter like: 
+    * "http%3A%2F%2Fpurl.org%2Fontology%2Ffoo%23friend[uri]:http://bar.com/my-friend-uri".
+    * That way, the value of that attribute filter will be handled as a URI. There are
+    * a series of core attributes that can be used without specifying their full URI:
+    * dataset, type, inferred_type, prefLabel, altLabel, lat, long, description, polygonCoordinates,
+    * polylineCoordinates and located in. The extended filters are not a replacement to 
+    * the attributes, types and datasets filtering parameters, they are an extension of it.
+    * Subsequent filtering criterias can be defined in the extended filtering parameter.
+    * The resolution logic by the Search endpoint is: 
+    * attributes AND datasets AND types AND extended-filters.
+    * An example of such an extended query is:
+    * (http%3A%2F%2Fpurl.org%2Fontology%2Firon%23prefLabel:cancer AND NOT (breast OR ovarian)) 
+    * AND (http%3A%2F%2Fpurl.org%2Fontology%2Fnhccn%23useGroupSignificant[uri]:
+    * (http\://purl.org/ontology/doha#liver_cancer OR 
+    * http\://purl.org/ontology/doha#cancers_by_histologic_type)) AND 
+    * dataset:"file://localhost/data/ontologies/files/doha.owl"
+    * 
+    * @param mixed $filters Extended filters query to use for this Search query.
+    * @return SearchQuery
+    */
+    public function extendedFilters($filters)
+    {
+      if(!isset($this->params["extended_filters"]))
+      {
+        $this->params["extended_filters"] = "";
+      }
+            
+      $this->params["extended_filters"] = $filters;
+      
+      return($this);
+    }
   }
+  
+ /**
+  * Class used to generate a set of extended attribute filters that should be added
+  * to a SearchQuery. These extended attributes filters support grouping of 
+  * attributes/values filters along with the boolean operators AND, OR and NOT.
+  * 
+  * Here is an example of how this API should be used to create an extended
+  * search filters for the SearchQuery class:
+  *      
+  * @code
+  * 
+  *   $search = new SearchQuery($network);
+  * $extendedFiltersBuilder = new ExtendedFiltersBuilder();
+  * 
+  * $results = $search->mime("resultset")
+  *                   ->extendedFilters(
+  *                       $extendedFiltersBuilder->startGrouping()
+  *                                                  ->attributeValueFilter("http://purl.org/ontology/iron#prefLabel", "cancer AND NOT (breast OR ovarian)")
+  *                                              ->endGrouping()
+  *                                              ->and_()
+  *                                              ->startGrouping()
+  *                                                  ->attributeValueFilter("http://purl.org/ontology/nhccn#useGroupSignificant", "http://purl.org/ontology/doha#liver_cancer", TRUE)
+  *                                                  ->or_()
+  *                                                  ->attributeValueFilter("http://purl.org/ontology/nhccn#useGroupSignificant", "cancer")
+  *                                              ->endGrouping()
+  *                                              ->and_()
+  *                                              ->datasetFilter("file://localhost/data/ontologies/files/doha.owl")                                               
+  *                                              ->getExtendedFilters())
+  *                   ->send()
+  *                   ->getResultset();
+  * 
+  * @endcode 
+  * 
+  * This code will produce this "extended_filters" parameter value:
+  * 
+  *  (http%253A%252F%252Fpurl.org%252Fontology%252Firon%2523prefLabel:cancer%2BAND%2BNOT%2B%2528breast%2BOR%2Bovarian%2529) 
+  *  AND (http%253A%252F%252Fpurl.org%252Fontology%252Fnhccn%2523useGroupSignificant[uri]:http%255C%253A%252F%252Fpurl.org%252Fontology%252Fdoha%2523liver_cancer 
+  *  OR http%253A%252F%252Fpurl.org%252Fontology%252Fnhccn%2523useGroupSignificant:cancer) AND 
+  *  dataset:%22file%3A%2F%2Flocalhost%2Fdata%2Fontologies%2Ffiles%2Fdoha.owl%22
+  *  
+  * @see http://techwiki.openstructs.org/index.php/Search
+  * 
+  * @author Frederick Giasson, Structured Dynamics LLC.
+  */
+  class ExtendedFiltersBuilder
+  {
+    /**
+    * Extended filters parameter string to use to feed $search->extendedFilters(...)
+    */
+    private $extendedFilters = "";
+    
+    function __construct(){}
+    
+    /**
+    * Return the list of filters generated by the ExtendedFiltersBuilder class
+    * used by the structWSF Search endpoint for the "extended_filters" parameter.
+    */
+    function getExtendedFilters()
+    {
+      return($this->extendedAttributes);
+    }
+
+    /**
+    * Add a dataset URI to filter
+    *     
+    * @param mixed $dataset Dataset URI to add to the extended filters query.
+    * @return ExtendedFiltersBuilder
+    */
+    public function datasetFilter($dataset)
+    {
+      $this->extendedAttributes .= "dataset:".urlencode('"'.$dataset.'"');
+      
+      return($this);
+    }
+    
+    /**
+    * Add a type URI to filter
+    * 
+    * @param mixed $type Type URI to add to the extended filters query.
+    * @param mixed $enableInference Enable inferencing for this type filter.
+    * @return ExtendedFiltersBuilder
+    */
+    public function typeFilter($type, $enableInference = FALSE)
+    {
+      if($enableInference === FALSE)
+      {
+        $this->extendedAttributes .= "type:".urlencode('"'.$type.'"');
+      }
+      else
+      {
+        $this->extendedAttributes .= "type:".urlencode('"'.$type.'"')." OR ".
+                                     "inferred_type:".urlencode('"'.$type.'"');
+      }
+      
+      return($this);
+    }
+    
+    /**
+    * Add an attribute/value filter
+    * 
+    * @param mixed $attribute Attribute URI to add to the extended filters query.
+    * @param mixed $value Value to filter by. By default, all values are used ("*")
+    * @param boolean $valueIsUri Specify if the value (or set of values) for this attribute have to be considered
+    *                            as URIs (this should be specified to TRUE if the attribute is an object property)
+    * @return ExtendedFiltersBuilder
+    */
+    public function attributeValueFilter($attribute, $value="*", $valueIsUri = FALSE)
+    {
+      // Check if there are Search endpoint control characters in the query.
+      // If there are, then we don't escape the values and we assume
+      // they are properly escaped.
+      
+      str_replace(array(' OR ', ' AND ', ' NOT ', '\\', '+', '-', '&', 
+                               '|', '!', '(', ')', '{', '}', '[', ']', '^', 
+                               '~', '*', '?', '"', ';', ' '), "", $value, $found);
+      
+      if($found > 0)
+      {
+        $this->extendedAttributes .= urlencode(urlencode($attribute)).($valueIsUri === TRUE ? "[uri]" : "").":".
+                                     urlencode(urlencode($value));
+      }
+      else
+      {
+        $this->extendedAttributes .= urlencode(urlencode($attribute)).($valueIsUri === TRUE ? "[uri]" : "").":".
+                                     urlencode(urlencode($this->escape($value)));  
+      }
+      
+      return($this);
+    }
+    
+    /**
+    * Add a AND operator to the extended filters query
+    */
+    public function and_()
+    {
+      $this->extendedAttributes .= " AND ";
+      
+      return($this);
+    }
+
+    /**
+    * Add a OR operator to the extended filters query
+    */
+    public function or_()
+    {
+      $this->extendedAttributes .= " OR ";
+      
+      return($this);
+    }
+
+    /**
+    * Add a NOT operator to the extended filters query
+    */
+    public function not_()
+    {
+      $this->extendedAttributes .= " NOT ";
+      
+      return($this);
+    }
+
+    /**
+    * Start grouping a series of filters
+    */
+    public function startGrouping()
+    {
+      $this->extendedAttributes .= "(";
+      
+      return($this);
+    }
+    
+    /**
+    * End grouping a series of filters
+    */
+    public function endGrouping()
+    {
+      $this->extendedAttributes .= ")";
+      
+      return($this);
+    }
+    
+    /**
+    * Escape reserver values characters by the Search endpoint.
+    * 
+    * @param mixed $string Value to filter
+    */
+    private function escape($string)
+    {
+      $match = array('\\', '+', '-', '&', '|', '!', '(', ')', '{', '}', '[', ']', '^', '~', '*', '?', ':', '"', ';', ' ');
+      $replace = array('\\\\', '\\+', '\\-', '\\&', '\\|', '\\!', '\\(', '\\)', '\\{', '\\}', '\\[', '\\]', '\\^', '\\~', '\\*', '\\?', '\\:', '\\"', '\\;', '\\ ');
+      $string = str_replace($match, $replace, $string);
+
+      return $string;
+    }          
+  }      
   
 //@}    
 ?>
