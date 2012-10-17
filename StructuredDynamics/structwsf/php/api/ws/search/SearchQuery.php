@@ -144,6 +144,40 @@
     }
     
     /**
+    * Add a type filter to use for this search query
+    * 
+    * **Optional**: This function could be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * 
+    * @param mixed $type A type URI to use to filter the returned results.
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function typeFilter($type)
+    {
+      $type = str_replace(";", "%3B", $type);
+      
+      if($this->params["types"] == "all")
+      {
+        $this->params["types"] = "";
+      }
+      
+      if(isset($this->params["types"]) &&
+         $this->params["types"] != "")
+      {      
+        $this->params["types"] .= urlencode(";".$type);
+      }
+      else
+      {
+        $this->params["types"] = urlencode($type);
+      }      
+   
+      return($this);
+    }      
+
+    
+    /**
     * Set all the dataset filters to use for this search query
     * 
     * **Optional**: This function could be called before sending the query
@@ -173,6 +207,39 @@
       
       return($this);
     }
+    
+    /**
+    * Add a dataset filter to use for this search query
+    * 
+    * **Optional**: This function could be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * 
+    * @param mixed $dataset A datasets URI to use to filter the returned results.
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function datasetFilter($dataset)
+    {
+      $dataset = str_replace(";", "%3B", $dataset);
+      
+      if($this->params["datasets"] == "all")
+      {
+        $this->params["datasets"] = "";
+      }
+      
+      if(isset($this->params["datasets"]) &&
+         $this->params["datasets"] != "")
+      {      
+        $this->params["datasets"] .= urlencode(";".$dataset);
+      }
+      else
+      {
+        $this->params["datasets"] = urlencode($dataset);
+      }
+      
+      return($this);
+    }    
     
     /**
     * Set all the attribute/value filters to use for this search query
@@ -226,6 +293,79 @@
       
       return($this);
     }
+    
+    /**
+    * Set an attribute/value(s) filter to use for this search query
+    * 
+    * **Optional**: This function could be called before sending the query
+    * 
+    * @param mixed $attribute Attribute URI of the filter
+    * @param mixed $values Array of values for which we want to filter the search query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function attributeValuesFilters($attribute, $values = array())
+    {
+      $attribute = str_replace(";", "%3B", $attribute);
+
+      if($this->params["attributes"] == "all")
+      {
+        $this->params["attributes"] = "";
+      }
+      
+      if(!is_array($values) && count($values) == 0)
+      {
+        if(isset($this->params["attributes"]) &&
+           $this->params["attributes"] != "")
+        {
+          $this->params["attributes"] .= urlencode(";".$attribute);
+        }
+        else
+        {
+          $this->params["attributes"] = urlencode($attribute);
+        }        
+      }
+      else
+      {
+        if(is_array($attribute))
+        {
+          foreach($values as $value)
+          {
+            $value = str_replace(";", "%3B", $value);
+            
+            $filter = urlencode($attribute)."::".urlencode($value);
+            
+            if(isset($this->params["attributes"]) &&
+               $this->params["attributes"] != "")
+            {     
+              $this->params["attributes"] .= urlencode(";".$filter);     
+            }
+            else
+            {
+              $this->params["attributes"] = urlencode($filter);
+            }
+          }
+        }
+        else
+        {
+          $filter = urlencode($attribute)."::".urlencode($values);
+          
+          if(isset($this->params["attributes"]) &&
+             $this->params["attributes"] != "")
+          {     
+            $this->params["attributes"] .= urlencode(";".$filter);     
+          }
+          else
+          {
+            $this->params["attributes"] = urlencode($filter);
+          }          
+        }
+      }        
+      
+      return($this);   
+    }    
     
     /**
     * Set the attributes boolean operator to OR. If you have multiple attribute/value filters defined for this
@@ -286,7 +426,7 @@
       
       return($this);   
     }
-    
+                 
     /**
     * Set an attribute URI to include in the resultset returned by the search endpoint.
     * All the attributes used to defined the returned resultset that are not listed in this 
@@ -469,6 +609,34 @@
       
       return($this); 
     }
+    
+    /**
+    * Specify an attribute URI for which we want its aggregated values.
+    * This is used to get a list of values, and their counts for a given attribute.
+    * 
+    * **Optional**: This function could be called before sending the query
+    * 
+    * @param mixed $attribute Attribute URI for which we want its aggregates
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function aggregateAttribute($attribute)
+    {
+      // Encode potential ";" characters
+      if(isset($this->params["aggregate_attributes"]) &&
+         $this->params["aggregate_attributes"] != "")
+      {
+        $this->params["aggregate_attributes"] .= urlencode(";".$attribute);
+      }
+      else
+      {
+        $this->params["aggregate_attributes"] = urlencode($attribute);
+      }
+      
+      return($this); 
+    }    
     
     /**
     * Determines that the aggregated value returned by the endpoint is a literal. If the 
