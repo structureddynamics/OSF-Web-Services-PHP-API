@@ -288,6 +288,57 @@
     }
     
     /**
+    * Set an attribute URI to include in the resultset returned by the search endpoint.
+    * All the attributes used to defined the returned resultset that are not listed in this 
+    * array will be ignored, and won't be returned by the endpoint. This is normally
+    * used when you know the properties you need for your application, and that you want
+    * to limit the bandwidth and minimize the size of the resultset.
+    * 
+    * **Optional**: This function could be called before sending the query
+    * 
+    * @param mixed $attribute An attribute URI to see in the resultset
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function includeAttribute($attribute)
+    {
+      // Encode potential ";" characters
+      $attribute = str_replace(";", "%3B", $attribute);
+      
+      if(isset($this->params["include_attributes_list"]) &&
+         $this->params["include_attributes_list"] != "")
+      {
+        $this->params["include_attributes_list"] .= urlencode(";".$attribute);          
+      }
+      else
+      {
+        $this->params["include_attributes_list"] = urlencode($attribute);          
+      }      
+      
+      return($this);   
+    }    
+    
+    /**
+    * Specify that no attributes should be returned by the query. The only two attributes
+    * that will be returned by the search endpoint are the URI and the Type of each
+    * result.
+    * 
+    * **Optional**: This function could be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function includeNoAttributes()
+    {
+      $this->params["include_attributes_list"] = "none";          
+      
+      return($this);   
+    }      
+    
+    /**
     * Set the number of items to return in a single resultset 
     * 
     * Default value is 10
