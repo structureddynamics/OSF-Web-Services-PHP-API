@@ -543,7 +543,7 @@
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
-    public function addSort($sortProperty, $sortOrder)
+    public function sort($sortProperty, $sortOrder)
     {
       if(!isset($this->params["sort"]))
       {
