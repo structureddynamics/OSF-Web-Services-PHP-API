@@ -158,7 +158,7 @@
     {
       $type = str_replace(";", "%3B", $type);
       
-      if($this->params["types"] == "all")
+      if(isset($this->params["types"]) && $this->params["types"] == "all")
       {
         $this->params["types"] = "";
       }
@@ -174,8 +174,34 @@
       }      
    
       return($this);
-    }      
-
+    }  
+    
+    /**
+    * Modifying the score of the results returned by the Search endpoint by
+    * boosting the results that have that type, and boosting it by the
+    * modifier weight.
+    * 
+    * @param mixed $type Type URI to boost
+    * @param mixed $boostModifier Score modifier weight. Score modifier can be quite small like 0.0001, or
+    *                             quite big like 10000.
+    * @return SearchQuery
+    */
+    public function typeBoost($type, $boostModifier)
+    {
+      $type = str_replace(array(";", "^"), array("%3B", "%5E"), $type);
+      
+      if(isset($this->params["types_boost"]) &&
+         $this->params["types_boost"] != "")
+      {      
+        $this->params["types_boost"] .= urlencode(";".$type.'^'.$boostModifier);
+      }
+      else
+      {
+        $this->params["types_boost"] = urlencode($type.'^'.$boostModifier);
+      }      
+   
+      return($this);
+    }    
     
     /**
     * Set all the dataset filters to use for this search query
@@ -242,6 +268,33 @@
     }    
     
     /**
+    * Modifying the score of the results returned by the Search endpoint by
+    * boosting the results that have that dataset, and boosting it by the
+    * modifier weight.
+    * 
+    * @param mixed $dataset Dataset URI to boost
+    * @param mixed $boostModifier Score modifier weight. Score modifier can be quite small like 0.0001, or
+    *                             quite big like 10000.
+    * @return SearchQuery
+    */
+    public function datasetBoost($dataset, $boostModifier)
+    {
+      $dataset = str_replace(array(";", "^"), array("%3B", "%5E"), $dataset);
+      
+      if(isset($this->params["datasets_boost"]) &&
+         $this->params["datasets_boost"] != "")
+      {      
+        $this->params["datasets_boost"] .= urlencode(";".$dataset.'^'.$boostModifier);
+      }
+      else
+      {
+        $this->params["datasets_boost"] = urlencode($dataset.'^'.$boostModifier);
+      }      
+   
+      return($this);
+    }     
+    
+    /**
     * Set all the attribute/value filters to use for this search query
     * 
     * **Optional**: This function could be called before sending the query
@@ -293,6 +346,36 @@
       
       return($this);
     }
+    
+    /**
+    * Modifying the score of the results returned by the Search endpoint by
+    * boosting the results that have that attribute/value, and boosting it by the
+    * modifier weight.
+    * 
+    * @param mixed $attribute Dataset URI to boost
+    * @param mixed $boostModifier Score modifier weight. Score modifier can be quite small like 0.0001, or
+    *                             quite big like 10000.
+    * @param mixed $value Optional specific value to boost for the given attribute URI
+    * @param boolean $valueIsUri Specify if the value  for this attribute has to be considered a URI
+    *                            (this should be specified to TRUE if the attribute is an object property)
+    * @return SearchQuery
+    */
+    public function attributeValueBoost($attribute, $boostModifier, $value = "", $valueIsUri = FALSE)
+    {
+      $attribute = str_replace(array(";", "^"), array("%3B", "%5E"), $attribute);
+      
+      if(isset($this->params["attributes_boost"]) &&
+         $this->params["attributes_boost"] != "")
+      {      
+        $this->params["attributes_boost"] .= urlencode(";".$attribute.($valueIsUri && $value != "" ? "[uri]" : "").($value == '' ? '' : '::'.$value).'^'.$boostModifier);
+      }
+      else
+      {
+        $this->params["attributes_boost"] = urlencode($attribute.($valueIsUri && $value != "" ? "[uri]" : "").($value == '' ? '' : '::'.$value).'^'.$boostModifier);
+      }      
+   
+      return($this);
+    }    
     
     /**
     * Set an attribute/value(s) filter to use for this search query
