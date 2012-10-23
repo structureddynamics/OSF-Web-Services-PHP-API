@@ -412,7 +412,7 @@
       }
       else
       {
-        if(is_array($attribute))
+        if(is_array($values))
         {
           foreach($values as $value)
           {
