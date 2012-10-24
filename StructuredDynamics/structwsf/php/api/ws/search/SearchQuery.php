@@ -740,6 +740,20 @@
     }
     
     /**
+    * Determines that the aggregated value returned by the endpoint is a URI and a Literal
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function setAggregateAttributesObjectTypeToUriLiteral()
+    {
+      $this->params["aggregate_attributes_object_type"] = "uriliteral"; 
+      
+      return($this);        
+    }
+        
+    /**
     * Determines that the aggregated value returned by the endpoint is a URI. If the value 
     * of the attribute(s) is a URI (a reference to some record) then that URI will be 
     * returned as the aggregated value. 
