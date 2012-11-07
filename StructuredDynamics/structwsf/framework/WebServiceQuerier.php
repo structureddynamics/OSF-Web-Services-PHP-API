@@ -9,6 +9,7 @@
 */
 
 namespace StructuredDynamics\structwsf\framework;
+use \StructuredDynamics\structwsf\framework\QuerierExtension;
 
 /**
 * Query a RESTFul web service endpoint
@@ -55,6 +56,9 @@ class WebServiceQuerier
   /** Internal error debug information of the queried web sevice */
   private $errorDebugInfo = "";
 
+  /** Pointer to an extension object to allow external code to interact with the querier */
+  private $extension = NULL;
+
   /** 
   * Internal error of the queried web service. The error doesn't necessarly come from the
   * queried web service endpoint in the case of a compound web service.
@@ -74,7 +78,7 @@ class WebServiceQuerier
   *    
   *   @author Frederick Giasson, Structured Dynamics LLC.
   */
-  function __construct($url, $method, $mime, $parameters, $timeout = 0)
+  function __construct($url, $method, $mime, $parameters, $timeout = 0, $extension = NULL)
   {
     $this->url = $url;
     $this->method = $method;
@@ -82,6 +86,7 @@ class WebServiceQuerier
     //$this->parameters = $parameters . "&DBGSESSID=1@localhost:7869;d=1,p=0 ";      
     $this->mime = $mime;
     $this->timeout = $timeout;
+    $this->extension = ($extension === NULL) ? new QuerierExtension() : $extension;
 
     $this->queryWebService();
   }
@@ -150,7 +155,10 @@ class WebServiceQuerier
       break;
     }
 
+    $this->extension->alterQuery($this, $ch);
+    $this->extension->startQuery($this);
     $xml_data = curl_exec($ch);
+    $this->extension->stopQuery($this, $xml_data);
 
     if ($xml_data === FALSE)
     {
@@ -171,7 +179,6 @@ class WebServiceQuerier
 
     // Remove any possible "HTTP/1.1 100 Continue" message from the web server
     $xml_data = str_replace("HTTP/1.1 100 Continue\r\n\r\n", "", $xml_data);
-
     $header = substr($xml_data, 0, strpos($xml_data, "\r\n\r\n"));
 
     $data =
@@ -319,6 +326,69 @@ class WebServiceQuerier
   public function getResultset()
   {
     return $this->queryResultset;
+  }
+
+  /**
+  * Get the URL a query is made to
+  *
+  * @return returns the URL of the web service endpoint for the query
+  *
+  * @author Chris Johnson
+  */
+  public function getURL()
+  {
+    return $this->url;
+  }
+
+  /**
+  * Get the parameters a query is made with
+  *
+  * @return returns the parameters string for the query
+  *
+  * @author Chris Johnson
+  */
+  public function getParameters()
+  {
+    return $this->parameters;
+  }
+
+  /**
+  * Get the request method (ex. get, post) for the query
+  *
+  * @return returns the method for the query
+  *
+  * @author Chris Johnson
+  */
+  public function getMethod()
+  {
+    return $this->method;
+  }
+
+  /**
+  * Get the mime type a query is declared to accept
+  *
+  * @return returns the mime type the query will accept
+  *
+  * @author Chris Johnson
+  */
+  public function getMIME()
+  {
+    return $this->mime;
+  }
+
+  /**
+  * Display the error encountered, in the case of no errors
+  * were encountered, this is a no-op. This relies on the
+  * query extension to handle error display
+  *
+  * @author Chris Johnson
+  */
+  public function displayError()
+  {
+    if ($this->error)
+    {
+      $this->extension->displayError($this->error);
+    }
   }
 }
 
