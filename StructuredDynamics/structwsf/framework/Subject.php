@@ -374,7 +374,7 @@ class Subject
   /**
   *  Get the values of an object property.
   *
-  *  The values are turned as an array of values which has this structure:
+  *  The values are returned as an array of values which has this structure:
   *
   *  Array(
   *    Array(
