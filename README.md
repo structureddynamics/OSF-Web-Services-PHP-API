@@ -1,11 +1,11 @@
 Introduction
 ============
 
-The **structWSF PHP API** is a framework available to PHP developers to help them generating queries to any
+The **structWSF PHP API** is a framework available to PHP developers to help them generate queries to any
 structWSF web service endpoint. Each structWSF web service endpoint has its own WebServiceQuery class in the
 structWSF PHP API. This class is used to generate any query, to send it to be endpoint of a structWSF instance
 and to get back a resultset. The resultset can then be manipulated by using the Resultset API. This same API
-can be used to transform the resultset in different formats.
+can be used to transform the resultset into different formats.
 
 
 Documentation
@@ -14,14 +14,14 @@ Documentation
 How to use the API
 ------------------
 
-This API is used to generate structWSF queries to different web service endpoint. This API framework is composed
-of a series of classes that are used to help PHP developers to create structWSF queries in their PHP applications.
+This API is used to generate structWSF queries to different web service endpoints. This API framework is composed
+of a series of classes that are used to help PHP developers create structWSF queries in their respective PHP applications.
 
-The usage of this API is simple. Developers normally have 3 easy steps to do:
+The use of this API is simple. Developers normally have three easy steps to do:
 
-+ Instantiate the class of the web service then want to query
++ Instantiate the class of the web service they want to query
 + Define all the parameters/features/behaviors of the web service by invoking different methods of the class
-+ Sending the query using the send() method
++ Send the resulting query using the send() method
 
 Here is an example of a query that is generated using the structWSF PHP API and sent to specific
 structWSF network instance:
@@ -121,7 +121,7 @@ Here is an example of how you can auto-load the classes of the structWSF PHP API
 
 Web Services Usage
 ==================
-Here are some example of how each of the web services can be used.
+Here are some examples of how each of the web services can be used.
 
 Auth: Lister
 ------------
@@ -398,7 +398,7 @@ Dataset: Create
 ```
 
 Dataset: Read
----------------
+-------------
 ```php
   <?php
 
@@ -732,7 +732,7 @@ Crud: Read
 ```
 
 CRUD: Update
----------------
+------------
 ```php
   <?php
   
@@ -834,7 +834,7 @@ CRUD: Update
 ``` 
 
 CRUD: Delete
----------------
+------------
 ```php
   <?php
   
@@ -916,7 +916,7 @@ Ontology: Create
 ```  
 
 Ontology: Read
----------------
+--------------
 ```php
   <?php
   
@@ -1131,7 +1131,7 @@ Search
 ```
 
 Scones
----------------
+------
 ```php
   <?php
   
