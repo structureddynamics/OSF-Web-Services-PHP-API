@@ -30,7 +30,7 @@
     private $mime = "resultset";
 
     /** Timeout of the query in milliseconds */
-    private $timeout = 0;
+    protected $timeout = 0;
 
     /** Resultset returned by the remote endpoint */
     private $resultset;
@@ -118,13 +118,20 @@
     * Send the HTTP query to the endpoint. This function should be called
     * once all the settings/parameters of the query have been previously
     * configured.
-    * 
+    *
+    * @param $query_extension - an optional QueryExtension
+    *    object
+    *
     * @author Frederick Giasson, Structured Dynamics LLC. 
     */
-    public function send()
+    public function send($query_extension = NULL)
     {
       $parameters = "";
-      
+      if ($query_extension !== NULL)
+      {
+        $query_extension->alterParams($this, $this->params);
+      }
+
       foreach($this->params as $param => $value)
       {
         $parameters .= $param."=".$value."&";  
@@ -136,7 +143,8 @@
                                    $this->method, 
                                    ($this->mime == "resultset" ? "text/xml" : $this->mime), 
                                    $parameters, 
-                                   $this->timeout);
+                                   $this->timeout,
+                                   $query_extension);
                                    
       $this->httpStatus = $wsq->getStatus();
       $this->httpStatusMessage = $wsq->getStatusMessage();
