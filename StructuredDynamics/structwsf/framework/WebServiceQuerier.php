@@ -174,6 +174,7 @@ class WebServiceQuerier
       $this->error = new QuerierError("HTTP-500", "Warning", $this->url, "Can't reach remote server",
         "Can't reach remote server (" . curl_error($ch) . ")", $data);
 
+      $this->extension->debugQueryReturn($this, $xml_data);
       return;
     }
 
@@ -204,6 +205,7 @@ class WebServiceQuerier
       $ws = substr($ws, 0, strrpos($ws, "/") + 1);
 
       $this->error = new QuerierError("HTTP-500", "Fatal", $ws, "Parsing Error", "PHP Parsing Error", $data);
+      $this->extension->debugQueryReturn($this, $xml_data);
 
       return;
     }
@@ -232,6 +234,7 @@ class WebServiceQuerier
       $this->queryStatusMessage = "OK";
       $this->queryStatusMessageDescription = "";
       $this->queryResultset = $data;
+      $this->extension->debugQueryReturn($this, $xml_data);
       return;
     }
 
@@ -267,6 +270,7 @@ class WebServiceQuerier
 
         $this->error = new QuerierError($errorId, $errorLevel, $errorWS, $errorName, $errorDescription, $errorDebugInfo);
 
+        $this->extension->debugQueryReturn($this, $xml_data);
         return;
       }
 
@@ -277,6 +281,7 @@ class WebServiceQuerier
       $this->queryResultset = $data;
     }
 
+    $this->extension->debugQueryReturn($this, $xml_data);
     return;
   }
 

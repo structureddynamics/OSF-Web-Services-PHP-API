@@ -39,6 +39,14 @@ class QuerierExtension {
   function stopQuery(WebServiceQuerier $wsq, $data) {}
 
   /**
+   * Called after initial processing of response from web service
+   * is complete and just before control is returned to the caller
+   *
+   * @param $wsq WebServiceQuerier that is executing
+   */
+  function debugQueryReturn(WebServiceQuerier $wsq, $data) {}
+
+  /**
    * Called before the call to the web service is executed
    *
    * @param $wsq WebServiceQuerier that is executing
