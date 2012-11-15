@@ -102,7 +102,7 @@ class WebServiceQuerier
   {
     $ch = curl_init();
 
-    switch ($this->method)
+    switch (strtolower($this->method))
     {
       case "get":
         curl_setopt($ch, CURLOPT_URL, $this->url . "?" . $this->parameters);
@@ -156,7 +156,7 @@ class WebServiceQuerier
     }
 
     $this->extension->alterQuery($this, $ch);
-    $this->extension->startQuery($this);
+    $this->extension->startQuery($this); 
     $xml_data = curl_exec($ch);
     $this->extension->stopQuery($this, $xml_data);
 
