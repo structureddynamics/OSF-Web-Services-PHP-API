@@ -131,7 +131,7 @@ class WebServiceQuerier
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
           curl_setopt($ch, CURLOPT_POST, 1);
           curl_setopt($ch, CURLOPT_POSTFIELDS, $this->parameters);
-          
+
           if ($this->timeout > 0)
           {
             curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
@@ -154,7 +154,7 @@ class WebServiceQuerier
         return FALSE;
       break;
     }
-
+    
     $this->extension->alterQuery($this, $ch);
     $this->extension->startQuery($this); 
     $xml_data = curl_exec($ch);
@@ -225,6 +225,7 @@ class WebServiceQuerier
       $ws = substr($ws, 0, strrpos($ws, "/") + 1);
 
       $this->error = new QuerierError("HTTP-500", "Fatal", $ws, "Fatal Error", "PHP uncatched Fatal Error", $data);
+      return;
     }
 
     // We have to continue. Let fix this to 200 OK so that this never raise errors within the WSF
@@ -246,7 +247,7 @@ class WebServiceQuerier
       ), "", $data);
 
       // XML error messages
-      if (strpos($this->queryStatusMessageDescription, "<error>"))
+      if (strpos($this->queryStatusMessageDescription, "<error>") !== FALSE)
       {
         preg_match("/.*<id>(.*)<\/id>.*/Uim", $this->queryStatusMessageDescription, $errorId);
         $errorId = $errorId[1];
@@ -266,9 +267,20 @@ class WebServiceQuerier
 
         preg_match("/.*<debugInformation>(.*)<\/debugInformation>.*/Uim", $this->queryStatusMessageDescription,
           $errorDebugInfo);
-        $errorDebugInfo = $errorDebugInfo[1];
+          
+        if(isset($errorDebugInfo[1]))
+        {
+          $errorDebugInfo = $errorDebugInfo[1];
+        }
 
         $this->error = new QuerierError($errorId, $errorLevel, $errorWS, $errorName, $errorDescription, $errorDebugInfo);
+
+        $this->extension->debugQueryReturn($this, $xml_data);
+        return;
+      }
+      else
+      {
+        $this->error = new QuerierError("HTTP-500", "Fatal", $ws, "Fatal Error", "Unspecified Server Fatal Error", $data);
 
         $this->extension->debugQueryReturn($this, $xml_data);
         return;
