@@ -280,7 +280,7 @@ class WebServiceQuerier
       }
       else
       {
-        $this->error = new QuerierError("HTTP-500", "Fatal", $ws, "Fatal Error", "Unspecified Server Fatal Error", $data);
+        $this->error = new QuerierError("HTTP-500", "Fatal", $this->url, "Fatal Error", "Unspecified Server Fatal Error", $data);
 
         $this->extension->debugQueryReturn($this, $xml_data);
         return;
