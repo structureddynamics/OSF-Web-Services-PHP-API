@@ -216,7 +216,7 @@
     */
     public function datasetsFilters($datasets)
     {
-      if(!is_array($datasets))
+      if(!is_array($datasets) || empty($datasets))
       {
         $datasets = array("all");
       }
@@ -247,6 +247,11 @@
     */
     public function datasetFilter($dataset)
     {
+      if($dataset == '')
+      {
+        return($this);
+      }
+      
       $dataset = str_replace(";", "%3B", $dataset);
       
       if($this->params["datasets"] == "all")
