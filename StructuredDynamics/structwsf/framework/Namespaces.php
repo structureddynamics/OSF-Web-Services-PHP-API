@@ -270,6 +270,8 @@ class Namespaces
   {
     $coreNamespaces = get_class_vars('\StructuredDynamics\structwsf\framework\Namespaces');
     
+    unset($coreNamespaces['namespaces']);
+    
     // Read custom namespaces
     $namespaces = array();
     
