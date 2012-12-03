@@ -245,7 +245,7 @@ class Namespaces
   }   
   
   /**
-  * Get the URI related to a prix
+  * Get the URI related to a prefix
   * 
   * @param $prefix Prefix for which you want its related URI
   * 
@@ -262,7 +262,7 @@ class Namespaces
   }
   
   /**
-  * Get an array of prefixes<->namespaces
+  * Get an array of prefixes <-> namespaces
   * 
   * @return return an associative array of namespace prefixes and their base URI
   */
