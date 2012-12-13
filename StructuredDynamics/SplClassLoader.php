@@ -1,5 +1,25 @@
 <?php
 
+/*
+ Automatically register all the paths under:
+    /StructuredDynamics/structwsf/*
+
+ This means that all the classes for structWSF and the structWSF-PHP-API
+ will be automatically loaded.
+*/
+$wsf_folder = dirname(dirname(__FILE__));
+
+$entries = scandir($wsf_folder.'/StructuredDynamics/structwsf/');
+
+foreach($entries as $entry)
+{
+  if($entry != '.' && $entry != '..' && is_dir($wsf_folder.'/StructuredDynamics/structwsf/'.$entry))
+  {
+    $loader_core_framework = new SplClassLoader('StructuredDynamics\structwsf\\'.$entry, $wsf_folder);
+    $loader_core_framework->register();
+  }
+}
+
 /**
  * SplClassLoader implementation that implements the technical interoperability
  * standards for PHP 5.3 namespaces and class names.
@@ -119,7 +139,7 @@ class SplClassLoader
      * @return void
      */
     public function loadClass($className)
-    {     
+    {                  
         if(null === $this->_namespace || $this->_namespace.$this->_namespaceSeparator === substr($className, 0, strlen($this->_namespace.$this->_namespaceSeparator))) {
             $fileName = '';
             $namespace = '';
@@ -131,6 +151,6 @@ class SplClassLoader
             $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . $this->_fileExtension;
             //if(file_exists(($this->_includePath !== null ? $this->_includePath . DIRECTORY_SEPARATOR : '') . $fileName))
               require ($this->_includePath !== null ? $this->_includePath . DIRECTORY_SEPARATOR : '') . $fileName;
-        }
+        }    
     }
 }
