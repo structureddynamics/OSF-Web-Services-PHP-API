@@ -445,11 +445,6 @@ class Resultset
           
           $prefLabelProperty = $labelProperty;
           
-          if($labelProperty == Namespaces::$iron."prefLabel")
-          {
-            unset($subject[$labelProperty]);
-          }
-          
           break;
         }
       }
@@ -465,11 +460,6 @@ class Resultset
           }
           
           array_push($subject["altLabel"], $subject[$labelProperty][0]["value"]);
-          
-          if($labelProperty == Namespaces::$iron."altLabel")
-          {
-            unset($subject[$labelProperty]);
-          }
         }
       }
       
@@ -480,11 +470,6 @@ class Resultset
         {
           $subject["description"] = $subject[$descriptionProperty][0]["value"];
           
-          if($descriptionProperty == Namespaces::$iron."description")
-          {
-            unset($subject[$descriptionProperty]);
-          }
-          
           break;
         }
       }
@@ -493,8 +478,6 @@ class Resultset
       if(isset($subject[Namespaces::$iron."prefURL"]))        
       {
         $subject["prefURL"] = $subject[Namespaces::$iron."prefURL"][0]["value"];
-        
-        unset($subject[Namespaces::$iron."prefURL"]);
       }  
       
       // Try to get a reference to the dataset where the record could come from
@@ -703,7 +686,7 @@ class Resultset
                 if($key > 0 && $type != "")
                 {               
                   $json .= '          { '."\n";            
-                  $json .= '            "rdfs:type": "'.$this->jsonEncode($type).'" '."\n";            
+                  $json .= '            "rdf:type": "'.$this->jsonEncode($type).'" '."\n";            
                   $json .= '          }, '."\n";            
                 }
               }
