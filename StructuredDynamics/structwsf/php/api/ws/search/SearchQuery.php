@@ -357,7 +357,7 @@
     * boosting the results that have that attribute/value, and boosting it by the
     * modifier weight.
     * 
-    * @param mixed $attribute Dataset URI to boost
+    * @param mixed $attribute Attribute URI to boost
     * @param mixed $boostModifier Score modifier weight. Score modifier can be quite small like 0.0001, or
     *                             quite big like 10000.
     * @param mixed $value Optional specific value to boost for the given attribute URI
@@ -380,7 +380,45 @@
       }      
    
       return($this);
-    }    
+    }   
+    
+    /**
+    * Modifying the score of the results returned by the Search endpoint by
+    * boosting the results where the field has all keywords within the
+    * distance defined by phraseDistance().
+    * 
+    * @param mixed $attribute Attribute URI to boost
+    * @param mixed $boostModifier Score modifier weight. Score modifier can be quite small like 0.0001, or
+    *                             quite big like 10000.
+    * @return SearchQuery
+    */
+    public function attributePhraseBoost($attribute, $boostModifier)
+    {
+      if(isset($this->params["attributes_phrase_boost"]) &&
+         $this->params["attributes_phrase_boost"] != "")
+      {      
+        $this->params["attributes_phrase_boost"] .= urlencode(';'.$attribute).'^'.$boostModifier;
+      }
+      else
+      {
+        $this->params["attributes_phrase_boost"] = urlencode($attribute).'^'.$boostModifier;
+      }      
+   
+      return($this);
+    }
+    
+    /**
+    * Define the maximum distance between the keywords of the search query that is 
+    * used by the attributePhraseBoost().
+    * 
+    * @param mixed $distance Maximum distance betweeen the search terms
+    */
+    public function phraseBoostDistance($distance)
+    {
+      $this->params["phrase_boost_distance"] = $distance;
+      
+      return($this);
+    }
     
     /**
     * Set an attribute/value(s) filter to use for this search query
@@ -639,6 +677,39 @@
     public function disableInference()
     {
       $this->params["inference"] = "off";
+      
+      return($this);
+    }
+    
+    /**
+    * Set the default search query operator to AND
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function defaultOperatorAND()
+    {
+      $this->params["default_operator"] = "and";
+      
+      return($this);
+    }
+    
+    /**
+    * Set the default search query operator to OR
+    * 
+    * @param $constrains Minimal number of words that should be present in the returned records.
+    *                    More complex behaviors can be defined, the full syntax is explained 
+    *                    in this document: 
+    *                    http://lucene.apache.org/solr/4_1_0/solr-core/org/apache/solr/util/doc-files/min-should-match.html
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function defaultOperatorOR($constrains)
+    {
+      $this->params["default_operator"] = "or::".urlencode($constrains);
       
       return($this);
     }
@@ -965,7 +1036,7 @@
         $this->params["search_restrictions"] .= ';';
       } 
                  
-      $this->params["search_restrictions"] = urlencode($property).'^'.$boost;      
+      $this->params["search_restrictions"] .= urlencode($property).'^'.$boost;      
       
       return($this);
     }      
