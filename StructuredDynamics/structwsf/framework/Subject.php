@@ -83,7 +83,7 @@ class Subject
   */
   public function setType($type)
   {
-    if(isset($this->description["type"]) && is_array($this->description["type"]))
+    if(key_exists('type', $this->description) && is_array($this->description["type"]))
     {
       if(array_search($type, $this->description["type"]) === FALSE)
       {
@@ -118,7 +118,7 @@ class Subject
   */
   public function setAltLabel($altLabel)
   {
-    if(isset($this->description["altLabel"]) && is_array($this->description["altLabel"]))
+    if(key_exists('altLabel', $this->description) && is_array($this->description["altLabel"]))
     {
       array_push($this->description["altLabel"], $altLabel);
     }
@@ -228,7 +228,7 @@ class Subject
   */
   function getTypes()
   {
-    if(isset($this->description["type"]))
+    if(key_exists('type', $this->description))
     {
       return($this->description["type"]);
     }
@@ -249,7 +249,7 @@ class Subject
   */
   function getPrefLabel($force = TRUE)
   {
-    if(isset($this->description["prefLabel"]))
+    if(key_exists('prefLabel', $this->description))
     {
       return($this->description["prefLabel"]);
     }
@@ -289,7 +289,7 @@ class Subject
   */
   function getAltLabels()
   {
-    if(isset($this->description["altLabel"]))
+    if(key_exists('altLabel', $this->description))
     {
       return($this->description["altLabel"]);
     }
@@ -307,7 +307,7 @@ class Subject
   */
   function getPrefURL()
   {
-    if(isset($this->description["prefURL"]))
+    if(key_exists('prefURL', $this->description))
     {
       return($this->description["prefURL"]);
     }
@@ -324,7 +324,7 @@ class Subject
   */
   function getDescription()
   {
-    if(isset($this->description["description"]))
+    if(key_exists('description', $this->description))
     {
       return($this->description["description"]);
     }
@@ -343,9 +343,11 @@ class Subject
     $uris = array();
 
     foreach($this->description as $uri => $property)
-    {
-      if(isset($property[0]["uri"]))
-      {
+    {      
+      if(isset($property[0]) && 
+         is_array($property[0]) &&  
+         key_exists('uri', $property[0]))
+      { 
         array_push($uris, $uri);
       }
     }
@@ -365,7 +367,9 @@ class Subject
 
     foreach($this->description as $uri => $property)
     {
-      if(isset($property[0]["value"]))
+      if(isset($property[0]) && 
+         is_array($property[0]) &&  
+         key_exists('value', $property[0]))
       {
         array_push($uris, $uri);
       }
