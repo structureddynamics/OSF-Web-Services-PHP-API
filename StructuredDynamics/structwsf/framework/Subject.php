@@ -152,7 +152,10 @@ class Subject
   }
 
   /**
-  * Set a custom data attribute to this subject.
+  * Set a custom data attribute to this subject. 
+  * 
+  * Note: Datatype and Annotation properties values are included in the 
+  *       notion of "data attribute" of this function.
   *
   * @param mixed $attribute URI of the attribute to define
   * @param mixed $value Literal value to associate to this attribute
@@ -404,6 +407,9 @@ class Subject
   /**
   *  Get the values of a data property.
   *
+  * Note: Datatype and Annotation properties values are included in the 
+  *       notion of "data attribute" of this function.
+  * 
   *  The values are turned as an array of values which has this structure:
   *
   * Array(
