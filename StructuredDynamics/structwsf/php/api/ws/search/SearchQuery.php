@@ -1017,6 +1017,27 @@
       return($this);
     }    
     
+    
+    /**
+    * Includes the spellchecking suggestions to the resultset in the case that the resultset is empty.
+    */
+    public function includeSpellcheck()
+    {
+      $this->params["spellcheck"] = TRUE;      
+      
+      return($this);
+    }    
+    
+    /**
+    * Includes the spellchecking suggestions to the resultset even if the resultset is empty
+    */
+    public function excludeSpellcheck()
+    {
+      $this->params["spellcheck"] = FALSE;      
+      
+      return($this);
+    }        
+    
     /**
     * Include the scores of the results into the resultset. The score will be represented
     * by the wsf:score property.
