@@ -441,7 +441,7 @@
         $this->params["attributes"] = "";
       }
       
-      if(!is_array($values) && count($values) == 0)
+      if(!is_array($values) || count($values) == 0)
       {
         if(isset($this->params["attributes"]) &&
            $this->params["attributes"] != "")
