@@ -426,13 +426,13 @@
     * **Optional**: This function could be called before sending the query
     * 
     * @param mixed $attribute Attribute URI of the filter
-    * @param mixed $values Array of values for which we want to filter the search query
+    * @param mixed $values A single value, or an array of values for which we want to filter the search query
     * 
     * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
-    public function attributeValuesFilters($attribute, $values = array())
+    public function attributeValuesFilters($attribute, $values = '')
     {
       $attribute = str_replace(";", "%3B", $attribute);
 
@@ -441,7 +441,8 @@
         $this->params["attributes"] = "";
       }
       
-      if(!is_array($values) || count($values) == 0)
+      if((is_array($values) && count($values) == 0) ||
+         (!is_array($values) && $values == ''))
       {
         if(isset($this->params["attributes"]) &&
            $this->params["attributes"] != "")
