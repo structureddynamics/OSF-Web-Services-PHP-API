@@ -161,10 +161,18 @@ class Subject
   * @param mixed $value Literal value to associate to this attribute
   * @param mixed $type URI (normally a XSD uri) of the type of the value (optional)
   * @param mixed $lang Language code of the value (optional)
+  * @param mixed $reiStatements A reification statement that reifies (add meta-data about this
+  *                             relationship) this statement. This parameter expects an array
+  *                             of the type:
+  *
+  *                               Array(
+  *                                 "reification-attribute" => Array(values...)
+  *                                 "another-reification-attribute" => Array(values...)
+  *                               ) 
   *
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
-  public function setDataAttribute($attribute, $value, $type = "rdfs:Literal", $lang = "")
+  public function setDataAttribute($attribute, $value, $type = "rdfs:Literal", $lang = "", $reiStatements = null)
   {
     if(!isset($this->description[$attribute]) || !is_array($this->description[$attribute]))
     {
@@ -176,6 +184,11 @@ class Subject
       "lang" => $lang,
       "type" => $type
     );
+    
+    if($reiStatements != null)
+    {
+      $val["reify"] = $reiStatements;
+    }    
 
     array_push($this->description[$attribute], $val);
   }
@@ -388,8 +401,9 @@ class Subject
   *      "uri" => "some uri",
   *      "type" => "optional type of the referenced URI",
   *      "reify" => Array(
-  *      "reification-attribute-uri" => Array("value of the reification statement"),
-  *      "more-reification-attribute-uri" => ...
+  *        "reification-attribute-uri" => Array("value of the reification statement"),
+  *        "more-reification-attribute-uri" => ...
+  *      ),
   *    ),
   *  )
   *
@@ -421,6 +435,10 @@ class Subject
   *     "value" => "some value",
   *     "lang" => "language string of the value",
   *     "type" => "type of the value"
+  *     "reify" => Array(
+  *        "reification-attribute-uri" => Array("value of the reification statement"),
+  *        "more-reification-attribute-uri" => ...
+  *      ),
   *   ),
   *   Array(
   *     ...
