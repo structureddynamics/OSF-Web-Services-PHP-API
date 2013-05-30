@@ -114,6 +114,39 @@
       
       return($this);
     }   
+    
+    /**
+    * Specify that this query will only delete the published record and not any of its
+    * possible revision.
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Delete#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function soft()
+    {
+      $this->params["mode"] = 'soft';
+      
+      return($this);
+    }      
+    
+    /**
+    * Specify that this query will delete the published record and all its revisions.
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Delete#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function hard()
+    {
+      $this->params["mode"] = 'hard';
+      
+      return($this);
+    }      
    }       
  
 //@}    
