@@ -169,7 +169,11 @@
       $this->setEndpoint("crud/update/");
       
       // Set default parameters for this query
-      $this->sourceInterface("default");      
+      $this->sourceInterface("default");  
+      
+      $this->createRevision();
+      
+      $this->isPublished();    
     }
     
     /**
@@ -237,7 +241,151 @@
       $this->params["dataset"] = urlencode($uri);
       
       return($this);
+    } 
+             
+    /**
+    * Specify that we want to create a revision record for this update.
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function createRevision()
+    {
+      $this->params["revision"] = 'true';
+      
+      return($this);
+    }
+                        
+    /**
+    * Specify that we do not want to create a revision record for this update.
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function ingoreRevision()
+    {
+      $this->params["revision"] = 'false';
+      
+      return($this);
+    }
+    
+    /**
+    * Specify that the record(s) beind update have a lifecycle stage status 'published'
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function isPublished()
+    {
+      $this->params["lifecycle"] = 'published';
+      
+      return($this);
+    }   
+             
+    /**
+    * Specify that the record(s) beind update have a lifecycle stage status 'archive'
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function isArchive()
+    {
+      $this->params["lifecycle"] = 'archive';
+      
+      return($this);
+    }   
+             
+    /**
+    * Specify that the record(s) beind update have a lifecycle stage status 'experimental'
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function isExperimental()
+    {
+      $this->params["lifecycle"] = 'experimental';
+      
+      return($this);
     }  
+                     
+    /**
+    * Specify that the record(s) beind update have a lifecycle stage status 'pre-release'
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function isPreRelease()
+    {
+      $this->params["lifecycle"] = 'pre_release';
+      
+      return($this);
+    }   
+                     
+    /**
+    * Specify that the record(s) beind update have a lifecycle stage status 'staging'
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function isStaging()
+    {
+      $this->params["lifecycle"] = 'staging';
+      
+      return($this);
+    }   
+                            
+    /**
+    * Specify that the record(s) beind update have a lifecycle stage status 'harvesting'
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function isHarvesting()
+    {
+      $this->params["lifecycle"] = 'harvesting';
+      
+      return($this);
+    } 
+                            
+    /**
+    * Specify that the record(s) beind update have a lifecycle stage status 'unspecified'
+    * 
+    * **Required**: This function must be called before sending the query
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function isUnspecified()
+    {
+      $this->params["lifecycle"] = 'unspecified';
+      
+      return($this);
+    }     
    }       
  
 //@}    
