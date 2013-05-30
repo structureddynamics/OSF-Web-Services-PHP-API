@@ -79,6 +79,8 @@
       
       // Set default parameters for this query
       $this->sourceInterface("default");
+      
+      $this->soft();
     } 
     
     /**
