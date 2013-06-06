@@ -268,7 +268,7 @@
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
-    public function ingoreRevision()
+    public function ignoreRevision()
     {
       $this->params["revision"] = 'false';
       
