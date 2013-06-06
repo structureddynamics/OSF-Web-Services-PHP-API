@@ -109,7 +109,11 @@ class Resultset
   /** Folder where the structWSF instance is installed */
   private $wsf_base_path = "/usr/share/structwsf";
   
-  /** Namespaces object instance */
+  /** 
+  * Namespaces object instance 
+  * 
+  * @var Namespaces
+  */
   private $namespaces;
 
   /**
@@ -132,7 +136,7 @@ class Resultset
   * Add a Subject object to the resultset
   * 
   * @param mixed $subject Subject object to add to the resultset
-  * @param mixed $dataset Dataset URI where to add the subject
+  * @param string $dataset Dataset URI where to add the subject
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -167,7 +171,7 @@ class Resultset
   /**
   * Get all the subjects defined in this resultset.
   * 
-  * @return An array of Subject objects
+  * @return Array An array of Subject objects
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -193,9 +197,9 @@ class Resultset
   /**
   * Get a subject by its URI
   * 
-  * @param mixed $uri URI of the subject to get from the resultset.
-  * @return Subject instance that match the input URI. Returns FALSE if no subject
-  *         match the input URI.
+  * @param string $uri URI of the subject to get from the resultset.
+  * @return Subject Subject instance that match the input URI. Returns FALSE if no subject
+  *                 match the input URI.
   */
   public function getSubjectByUri($uri)
   {
@@ -218,6 +222,8 @@ class Resultset
   
   /**
   * Get the array internal description of the resultset 
+  * 
+  * @return Array
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -274,7 +280,7 @@ class Resultset
   *                    "more-record-uri": ...
   *                  )
   * 
-  * @param mixed $resultset Resultset array to use in this Resultset object
+  * @param Array $resultset Resultset array to use in this Resultset object
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -286,7 +292,7 @@ class Resultset
   /**
   * Import a structXML resultset
   * 
-  * @param mixed $structXMLResultset structXML resultset to import
+  * @param string $structXMLResultset structXML resultset to import
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -1380,9 +1386,9 @@ class Resultset
   /**
   * Encode content to be included in XML files
   *           
-  * @param $string The content string to be encoded
+  * @param string $string The content string to be encoded
   *    
-  * @return returns the encoded string
+  * @return string returns the encoded string
   *  
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -1399,9 +1405,9 @@ class Resultset
   /**
   * Encode a string to put in a JSON value
   *            
-  * @param $string The string to escape
+  * @param string $string The string to escape
   *    
-  * @return returns the escaped string
+  * @return string returns the escaped string
   *    
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -1411,7 +1417,7 @@ class Resultset
   * Prefixizes a URI (so, create a reference such as: "foo:Bar"). The prefix
   * and the base URI is saved in an array passed in reference.
   * 
-  * @param mixed $uri URI to prefixize
+  * @param string $uri URI to prefixize
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -1490,7 +1496,7 @@ class Resultset
   /**
   * Unprefixize a URI using the prefixes defined in this resultset.
   * 
-  * @param mixed $uri string to unprefixize.
+  * @param string $uri string to unprefixize.
   * 
   * @return the unprefixized URI. Return the input string if it can't be unprefixized
   */

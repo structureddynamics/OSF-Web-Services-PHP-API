@@ -56,12 +56,18 @@ class WebServiceQuerier
   /** Internal error debug information of the queried web sevice */
   private $errorDebugInfo = "";
 
-  /** Pointer to an extension object to allow external code to interact with the querier */
+  /** 
+  * Pointer to an extension object to allow external code to interact with the querier 
+  * 
+  * @var QuerierExtension
+  */
   private $extension = NULL;
 
   /** 
   * Internal error of the queried web service. The error doesn't necessarly come from the
   * queried web service endpoint in the case of a compound web service.
+  * 
+  * @var QuerierError
   */
   public $error;
 

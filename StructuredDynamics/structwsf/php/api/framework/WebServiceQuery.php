@@ -63,7 +63,7 @@
     * Internal error of the queried web service. The error doesn't necessarly come from the
     * queried web service endpoint in the case of a compound web service.
     * 
-    * This is an instance of the QuerierError() object.
+    * @var QuerierError
     */
     public $error;             
     
