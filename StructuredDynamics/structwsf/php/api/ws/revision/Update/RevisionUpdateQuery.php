@@ -119,40 +119,6 @@
     }
     
     /**
-    * Specifies that we want the short description of the results record. Returned record is described using
-    * their date stamp (for ordering purposes) and their URI.
-    * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.
-    */
-    public function shortResults()
-    {
-      $this->params["mode"] = 'short';
-      
-      return($this);
-    }    
-    
-    /**
-    * Specifies that we want the long description of the results record. Returned record is described using
-    * their date stamp (for ordering purposes) their URI, the performer of the revision and their
-    * lifecycle stage status.
-    * 
-    * Note: this is the default behvior of the endpoint
-    * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.
-    */
-    public function longResults()
-    {
-      $this->params["mode"] = 'long';
-      
-      return($this);
-    } 
-    
-    
-    /**
     * Specify that the record being updated has a lifecycle stage status 'published'
     * 
     * **Required**: This function must be called before sending the query
