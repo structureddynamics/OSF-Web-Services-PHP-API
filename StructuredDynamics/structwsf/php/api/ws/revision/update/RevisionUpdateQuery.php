@@ -96,7 +96,7 @@
     */
     public function revisionUri($uri)
     {
-      $this->params["uri"] = urlencode($uri);
+      $this->params["revuri"] = urlencode($uri);
       
       return($this);
     }
