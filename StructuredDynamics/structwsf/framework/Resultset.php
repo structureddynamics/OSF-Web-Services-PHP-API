@@ -814,6 +814,7 @@ class Resultset
 
                         if($jsonReifyData != "")
                         {
+                          $json .= ", \n";  
                           $json .= '              "reify": [ '."\n";
                           
                           $jsonReifyData = substr($jsonReifyData, 0, strlen($jsonReifyData) - 3);
@@ -1106,7 +1107,7 @@ class Resultset
                   // It is a literal value, or a literal value of some type (int, bool, etc)
                   if($value["value"] !== "")
                   {
-                    $xml .= '    <'.$this->xmlEncode($this->prefixize($attributeURI)).''.(isset($value["lang"]) && $value["lang"] != "" ? ' xml:lang="'.$this->xmlEncode($value["lang"]).'"' : "").''.(isset($value["type"]) && $value["type"] != "" && $value["type"] != "rdfs:Literal" && $value["type"] != Namespaces::$rdfs."Literal" ? ' rdf:datatype="'.$this->xmlEncode($this->prefixize($value["type"])).'"' : "").'>'.$this->xmlEncode($value["value"]).'</'.$this->xmlEncode($this->prefixize($attributeURI)).'>'."\n";              
+                    $xml .= '    <'.$this->xmlEncode($this->prefixize($attributeURI)).''.(isset($value["lang"]) && $value["lang"] != "" ? ' xml:lang="'.$this->xmlEncode($value["lang"]).'"' : "").''.(isset($value["type"]) && $value["type"] != "" && $value["type"] != "rdfs:Literal" && $value["type"] != Namespaces::$rdfs."Literal" ? ' rdf:datatype="'.$this->xmlEncode($this->unprefixize($value["type"])).'"' : "").'>'.$this->xmlEncode($value["value"]).'</'.$this->xmlEncode($this->prefixize($attributeURI)).'>'."\n";              
                     
                     if(isset($value["reify"]))
                     {
@@ -1296,7 +1297,7 @@ class Resultset
                   {
                     if(isset($value["type"]) && $value["type"] != "" && $value["type"] != "rdfs:Literal" && $value["type"] != Namespaces::$rdfs."Literal")
                     {
-                      $json .= $jsonPaddingSize.$this->prefixize($attributeURI).' """'.$this->jsonEncode($value["value"]).'"""^^'.$this->prefixize($value["type"])." ;\n";                
+                      $json .= $jsonPaddingSize.$this->prefixize($attributeURI).' """'.$this->jsonEncode($value["value"]).'"""^^<'.$this->unprefixize($value["type"])."> ;\n";                
                     }
                     elseif(isset($value["lang"]) && $value["lang"] != "")
                     {
