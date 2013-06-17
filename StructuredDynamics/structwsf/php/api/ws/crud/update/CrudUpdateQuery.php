@@ -207,6 +207,8 @@
     public function documentMimeIsRdfXml()
     {
       $this->params["mime"] = urlencode("application/rdf+xml");
+      
+      return($this);      
     }
     
     /**
