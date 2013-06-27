@@ -205,7 +205,7 @@
     * 
     * @see http://techwiki.openstructs.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
     * 
-    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    * @author Frederick Giasson, Structured Dynamics LLC. 
     */
     public function excludeReification()
     {
@@ -213,6 +213,26 @@
       
       return($this);
     }     
+    
+    /**
+    * Specifies the language of the records to be returned by the search endpoint. Only the textual 
+    * information of the requested language will be returned to the user. If no textual information 
+    * is available for a record, for a requested language, then only non-textual information will be 
+    * returned about the record. The default is "en"; however, if the parameter is an empty string, 
+    * then all the language strings for the record(s) will be returned.
+    * 
+    * The default behavior is that the language is 'en' (English)
+    * 
+    * @see http://techwiki.openstructs.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC. 
+    */
+    public function lang($lang = 'en')
+    {
+      $this->params["lang"] = strtolower($lang);
+      
+      return($this);
+    }
     
     /**
     * Set a list of attribute URIs to include in the resultset returned by the endpoint.
