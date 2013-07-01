@@ -507,6 +507,23 @@
       $this->params["attributes_boolean_operator"] = "or";
       
       return($this);
+    } 
+       
+    /**
+    * Set the language of the records to be returned by the search endpoint. Only the textual 
+    * information of the requested language will be returned to the user. If no textual 
+    * information is available for a record, for a requested language, then only non-textual 
+    * information will be returned about the record.
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function lang($lang = 'en')
+    {
+      $this->params["lang"] = strtolower($lang);
+      
+      return($this);
     }
     
     /**
@@ -880,7 +897,7 @@
         $distance = 1;
       }
       
-      if($distanceType != "km" && $distanceType != "miles")
+      if($distanceType != "km" && $distanceType != "mile")
       {
         $distanceType = "km";
       }
@@ -898,7 +915,7 @@
         break;
       }
       
-      $this->params["distance_filter"] = "$lat;$long;$distasnce;$type"; 
+      $this->params["distance_filter"] = "$lat;$long;$distance;$type"; 
       
       return($this);
     }
