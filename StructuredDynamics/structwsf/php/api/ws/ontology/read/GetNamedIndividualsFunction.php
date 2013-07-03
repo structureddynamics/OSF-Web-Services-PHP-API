@@ -38,6 +38,8 @@
     public function getNamedIndividualsUris()
     {
       $this->params["mode"] = "uris";
+      
+      return($this);
     }
     
     /**
@@ -50,6 +52,8 @@
     public function getNamedIndividualsDescriptions()
     {
       $this->params["mode"] = "descriptions";
+      
+      return($this);
     }
     
     
@@ -65,6 +69,8 @@
     public function getNamedIndividualsList()
     {
       $this->params["mode"] = "list";
+      
+      return($this);
     }    
     
     /**
@@ -79,6 +85,8 @@
     public function limit($limit)
     {
       $this->params["limit"] = $limit;
+      
+      return($this);
     }    
     
     /**
@@ -95,6 +103,8 @@
     public function offset($offset)
     {
       $this->params["offset"] = $offset;
+      
+      return($this);
     } 
     
     /**
@@ -109,6 +119,8 @@
     public function directNamedIndividuals()
     {
       $this->params["direct"] = "True";
+      
+      return($this);
     }    
 
     /**
@@ -122,6 +134,8 @@
     public function allNamedIndividuals()
     {
       $this->params["direct"] = "False";
+      
+      return($this);
     }         
   }     
  

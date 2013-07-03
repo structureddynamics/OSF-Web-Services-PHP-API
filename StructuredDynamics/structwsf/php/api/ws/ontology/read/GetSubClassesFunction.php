@@ -40,6 +40,8 @@
     public function uri($uri)
     {
       $this->params["uri"] = $uri;
+      
+      return($this);
     }
     
     /**
@@ -52,6 +54,8 @@
     public function getClassesUris()
     {
       $this->params["mode"] = "uris";
+      
+      return($this);
     }
     
     /**
@@ -64,6 +68,8 @@
     public function getClassesDescriptions()
     {
       $this->params["mode"] = "descriptions";
+      
+      return($this);
     }
     
     
@@ -85,6 +91,8 @@
     public function getHierarchy()
     {
       $this->params["mode"] = "hierarchy";
+      
+      return($this);
     }    
     
     /**
@@ -97,6 +105,8 @@
     public function directSubClasses()
     {
       $this->params["direct"] = "True";
+      
+      return($this);
     }    
 
     /**
@@ -110,6 +120,8 @@
     public function allSubClasses()
     {
       $this->params["direct"] = "False";
+      
+      return($this);
     }    
   }     
  

@@ -36,6 +36,8 @@
     public function getAnnotationProperties()
     {
       $this->params["type"] = "annotationproperty";
+      
+      return($this);
     }
     
     /**
@@ -48,6 +50,8 @@
     public function getDatatypeProperties()
     {
       $this->params["type"] = "dataproperty";
+      
+      return($this);
     }
     
     /**
@@ -60,7 +64,10 @@
     public function getObjectProperties()
     {
       $this->params["type"] = "objectproperty";
+      
+      return($this);
     }    
+    
     /**
     * Get all the Datatype, Object and Annotation properties of the ontology 
     * 
@@ -71,6 +78,8 @@
     public function getAllPropertiesTypes()
     {
       $this->params["type"] = "all";
+      
+      return($this);
     }
     
     /**
@@ -83,6 +92,8 @@
     public function getPropertiesUris()
     {
       $this->params["mode"] = "uris";
+      
+      return($this);
     }
     
     /**
@@ -95,6 +106,8 @@
     public function getPropertiesDescriptions()
     {
       $this->params["mode"] = "descriptions";
+      
+      return($this);
     }
     
     /**
@@ -109,6 +122,8 @@
     public function limit($limit)
     {
       $this->params["limit"] = $limit;
+      
+      return($this);
     }    
     
     /**
@@ -125,6 +140,8 @@
     public function offset($offset)
     {
       $this->params["offset"] = $offset;
+      
+      return($this);
     }    
   }    
  

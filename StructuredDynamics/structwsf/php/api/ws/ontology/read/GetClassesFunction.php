@@ -35,6 +35,8 @@
     public function getClassesUris()
     {
       $this->params["mode"] = "uris";
+      
+      return($this);
     }
     
     /**
@@ -47,6 +49,8 @@
     public function getClassesDescriptions()
     {
       $this->params["mode"] = "descriptions";
+      
+      return($this);
     }
     
     /**
@@ -61,6 +65,8 @@
     public function limit($limit)
     {
       $this->params["limit"] = $limit;
+      
+      return($this);
     }    
     
     /**
@@ -77,6 +83,8 @@
     public function offset($offset)
     {
       $this->params["offset"] = $offset;
+      
+      return($this);
     }    
   }    
  

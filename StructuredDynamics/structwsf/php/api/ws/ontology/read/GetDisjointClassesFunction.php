@@ -39,6 +39,8 @@
     public function uri($uri)
     {
       $this->params["uri"] = $uri;
+      
+      return($this);
     }
     
     /**
@@ -51,6 +53,8 @@
     public function getClassesUris()
     {
       $this->params["mode"] = "uris";
+      
+      return($this);
     }
     
     /**
@@ -63,6 +67,8 @@
     public function getClassesDescriptions()
     {
       $this->params["mode"] = "descriptions";
+      
+      return($this);
     }   
   }  
  

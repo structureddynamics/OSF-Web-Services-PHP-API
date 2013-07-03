@@ -34,6 +34,8 @@
     public function modeUris()
     {
       $this->params["mode"] = "uris";
+      
+      return($this);
     }
     
     /**
@@ -46,6 +48,8 @@
     public function modeDescriptions()
     {
       $this->params["mode"] = "descriptions";
+      
+      return($this);
     } 
   }   
  

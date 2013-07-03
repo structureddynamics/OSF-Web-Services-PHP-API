@@ -41,6 +41,8 @@
     public function uri($uri)
     {
       $this->params["uri"] = $uri;
+      
+      return($this);
     }
     
     /**
@@ -53,6 +55,8 @@
     public function getDatatypeProperties()
     {
       $this->params["type"] = "dataproperty";
+      
+      return($this);
     }
     
     /**
@@ -65,6 +69,8 @@
     public function getObjectProperties()
     {
       $this->params["type"] = "objectproperty";
+      
+      return($this);
     }    
     
     /**
@@ -77,6 +83,8 @@
     public function getPropertiesUris()
     {
       $this->params["mode"] = "uris";
+      
+      return($this);
     }
     
     /**
@@ -89,6 +97,8 @@
     public function getPropertiesDescriptions()
     {
       $this->params["mode"] = "descriptions";
+      
+      return($this);
     }  
                     
     /**
@@ -101,6 +111,8 @@
     public function directDisjointProperties()
     {
       $this->params["direct"] = "True";
+      
+      return($this);
     }    
 
     /**
@@ -114,6 +126,8 @@
     public function allDisjointProperties()
     {
       $this->params["direct"] = "False";
+      
+      return($this);
     }     
   }
  
