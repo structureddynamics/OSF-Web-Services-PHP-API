@@ -24,7 +24,6 @@
       // Default values
       $this->getDatatypeProperties();
       $this->getPropertiesUris();
-      $this->allDisjointProperties();
     }
         
     /**
@@ -100,35 +99,6 @@
       
       return($this);
     }  
-                    
-    /**
-    * Only get the direct disjoint-properties of the target property. 
-    * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getDisjointProperties
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.
-    */
-    public function directDisjointProperties()
-    {
-      $this->params["direct"] = "True";
-      
-      return($this);
-    }    
-
-    /**
-    * Get all the disjoint-properties by inference (so, the disjoint-properties of 
-    * the disjoint-properties recursively). 
-    * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getDisjointProperties
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.
-    */
-    public function allDisjointProperties()
-    {
-      $this->params["direct"] = "False";
-      
-      return($this);
-    }     
   }
  
 //@}    

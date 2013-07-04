@@ -24,7 +24,6 @@
       // Default values
       $this->getDatatypeProperties();
       $this->getPropertiesUris();
-      $this->allEquivalentProperties();
     }
         
     /**
@@ -99,36 +98,7 @@
       $this->params["mode"] = "descriptions";
       
       return($this);
-    }  
-                    
-    /**
-    * Only get the direct equivalent-properties of the target property. 
-    * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentProperties
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.
-    */
-    public function directEquivalentProperties()
-    {
-      $this->params["direct"] = "True";
-      
-      return($this);
-    }    
-
-    /**
-    * Get all the equivalent-properties by inference (so, the equivalent-properties of 
-    * the equivalent-properties recursively). 
-    * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentProperties
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.
-    */
-    public function allEquivalentProperties()
-    {
-      $this->params["direct"] = "False";
-      
-      return($this);
-    }         
+    }          
   }
   
 //@}    
