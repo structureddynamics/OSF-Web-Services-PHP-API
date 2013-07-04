@@ -188,14 +188,11 @@
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
-    public function getOntologies(&$function)
+    public function getOntologies()
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetOntologiesFunction')
-      {
-        $this->params["function"] = "getOntologies";
+      $this->params["function"] = "getOntologies";
         
-        $this->params["parameters"] = $function->getParameters();
-      }
+      $this->params["parameters"] = urlencode('mode=uris');
       
       return($this);
     }    
