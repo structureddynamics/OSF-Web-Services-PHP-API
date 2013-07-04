@@ -29,6 +29,20 @@
     }
     
     /**
+    * Get all the named individuals belonging to that class URI
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function classUri($uri)
+    {
+      $this->params["classuri"] = urlencode($uri);
+      
+      return($this);
+    }    
+    
+    /**
     * Get a list of URIs that refers to the named individuals described in this ontology. 
     * 
     * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
