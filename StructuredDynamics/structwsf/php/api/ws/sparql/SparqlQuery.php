@@ -44,7 +44,11 @@
                                      "application/rdf+n3",
                                      "application/iron+json",
                                      "application/iron+csv",
-                                     "application/sparql-results+json"));
+                                     "application/sparql-results+json",
+                                     "application/sparql-results+xml",
+                                     "text/rdf+n3",
+                                     "application/rdf+json",
+                                     "text/plain"));
                                     
       $this->setMethodPost();
 
