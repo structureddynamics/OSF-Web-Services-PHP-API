@@ -79,7 +79,10 @@
     */
     protected function setEndpoint($endpoint)
     {
-      $this->endpoint = ltrim(rtrim($endpoint, "/"))."/";
+      if($endpoint != '')
+      {
+        $this->endpoint = ltrim(rtrim($endpoint, "/"))."/"; 
+      }
     }
     
     /**
