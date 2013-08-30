@@ -189,12 +189,20 @@ class Namespaces
   */
   public function getUnprefixedUri($prefixedUri)
   {
+    $prefixedUri = trim($prefixedUri);
+    
     $pos = strripos($prefixedUri, ":");
     
     if(!$pos)
     {
       return(FALSE);
     }
+    
+    // Make sure that we don't have an already unprefixed URI by check if a schema is used in the URI
+    if(substr($prefixedUri, $pos, 3) == '://')
+    {
+      return($prefixedUri);
+    }    
 
     $prefix = substr($prefixedUri, 0, $pos);
     $fragment = substr($prefixedUri, $pos + 1);
