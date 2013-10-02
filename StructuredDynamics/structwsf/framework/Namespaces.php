@@ -18,25 +18,25 @@ namespace StructuredDynamics\structwsf\framework;
 */
 class Namespaces
 {
-  public static $dc = "http://purl.org/dc/elements/1.1/";
-  public static $dcam = "http://purl.org/dc/dcam/";
-  public static $dcterms = "http://purl.org/dc/terms/";
-  public static $dctype = "http://purl.org/dc/dcmitype/";
-  public static $cc = "http://creativecommons.org/ns#";
-  public static $foaf = "http://xmlns.com/foaf/0.1/";
-  public static $doap = "http://usefulinc.com/ns/doap#";
-  public static $geo = "http://www.w3.org/2003/01/geo/wgs84_pos#";
-  public static $geoname = "http://www.geonames.org/ontology#";
-  public static $bio = "http://purl.org/vocab/bio/0.1/";
-  public static $bibo = "http://purl.org/ontology/bibo/";
   public static $iron = "http://purl.org/ontology/iron#";
   public static $owl = "http://www.w3.org/2002/07/owl#";
   public static $rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
   public static $rdfs = "http://www.w3.org/2000/01/rdf-schema#";
+  public static $dcterms = "http://purl.org/dc/terms/";
+  public static $dc = "http://purl.org/dc/elements/1.1/";
+  public static $foaf = "http://xmlns.com/foaf/0.1/";
+  public static $bibo = "http://purl.org/ontology/bibo/";
+  public static $umbel = "http://umbel.org/umbel#";
+  public static $dcam = "http://purl.org/dc/dcam/";
+  public static $dctype = "http://purl.org/dc/dcmitype/";
+  public static $cc = "http://creativecommons.org/ns#";
+  public static $doap = "http://usefulinc.com/ns/doap#";
+  public static $geo = "http://www.w3.org/2003/01/geo/wgs84_pos#";
+  public static $geoname = "http://www.geonames.org/ontology#";
+  public static $bio = "http://purl.org/vocab/bio/0.1/";
   public static $sioc = "http://rdfs.org/sioc/ns#";
   public static $skos_2004 = "http://www.w3.org/2004/02/skos/core#";
   public static $skos_2008 = "http://www.w3.org/2008/05/skos#";
-  public static $umbel = "http://umbel.org/umbel#";
   public static $umbel_ac = "http://umbel.org/umbel/ac/";
   public static $umbel_sc = "http://umbel.org/umbel/sc/";
   public static $umbel_rc = "http://umbel.org/umbel/rc/";
@@ -169,7 +169,7 @@ class Namespaces
   
     foreach($this->namespaces as $prefix => $u)    
     {    
-      if($onto == $u)
+      if($onto === $u)
       {
         return($prefix.":".$resource);
       }
@@ -244,7 +244,7 @@ class Namespaces
   
     foreach($this->namespaces as $prefix => $uri)    
     {    
-      if($onto == $uri)
+      if($onto === $uri)
       {
         return($prefix);
       }
