@@ -1,9 +1,9 @@
 Introduction
 ============
 
-The **structWSF PHP API** is a framework available to PHP developers to help them generate queries to any
-structWSF web service endpoint. Each structWSF web service endpoint has its own WebServiceQuery class in the
-structWSF PHP API. This class is used to generate any query, to send it to be endpoint of a structWSF instance
+The **OSF PHP API** is a framework available to PHP developers to help them generate queries to any
+OSF web service endpoint. Each OSF web service endpoint has its own WebServiceQuery class in the
+OSF PHP API. This class is used to generate any query, to send it to be endpoint of a OSF instance
 and to get back a resultset. The resultset can then be manipulated by using the Resultset API. This same API
 can be used to transform the resultset into different formats.
 
@@ -14,8 +14,8 @@ Documentation
 How to use the API
 ------------------
 
-This API is used to generate structWSF queries to different web service endpoints. This API framework is composed
-of a series of classes that are used to help PHP developers create structWSF queries in their respective PHP applications.
+This API is used to generate OSF queries to different web service endpoints. This API framework is composed
+of a series of classes that are used to help PHP developers create OSF queries in their respective PHP applications.
 
 The use of this API is simple. Developers normally have three easy steps to do:
 
@@ -23,8 +23,8 @@ The use of this API is simple. Developers normally have three easy steps to do:
 + Define all the parameters/features/behaviors of the web service by invoking different methods of the class
 + Send the resulting query using the send() method
 
-Here is an example of a query that is generated using the structWSF PHP API and sent to specific
-structWSF network instance:
+Here is an example of a query that is generated using the OSF PHP API and sent to specific
+OSF network instance:
 
 ```php
   <?php
@@ -74,11 +74,11 @@ structWSF network instance:
 Auto-loading of Classes
 -----------------------
 
-The structWSF PHP API does comply with the [PSR-0 Standard Document](https://gist.github.com/1234504) 
+The OSF PHP API does comply with the [PSR-0 Standard Document](https://gist.github.com/1234504) 
 for auto-loading the classes of the framework. The SplClassLoader class that has been developed by
 the same group can be used as the classes auto-loader.
 
-Here is an example of how you can auto-load the classes of the structWSF PHP API framework:
+Here is an example of how you can auto-load the classes of the OSF PHP API framework:
 
 ```php
   <?php
@@ -86,15 +86,15 @@ Here is an example of how you can auto-load the classes of the structWSF PHP API
   include_once("SplClassLoader.php");
   
   // Load the \ws namespace where all the web service code is located 
-  $loader_ws = new SplClassLoader('StructuredDynamics\structwsf\php\api\ws');
+  $loader_ws = new SplClassLoader('StructuredDynamics\osf\php\api\ws');
   $loader_ws->register();
   
   // Load the \framework namespace where all the supporting (utility) code is located
-  $loader_framework = new SplClassLoader('StructuredDynamics\structwsf\php\api\framework');
+  $loader_framework = new SplClassLoader('StructuredDynamics\osf\php\api\framework');
   $loader_framework->register();
  
   // Use the SearchQuery class
-  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  use StructuredDynamics\osf\php\api\ws\search\SearchQuery;
   
   // Create the SearchQuery object
   $search = new SearchQuery("http://localhost/ws/");
@@ -129,7 +129,7 @@ Auth: Lister
   <?php
   
   // Use the AuthListerQuery class
-  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
+  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
   
   // Create the AuthListerQuery object
   $authlister = new AuthListerQuery("http://demo.citizen-dan.org/ws/");
@@ -154,10 +154,10 @@ Auth Registrar Access
 ```php
   <?php
 
-  use \StructuredDynamics\structwsf\framework\Namespaces;
-  use \StructuredDynamics\structwsf\php\api\ws\auth\registrar\access\AuthRegistrarAccessQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  use \StructuredDynamics\osf\framework\Namespaces;
+  use \StructuredDynamics\osf\php\api\ws\auth\registrar\access\AuthRegistrarAccessQuery;
+  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
+  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
     
   // Get all the web services registered on this instance with a 
   
@@ -224,12 +224,12 @@ Auth: Registrar WS
 ```php
   <?php
   
-  use \StructuredDynamics\structwsf\framework\Namespaces;                     
-  use \StructuredDynamics\structwsf\php\api\ws\auth\registrar\ws\AuthRegistrarWsQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  use \StructuredDynamics\osf\framework\Namespaces;                     
+  use \StructuredDynamics\osf\php\api\ws\auth\registrar\ws\AuthRegistrarWsQuery;
+  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
+  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   
-  // Register a new web service endpoint to the structWSF instance
+  // Register a new web service endpoint to the OSF instance
   $arws = new AuthRegistrarWsQuery("http://localhost/ws/");
 
   // Define the title 
@@ -248,7 +248,7 @@ Auth: Registrar WS
 
   if($arws->isSuccessful())
   {
-    // Now, let's use the auth: lister endpoint to make sure we can see it in the structWSF instance
+    // Now, let's use the auth: lister endpoint to make sure we can see it in the OSF instance
     $authlister = new AuthListerQuery("http://localhost/ws/");
     
     // Specifies that we want to get all the list of all registered web service endpoints.
@@ -287,7 +287,7 @@ Auth: Validator
 ```php
   <?php
   
-  use \StructuredDynamics\structwsf\php\api\ws\auth\validator\AuthValidatorQuery;
+  use \StructuredDynamics\osf\php\api\ws\auth\validator\AuthValidatorQuery;
   
   $authValidator = new AuthValidatorQuery("http://localhost/ws/");
   
@@ -318,7 +318,7 @@ Dataset: Create
   <?php
 
   // Use the DatasetCreateQuery class
-  use \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery;
+  use \StructuredDynamics\osf\php\api\ws\dataset\create\DatasetCreateQuery;
   
   // Create the DatasetCreateQuery object
   $dcreate = new DatasetCreateQuery("http://localhost/ws/");
@@ -337,8 +337,8 @@ Dataset: Create
   
   
   // Get all the web services registered on this instance with a 
-  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  use \StructuredDynamics\structwsf\framework\Namespaces;
+  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
+  use \StructuredDynamics\osf\framework\Namespaces;
   
   // Create the AuthListerQuery object
   $authlister = new AuthListerQuery("http://localhost/ws/");
@@ -369,7 +369,7 @@ Dataset: Create
   // registered web service endpoints of the network.
   $dcreate->targetWebservices($webservices);
   
-  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   
   // We make this new dataset world readable
   $dcreate->globalPermissions(new CRUDPermission(FALSE, TRUE, FALSE, FALSE));
@@ -402,7 +402,7 @@ Dataset: Read
 ```php
   <?php
 
-  use \StructuredDynamics\structwsf\php\api\ws\dataset\read\DatasetReadQuery;
+  use \StructuredDynamics\osf\php\api\ws\dataset\read\DatasetReadQuery;
   
   $dRead = new DatasetReadQuery("http://localhost/ws/");
 
@@ -430,12 +430,12 @@ Dataset: Update
 ```php
   <?php
   
-  use \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\dataset\update\DatasetUpdateQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\dataset\read\DatasetReadQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  use \StructuredDynamics\structwsf\framework\Namespaces;
-  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  use \StructuredDynamics\osf\php\api\ws\dataset\create\DatasetCreateQuery;
+  use \StructuredDynamics\osf\php\api\ws\dataset\update\DatasetUpdateQuery;
+  use \StructuredDynamics\osf\php\api\ws\dataset\read\DatasetReadQuery;
+  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
+  use \StructuredDynamics\osf\framework\Namespaces;
+  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
       
   // First, let's create a new dataset to update after
   
@@ -549,11 +549,11 @@ Dataset: Delete
 ```php
   <?php
   
-  use \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\dataset\delete\DatasetDeleteQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  use \StructuredDynamics\structwsf\framework\Namespaces;
-  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  use \StructuredDynamics\osf\php\api\ws\dataset\create\DatasetCreateQuery;
+  use \StructuredDynamics\osf\php\api\ws\dataset\delete\DatasetDeleteQuery;
+  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
+  use \StructuredDynamics\osf\framework\Namespaces;
+  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
       
   // First, let's create a new dataset to delete after
   
@@ -640,7 +640,7 @@ Crud: Create
   <?php
   
   // Use the CrudCreateQuery class
-  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
+  use \StructuredDynamics\osf\php\api\ws\crud\create\CrudCreateQuery;
   
   // Create the CrudCreateQuery object
   $crudCreate = new CrudCreateQuery("http://localhost/ws/");
@@ -660,13 +660,13 @@ Crud: Create
   // Specifies that the input document is serialized using RDF+XML
   $crudCreate->documentMimeIsRdfXml();  
   
-  // Make sure we index that new RDF data everywhere in the structWSF instance
+  // Make sure we index that new RDF data everywhere in the OSF instance
   $crudCreate->enableFullIndexationMode();
   
   // Import that new RDF data
   $crudCreate->send();
 
-  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  use StructuredDynamics\osf\php\api\ws\search\SearchQuery;
   
   if($crudCreate->isSuccessful())
   {
@@ -703,7 +703,7 @@ Crud: Read
   <?php
 
   // Use the CrudReadQuery class
-  use StructuredDynamics\structwsf\php\api\ws\crud\read\CrudReadQuery;
+  use StructuredDynamics\osf\php\api\ws\crud\read\CrudReadQuery;
   
   // Create the CrudReadQuery object
   $cread = new CrudReadQuery("http://demo.citizen-dan.org/ws/");
@@ -737,13 +737,13 @@ CRUD: Update
   <?php
   
   // Use the CrudCreateQuery class
-  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
+  use \StructuredDynamics\osf\php\api\ws\crud\create\CrudCreateQuery;
   
   // Use the CrudUpdateQuery class
-  use \StructuredDynamics\structwsf\php\api\ws\crud\update\CrudUpdateQuery;
+  use \StructuredDynamics\osf\php\api\ws\crud\update\CrudUpdateQuery;
 
   // Use the SearchQuery class  
-  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  use StructuredDynamics\osf\php\api\ws\search\SearchQuery;
   
   
   // First, let's create our object that we will then modify.
@@ -766,7 +766,7 @@ CRUD: Update
   // Specifies that the input document is serialized using RDF+XML
   $crudCreate->documentMimeIsRdfXml();  
   
-  // Make sure we index that new RDF data everywhere in the structWSF instance
+  // Make sure we index that new RDF data everywhere in the OSF instance
   $crudCreate->enableFullIndexationMode();
   
   // Import that new RDF data
@@ -839,7 +839,7 @@ CRUD: Delete
   <?php
   
   // Use the CrudDeleteQuery class
-  use \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudDeleteQuery;
+  use \StructuredDynamics\osf\php\api\ws\crud\delete\CrudDeleteQuery;
   
   // Create the CrudDeleteQuery object
   $crudDelete = new CrudDeleteQuery("http://localhost/ws/");
@@ -871,19 +871,19 @@ Ontology: Create
 ```php
   <?php
   
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\create\OntologyCreateQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetLoadedOntologiesFunction;
+  use \StructuredDynamics\osf\php\api\ws\ontology\create\OntologyCreateQuery;
+  use \StructuredDynamics\osf\php\api\ws\ontology\read\OntologyReadQuery;
+  use \StructuredDynamics\osf\php\api\ws\ontology\read\GetLoadedOntologiesFunction;
   
   $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
   
   // Create the vcard ontology for which its description is located somewhere on the Web
   $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
   
-  // Enable advanced indexation to have access to it on all structWSF endpoints
+  // Enable advanced indexation to have access to it on all OSF endpoints
   $ontologyCreate->enableAdvancedIndexation();
   
-  // Enable reasoner to persist inferred facts into all endpoints of structWSF
+  // Enable reasoner to persist inferred facts into all endpoints of OSF
   $ontologyCreate->enableReasoner();
   
   // Import the new ontology
@@ -920,8 +920,8 @@ Ontology: Read
 ```php
   <?php
   
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetClassesFunction;
+  use \StructuredDynamics\osf\php\api\ws\ontology\read\OntologyReadQuery;
+  use \StructuredDynamics\osf\php\api\ws\ontology\read\GetClassesFunction;
   
   // Create the Ontology Read query
   $ontologyRead = new OntologyReadQuery("http://demo.citizen-dan.org/ws/");
@@ -969,12 +969,12 @@ Ontology: Update
 ```php
   <?php
   
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\create\OntologyCreateQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\update\OntologyUpdateQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\update\CreateOrUpdateEntityFunction;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\update\UpdateEntityUriFunction;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetClassFunction;
+  use \StructuredDynamics\osf\php\api\ws\ontology\create\OntologyCreateQuery;
+  use \StructuredDynamics\osf\php\api\ws\ontology\update\OntologyUpdateQuery;
+  use \StructuredDynamics\osf\php\api\ws\ontology\update\CreateOrUpdateEntityFunction;
+  use \StructuredDynamics\osf\php\api\ws\ontology\update\UpdateEntityUriFunction;
+  use \StructuredDynamics\osf\php\api\ws\ontology\read\OntologyReadQuery;
+  use \StructuredDynamics\osf\php\api\ws\ontology\read\GetClassFunction;
   
   // First, let's create an initial ontology
   $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
@@ -982,10 +982,10 @@ Ontology: Update
   // Create the vcard ontology for which its description is located somewhere on the Web
   $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
   
-  // Enable advanced indexation to have access to it on all structWSF endpoints
+  // Enable advanced indexation to have access to it on all OSF endpoints
   $ontologyCreate->enableAdvancedIndexation();
   
-  // Enable reasoner to persist inferred facts into all endpoints of structWSF
+  // Enable reasoner to persist inferred facts into all endpoints of OSF
   $ontologyCreate->enableReasoner();
   
   // Import the new ontology
@@ -1052,19 +1052,19 @@ Ontology: Delete
 ```php
   <?php
 
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\create\OntologyCreateQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\delete\OntologyDeleteQuery;
-  use \StructuredDynamics\structwsf\php\api\ws\ontology\delete\DeleteClassFunction;
+  use \StructuredDynamics\osf\php\api\ws\ontology\create\OntologyCreateQuery;
+  use \StructuredDynamics\osf\php\api\ws\ontology\delete\OntologyDeleteQuery;
+  use \StructuredDynamics\osf\php\api\ws\ontology\delete\DeleteClassFunction;
   
   $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
   
   // Create the vcard ontology for which its description is located somewhere on the Web
   $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
   
-  // Enable advanced indexation to have access to it on all structWSF endpoints
+  // Enable advanced indexation to have access to it on all OSF endpoints
   $ontologyCreate->enableAdvancedIndexation();
   
-  // Enable reasoner to persist inferred facts into all endpoints of structWSF
+  // Enable reasoner to persist inferred facts into all endpoints of OSF
   $ontologyCreate->enableReasoner();
   
   // Import the new ontology
@@ -1110,7 +1110,7 @@ Search
   <?php
 
   // Use the SearchQuery class
-  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  use StructuredDynamics\osf\php\api\ws\search\SearchQuery;
   
   // Create the SearchQuery object
   $search = new SearchQuery("http://demo.citizen-dan.org/ws/");
@@ -1135,7 +1135,7 @@ Scones
 ```php
   <?php
   
-  use \StructuredDynamics\structwsf\php\api\ws\scones\SconesQuery;
+  use \StructuredDynamics\osf\php\api\ws\scones\SconesQuery;
   
   $scones = new SconesQuery("http://localhost/ws/");
   
