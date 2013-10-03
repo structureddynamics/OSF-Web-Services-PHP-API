@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\scones\SconesQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\scones\SconesQuery.php
       @brief SconesQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\scones;
+  namespace StructuredDynamics\osf\php\api\ws\scones;
 
   /**
-  * Scones to a structWSF Scones web service endpoint
+  * Scones to a OSF Scones web service endpoint
   * 
   * The scones web service system (subject concepts or named entities) is used 
   * to perform subject concepts and named entities tagging on a target document. 
@@ -18,10 +18,10 @@
   * is returned to the user. 
   * 
   * This Web service is intended to be used by users that wants to tag subjects 
-  * concepts and named entities using the content of a target structWSF instance.
+  * concepts and named entities using the content of a target OSF instance.
   * Since the scones instance is re-using the ontologies & named entities defined on 
-  * a specific structWSF instance, tagging will be performed using this specific 
-  * information. So, if a specific structWSF instance is hosted, maintained and 
+  * a specific OSF instance, tagging will be performed using this specific 
+  * information. So, if a specific OSF instance is hosted, maintained and 
   * defined by an a Health related organization, than their scones web service 
   * should be better at tagging Health related documents.
   * 
@@ -33,7 +33,7 @@
   * 
   * @code
   * 
-  *  use \StructuredDynamics\structwsf\php\api\ws\scones\SconesQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\scones\SconesQuery;
   *  
   *  $scones = new SconesQuery("http://localhost/ws/");
   *  
@@ -62,17 +62,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class SconesQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class SconesQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 

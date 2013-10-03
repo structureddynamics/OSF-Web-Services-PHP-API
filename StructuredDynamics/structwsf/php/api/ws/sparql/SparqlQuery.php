@@ -1,19 +1,19 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\sparql\SparqlQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\sparql\SparqlQuery.php
       @brief SparqlQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\sparql;
+  namespace StructuredDynamics\osf\php\api\ws\sparql;
 
   /**
-  * SPARQL Query to a structWSF SPARQL web service endpoint
+  * SPARQL Query to a OSF SPARQL web service endpoint
   * 
   * The SPARQL Web service is used to send custom SPARQL queries against the 
-  * structWSF data structure. This is a general purpose querying Web service. 
+  * OSF data structure. This is a general purpose querying Web service. 
   * 
   * Here is a code example of how this class can be used by developers: 
   * 
@@ -25,17 +25,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class SparqlQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class SparqlQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 

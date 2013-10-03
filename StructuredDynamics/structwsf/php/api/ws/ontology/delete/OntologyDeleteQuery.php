@@ -1,19 +1,19 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\delete\OntologyDeleteQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\ontology\delete\OntologyDeleteQuery.php
       @brief OntologyDeleteQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\ontology\delete;
+  namespace StructuredDynamics\osf\php\api\ws\ontology\delete;
 
-  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   
   /**
   * The Ontology Delete service is used to delete an OWL ontology existing in the 
-  * structWSF instance, or an entity in one of the ontology. An entity can be anything 
+  * OSF instance, or an entity in one of the ontology. An entity can be anything 
   * of: a class, an object property, a datatype property, an annotation property or a 
   * named individual.
   * 
@@ -26,19 +26,19 @@
   * 
   * @code
   * 
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\create\OntologyCreateQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\delete\OntologyDeleteQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\delete\DeleteClassFunction;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\create\OntologyCreateQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\delete\OntologyDeleteQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\delete\DeleteClassFunction;
   *  
   *  $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
   *  
   *  // Create the vcard ontology for which its description is located somewhere on the Web
   *  $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
   *  
-  *  // Enable advanced indexation to have access to it on all structWSF endpoints
+  *  // Enable advanced indexation to have access to it on all OSF endpoints
   *  $ontologyCreate->enableAdvancedIndexation();
   *  
-  *  // Enable reasoner to persist inferred facts into all endpoints of structWSF
+  *  // Enable reasoner to persist inferred facts into all endpoints of OSF
   *  $ontologyCreate->enableReasoner();
   *  
   *  // Import the new ontology
@@ -81,17 +81,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class OntologyDeleteQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class OntologyDeleteQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 
@@ -159,7 +165,7 @@
     */
     public function deleteClass(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\delete\DeleteClassFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\delete\DeleteClassFunction')
       {
         $this->params["function"] = "deleteClass";
         
@@ -180,7 +186,7 @@
     */
     public function deleteProperty(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\delete\DeletePropertyFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\delete\DeletePropertyFunction')
       {
         $this->params["function"] = "deleteProperty";
         
@@ -201,7 +207,7 @@
     */
     public function deleteNamedIndividual(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\delete\DeleteNamedIndividualFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\delete\DeleteNamedIndividualFunction')
       {
         $this->params["function"] = "deleteNamedIndividual";
         
@@ -220,7 +226,7 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
-  class DeleteClassFunction extends \StructuredDynamics\structwsf\php\api\framework\OntologyFunctionCall
+  class DeleteClassFunction extends \StructuredDynamics\osf\php\api\framework\OntologyFunctionCall
   {
     /**
     * Specifies the URI of the class to delete from the ontology
@@ -245,7 +251,7 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
-  class DeletePropertyFunction extends \StructuredDynamics\structwsf\php\api\framework\OntologyFunctionCall
+  class DeletePropertyFunction extends \StructuredDynamics\osf\php\api\framework\OntologyFunctionCall
   {
     /**
     * Specifies the URI of the property to delete from the ontology
@@ -270,7 +276,7 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
-  class DeleteNamedIndividualFunction extends \StructuredDynamics\structwsf\php\api\framework\OntologyFunctionCall
+  class DeleteNamedIndividualFunction extends \StructuredDynamics\osf\php\api\framework\OntologyFunctionCall
   {
     /**
     * Specifies the URI of the named individual to delete from the ontology

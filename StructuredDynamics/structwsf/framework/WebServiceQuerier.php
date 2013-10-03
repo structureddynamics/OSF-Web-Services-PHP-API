@@ -1,15 +1,15 @@
 <?php
 
-/*! @ingroup StructWSFPHPAPIFramework Framework of the structWSF PHP API library */
+/*! @ingroup OSFPHPAPIFramework Framework of the OSF PHP API library */
 //@{
 
-/*! @file \StructuredDynamics\structwsf\framework\WebServiceQuerier.php
+/*! @file \StructuredDynamics\osf\framework\WebServiceQuerier.php
     @brief Querying a RESTFull web service endpoint
 
 */
 
-namespace StructuredDynamics\structwsf\framework;
-use \StructuredDynamics\structwsf\framework\QuerierExtension;
+namespace StructuredDynamics\osf\framework;
+use \StructuredDynamics\osf\framework\QuerierExtension;
 
 /**
 * Query a RESTFul web service endpoint
@@ -70,6 +70,10 @@ class WebServiceQuerier
   * @var QuerierError
   */
   public $error;
+  
+  private $appID = '';
+  private $apiKey = '';
+  private $userID = '';  
 
   /**
   *   Constructor
@@ -84,7 +88,7 @@ class WebServiceQuerier
   *    
   *   @author Frederick Giasson, Structured Dynamics LLC.
   */
-  function __construct($url, $method, $mime, $parameters, $timeout = 0, $extension = NULL)
+  function __construct($url, $method, $mime, $parameters, $timeout = 0, $extension = NULL, $appID, $apiKey, $userID)
   {
     $this->url = $url;
     $this->method = $method;
@@ -93,6 +97,9 @@ class WebServiceQuerier
     $this->mime = $mime;
     $this->timeout = $timeout;
     $this->extension = ($extension === NULL) ? new QuerierExtension() : $extension;
+    $this->appID = $appID;
+    $this->apiKey = $apiKey;
+    $this->userID = $userID;
 
     $this->queryWebService();
   }
@@ -108,11 +115,27 @@ class WebServiceQuerier
   {
     $ch = curl_init();
 
+    $request_timestamp = gmdate("U");
+    
+    $request_timestamp = gmdate("U");
+    $request_url = parse_url($this->getURL());    
+    
     switch (strtolower($this->method))
     {
       case "get":
         curl_setopt($ch, CURLOPT_URL, $this->url . "?" . $this->parameters);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: $this->mime"));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: ' . $this->getMIME(),
+                                                   'OSF-TS: ' . $request_timestamp,
+                                                   'OSF-APP-ID: '. $this->appID,
+                                                   'OSF-USER-URI: '. $this->userID,
+                                                   'Authorization: ' . $this->securityHash(
+                                                                         $this->parameters,
+                                                                         strtoupper($this->getMethod()),
+                                                                         $request_url['path'],
+                                                                         $this->apiKey,
+                                                                         $request_timestamp
+                                                                       )));     
+   
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         
@@ -132,7 +155,17 @@ class WebServiceQuerier
         if($uploadMaxFileSize > strlen($this->parameters))
         {
           curl_setopt($ch, CURLOPT_URL, $this->url);
-          curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: $this->mime"));
+          curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: ' . $this->getMIME(),
+                                                     'OSF-TS: ' . $request_timestamp,
+                                                     'OSF-APP-ID: '. $this->appID,
+                                                     'OSF-USER-URI: '. $this->userID,
+                                                     'Authorization: ' . $this->securityHash(
+                                                                           urldecode($this->parameters),
+                                                                           strtoupper($this->getMethod()),
+                                                                           $request_url['path'],
+                                                                           $this->apiKey,
+                                                                           $request_timestamp
+                                                                         )));     
           curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
           curl_setopt($ch, CURLOPT_POST, 1);
@@ -147,7 +180,7 @@ class WebServiceQuerier
         else
         {
           $this->error = new QuerierError("WSF-600", "Fatal", $this->url, "Query too big", 
-                                   "The query sent to the structWSF endpoint is too big given
+                                   "The query sent to the OSF endpoint is too big given
                                     the current settings of the instance. The size of the
                                     query is ".number_format(strlen($this->parameters), 0, " ", " ")." bytes, 
                                     and the autorized size of the query is ".$uploadMaxFileSize." bytes", "");
@@ -302,6 +335,18 @@ class WebServiceQuerier
     $this->extension->debugQueryReturn($this, $xml_data);
     return;
   }
+  
+  private function securityHash($payload, $method, $path, $apiKey, $timeStamp)
+  {
+    $md5_payload = base64_encode(md5($payload, true));  
+
+    $data = $method . $md5_payload . $path . $timeStamp;
+
+    $hash = hash_hmac("sha1", $data, $this->apiKey, true);
+    $hash = base64_encode($hash);
+    
+    return($hash);
+  }   
 
   /**
   * Get the status of the query

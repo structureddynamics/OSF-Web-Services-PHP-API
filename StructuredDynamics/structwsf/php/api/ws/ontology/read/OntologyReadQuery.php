@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\ontology\read\OntologyReadQuery.php
       @brief OntologyReadQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\ontology\read;
+  namespace StructuredDynamics\osf\php\api\ws\ontology\read;
 
   /**
-  * Ontology Read Query to a structWSF Ontology Read web service endpoint
+  * Ontology Read Query to a OSF Ontology Read web service endpoint
   * 
   * The Ontology Read service is used to query OWL ontologies. All kinds of information 
   * can be read on different ontology entities such as: classes, object properties, 
@@ -21,14 +21,14 @@
   * 
   * This service is a Web service wrapper over the OWLAPI ontology library. Most of the 
   * API has been implemented. So we can say that this Web service (with the other related 
-  * structWSF services) turns the OWLAPI into a Web service API. 
+  * OSF services) turns the OWLAPI into a Web service API. 
   * 
   * Here is a code example of how this class can be used by developers: 
   * 
   * @code
   * 
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetClassesFunction;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\read\OntologyReadQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\read\GetClassesFunction;
   *  
   *  // Create the Ontology Read query
   *  $ontologyRead = new OntologyReadQuery("http://demo.citizen-dan.org/ws/");
@@ -74,17 +74,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class OntologyReadQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class OntologyReadQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 
@@ -157,7 +163,7 @@
     }
    
     /**
-    * Get the list of all loaded ontologies on the structWSF network instance.
+    * Get the list of all loaded ontologies on the OSF network instance.
     * 
     * @param mixed $function A reference to a GetLoadedOntologiesFunction object instance.
     * 
@@ -167,7 +173,7 @@
     */
     public function getLoadedOntologies(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetLoadedOntologiesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetLoadedOntologiesFunction')
       {
         $this->params["function"] = "getLoadedOntologies";
         
@@ -214,7 +220,7 @@
     } 
     
     /**
-    * Get the serialized PHP array structure, used by conStruct and structWSF, that 
+    * Get the serialized PHP array structure, used by conStruct and OSF, that 
     * represents the classes structure of the OWL ontology.
     * 
     * There are no function parameters for this function call. The ontology to 
@@ -232,7 +238,7 @@
     }  
     
     /**
-    * Get the serialized PHP array structure, used by conStruct and structWSF, that 
+    * Get the serialized PHP array structure, used by conStruct and OSF, that 
     * represents the properties structure of the OWL ontology.
     * 
     * There are no function parameters for this function call. The ontology to serialize 
@@ -250,7 +256,7 @@
     }  
     
     /**
-    * Get the serialized PHP array structure, used by conStruct and structWSF, that represents 
+    * Get the serialized PHP array structure, used by conStruct and OSF, that represents 
     * the properties structure of the OWL ontology.
     * 
     * There are no function parameters for this function call. The ontology to serialize is determined 
@@ -298,7 +304,7 @@
     */
     public function getClass(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetClassFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetClassFunction')
       {
         $this->params["function"] = "getClass";
         
@@ -320,7 +326,7 @@
     */
     public function getClasses(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetClassesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetClassesFunction')
       {
         $this->params["function"] = "getClasses";
         
@@ -342,7 +348,7 @@
     */
     public function getSubClasses(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetSubClassesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetSubClassesFunction')
       {
         $this->params["function"] = "getSubClasses";
         
@@ -364,7 +370,7 @@
     */
     public function getSuperClasses(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetSuperClassesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetSuperClassesFunction')
       {
         $this->params["function"] = "getSuperClasses";
         
@@ -386,7 +392,7 @@
     */
     public function getEquivalentClasses(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetEquivalentClassesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetEquivalentClassesFunction')
       {
         $this->params["function"] = "getEquivalentClasses";
         
@@ -408,7 +414,7 @@
     */
     public function getDisjointClasses(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetDisjointClassesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetDisjointClassesFunction')
       {
         $this->params["function"] = "getDisjointClasses";
         
@@ -429,7 +435,7 @@
     */
     public function getProperty(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetPropertyFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetPropertyFunction')
       {
         $this->params["function"] = "getProperty";
         
@@ -451,7 +457,7 @@
     */
     public function getProperties(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetPropertiesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetPropertiesFunction')
       {
         $this->params["function"] = "getProperties";
         
@@ -473,7 +479,7 @@
     */
     public function getSubProperties(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetSubPropertiesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetSubPropertiesFunction')
       {
         $this->params["function"] = "getSubProperties";
         
@@ -495,7 +501,7 @@
     */
     public function getSuperProperties(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetSuperPropertiesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetSuperPropertiesFunction')
       {
         $this->params["function"] = "getSuperProperties";
         
@@ -517,7 +523,7 @@
     */
     public function getDisjointProperties(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetDisjointPropertiesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetDisjointPropertiesFunction')
       {
         $this->params["function"] = "getDisjointProperties";
         
@@ -539,7 +545,7 @@
     */
     public function getEquivalentProperties(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetEquivalentPropertiesFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetEquivalentPropertiesFunction')
       {
         $this->params["function"] = "getEquivalentProperties";
         
@@ -560,7 +566,7 @@
     */
     public function getNamedIndividual(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetNamedIndividualFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetNamedIndividualFunction')
       {
         $this->params["function"] = "getNamedIndividual";
         
@@ -582,7 +588,7 @@
     */
     public function getNamedIndividuals(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetNamedIndividualsFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\read\GetNamedIndividualsFunction')
       {
         $this->params["function"] = "getNamedIndividuals";
         

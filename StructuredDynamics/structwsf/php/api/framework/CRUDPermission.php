@@ -1,14 +1,14 @@
 <?php
 
-/*! @ingroup StructWSFPHPAPIFramework Framework of the structWSF PHP API library */
+/*! @ingroup OSFPHPAPIFramework Framework of the OSF PHP API library */
 //@{
 
-/*! @file \StructuredDynamics\structwsf\php\api\framework\CRUDPermission.php
+/*! @file \StructuredDynamics\osf\php\api\framework\CRUDPermission.php
     @brief An internal CRUDPermission class
 */
 
 
-namespace StructuredDynamics\structwsf\php\api\framework;
+namespace StructuredDynamics\osf\php\api\framework;
 
 /** 
 * The CRUD Permission class is used to define CRUD permissions

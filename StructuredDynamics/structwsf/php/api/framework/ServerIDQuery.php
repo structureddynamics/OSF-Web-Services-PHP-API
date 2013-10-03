@@ -1,24 +1,24 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\framework\ServerIDQuery.php  
+  /*! @file \StructuredDynamics\osf\php\api\framework\ServerIDQuery.php  
       @brief CrudCreateQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\framework;
+  namespace StructuredDynamics\osf\php\api\framework;
 
-  class ServerIDQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class ServerIDQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
     */
     function __construct($network)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network to use for this query.
       $this->setNetwork($network);
       
       // Set default configarations for this web service query

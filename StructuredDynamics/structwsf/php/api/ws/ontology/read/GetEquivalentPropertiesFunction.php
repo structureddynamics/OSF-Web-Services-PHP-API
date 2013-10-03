@@ -1,13 +1,13 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetEquivalentPropertiesFunction.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\ontology\read\GetEquivalentPropertiesFunction.php
       @brief GetEquivalentPropertiesFunction class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\ontology\read;  
+  namespace StructuredDynamics\osf\php\api\ws\ontology\read;  
   
   /**
   * Get all the equivalent-properties that have been defined in an ontology. The requester 
@@ -17,7 +17,7 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
-  class GetEquivalentPropertiesFunction extends \StructuredDynamics\structwsf\php\api\framework\OntologyFunctionCall
+  class GetEquivalentPropertiesFunction extends \StructuredDynamics\osf\php\api\framework\OntologyFunctionCall
   {
     function __construct()
     {

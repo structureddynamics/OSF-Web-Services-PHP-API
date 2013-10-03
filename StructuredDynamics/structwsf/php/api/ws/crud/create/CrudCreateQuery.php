@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery.php  
+  /*! @file \StructuredDynamics\osf\php\api\ws\crud\create\CrudCreateQuery.php  
       @brief CrudCreateQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\crud\create;
+  namespace StructuredDynamics\osf\php\api\ws\crud\create;
 
   /**
-  * Crud Create Query to a structWSF Crud Create web service endpoint
+  * Crud Create Query to a OSF Crud Create web service endpoint
   * 
   * The CRUD: Create Web service is used to create a new instance record 
   * in a target dataset registered to a WSF (Web Services Framework). 
@@ -45,7 +45,7 @@
   * @code
   * 
   *  // Use the CrudCreateQuery class
-  *  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\crud\create\CrudCreateQuery;
   *  
   *  // Create the CrudCreateQuery object
   *  $crudCreate = new CrudCreateQuery("http://localhost/ws/");
@@ -65,13 +65,13 @@
   *  // Specifies that the input document is serialized using RDF+XML
   *  $crudCreate->documentMimeIsRdfXml();  
   *  
-  *  // Make sure we index that new RDF data everywhere in the structWSF instance
+  *  // Make sure we index that new RDF data everywhere in the OSF instance
   *  $crudCreate->enableFullIndexationMode();
   *  
   *  // Import that new RDF data
   *  $crudCreate->send();
   *
-  *  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  *  use StructuredDynamics\osf\php\api\ws\search\SearchQuery;
   *  
   *  if($crudCreate->isSuccessful())
   *  {
@@ -106,17 +106,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class CrudCreateQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class CrudCreateQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 

@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\auth\registrar\ws\AuthRegistrarWsQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\auth\registrar\ws\AuthRegistrarWsQuery.php
       @brief AuthRegistrarWsQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\auth\registrar\ws;
+  namespace StructuredDynamics\osf\php\api\ws\auth\registrar\ws;
 
   /**
-  * Auth Registrar WS Query to a structWSF Auth Registrar WS web service endpoint
+  * Auth Registrar WS Query to a OSF Auth Registrar WS web service endpoint
   * 
   * The Auth Registrar: WS Web service is used to register a Web service endpoint 
   * to the WSF (Web Services Framework). Once a Web service is registered to a WSF, 
@@ -20,12 +20,12 @@
   * 
   * @code
   * 
-  *  use \StructuredDynamics\structwsf\framework\Namespaces;                     
-  *  use \StructuredDynamics\structwsf\php\api\ws\auth\registrar\ws\AuthRegistrarWsQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  *  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  *  use \StructuredDynamics\osf\framework\Namespaces;                     
+  *  use \StructuredDynamics\osf\php\api\ws\auth\registrar\ws\AuthRegistrarWsQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
+  *  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   * 
-  *  // Register a new web service endpoint to the structWSF instance
+  *  // Register a new web service endpoint to the OSF instance
   *  $arws = new AuthRegistrarWsQuery("http://localhost/ws/");
   * 
   *  // Define the title 
@@ -44,7 +44,7 @@
   * 
   *  if($arws->isSuccessful())
   *  {
-  *    // Now, let's use the auth: lister endpoint to make sure we can see it in the structWSF instance
+  *    // Now, let's use the auth: lister endpoint to make sure we can see it in the OSF instance
   *    $authlister = new AuthListerQuery("http://localhost/ws/");
   *    
   *    // Specifies that we want to get all the list of all registered web service endpoints.
@@ -81,17 +81,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class AuthRegistrarWsQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class AuthRegistrarWsQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 
@@ -112,7 +118,7 @@
     }
     
     /**
-    * Title of the web service to register to this structWSF instance
+    * Title of the web service to register to this OSF instance
     * 
     * **Required**: This function must be called before sending the query 
     * 
@@ -148,16 +154,16 @@
     }
         
     /**
-    * URI of the web service to register to the structWSF instance. The URI is the unique
-    * idenfier of the endpoint, in the structWSF instance. That URI **is not** the URL
+    * URI of the web service to register to the OSF instance. The URI is the unique
+    * idenfier of the endpoint, in the OSF instance. That URI **is not** the URL
     * access endpoint. However, both can be the same. 
     * 
-    * *Note:* in structWSF, when another web service require the URI/Identifier of a web
+    * *Note:* in OSF, when another web service require the URI/Identifier of a web
     *         service, it is really the URI of that web service, and not its access URL.
     * 
     * **Required**: This function must be called before sending the query 
     * 
-    * @param mixed $uri URI of the web service to register to the structWSF instance
+    * @param mixed $uri URI of the web service to register to the OSF instance
     * 
     * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_WS#Web_Service_Endpoint_Information
     * 
@@ -172,7 +178,7 @@
     
     /**
     * Define the CRUD usage of the endpoint. The CRUD usage are the 4 CRUD operations that the
-    * endpoint can perform on the data hosted on the structWSF instance. For example, the
+    * endpoint can perform on the data hosted on the OSF instance. For example, the
     * CRUD: Create endpoint has the CRUD usage: <True,False,False,False>. This means that it
     * perform creation operations with the data. This means that the user that will send a request
     * to the CRUD: Create web service endpoint will need to have Create permissions on the target

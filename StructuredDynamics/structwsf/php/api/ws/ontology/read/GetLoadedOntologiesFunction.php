@@ -1,13 +1,13 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetLoadedOntologiesFunction.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\ontology\read\GetLoadedOntologiesFunction.php
       @brief GetLoadedOntologiesFunction class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\ontology\read;
+  namespace StructuredDynamics\osf\php\api\ws\ontology\read;
      
   /**
   * Class used to define the parameters to use send a "GetLoadedOntologies" call 
@@ -17,7 +17,7 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
-  class GetLoadedOntologiesFunction extends \StructuredDynamics\structwsf\php\api\framework\OntologyFunctionCall
+  class GetLoadedOntologiesFunction extends \StructuredDynamics\osf\php\api\framework\OntologyFunctionCall
   {
     function __construct()
     {

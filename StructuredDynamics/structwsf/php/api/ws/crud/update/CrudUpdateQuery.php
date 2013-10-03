@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\update\CrudUpdateQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\crud\update\CrudUpdateQuery.php
       @brief CrudUpdateQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\crud\update;
+  namespace StructuredDynamics\osf\php\api\ws\crud\update;
 
   /**
-  * Crud Update Query to a structWSF Crud Update web service endpoint
+  * Crud Update Query to a OSF Crud Update web service endpoint
   * 
   * The CRUD: Update Web service is used to update an existing instance record 
   * indexed in a target dataset part of a WSF (Web Services Framework). 
@@ -43,13 +43,13 @@
   * @code
   * 
   *  // Use the CrudCreateQuery class
-  *  use \StructuredDynamics\structwsf\php\api\ws\crud\create\CrudCreateQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\crud\create\CrudCreateQuery;
   *  
   *  // Use the CrudUpdateQuery class
-  *  use \StructuredDynamics\structwsf\php\api\ws\crud\update\CrudUpdateQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\crud\update\CrudUpdateQuery;
   *
   *  // Use the SearchQuery class  
-  *  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  *  use StructuredDynamics\osf\php\api\ws\search\SearchQuery;
   *  
   *  
   *  // First, let's create our object that we will then modify.
@@ -72,7 +72,7 @@
   *  // Specifies that the input document is serialized using RDF+XML
   *  $crudCreate->documentMimeIsRdfXml();  
   *  
-  *  // Make sure we index that new RDF data everywhere in the structWSF instance
+  *  // Make sure we index that new RDF data everywhere in the OSF instance
   *  $crudCreate->enableFullIndexationMode();
   *  
   *  // Import that new RDF data
@@ -142,17 +142,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class CrudUpdateQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class CrudUpdateQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 

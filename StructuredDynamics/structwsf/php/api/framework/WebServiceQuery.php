@@ -1,20 +1,21 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIFramework Framework of the structWSF PHP API library */
+  /*! @ingroup OSFPHPAPIFramework Framework of the OSF PHP API library */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\framework\WebServiceQuery.php
       @brief Defines the WebServiceQuery class
   */
 
-  namespace StructuredDynamics\structwsf\php\api\framework;
+  namespace StructuredDynamics\osf\php\api\framework;
 
   use \Exception;
-  use \StructuredDynamics\structwsf\framework\WebServiceQuerier; 
-  use \StructuredDynamics\structwsf\framework\Resultset; 
+  use \StructuredDynamics\osf\framework\WebServiceQuerier; 
+  use \StructuredDynamics\osf\framework\Resultset; 
+  use \StructuredDynamics\osf\framework\QuerierExtension;
   
   /**
-  * Class that defined all the methods and variables needed to send a structWSF query
+  * Class that defined all the methods and variables needed to send a OSF query
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -55,6 +56,10 @@
     
     /** HTTP status message description of the query */
     private $httpStatusMessageDescription = "";
+    
+    protected $appID = '';
+    protected $apiKey = '';
+    protected $userID = '';
                                     
     /** Parameters to use to send the query to the endpoint */
     protected $params = array(); 
@@ -130,6 +135,7 @@
     public function send($query_extension = NULL)
     {
       $parameters = "";
+      
       if ($query_extension !== NULL)
       {
         $query_extension->alterParams($this, $this->params);
@@ -147,7 +153,10 @@
                                    ($this->mime == "resultset" ? "text/xml" : $this->mime), 
                                    $parameters, 
                                    $this->timeout,
-                                   $query_extension);
+                                   $query_extension,
+                                   $this->appID,
+                                   $this->apiKey,
+                                   $this->userID);
                                    
       $this->httpStatus = $wsq->getStatus();
       $this->httpStatusMessage = $wsq->getStatusMessage();
@@ -181,7 +190,7 @@
     }
     
     /**
-    * Set all the supported mime types by the structWSF web service endpoint
+    * Set all the supported mime types by the OSF web service endpoint
     * 
     * @param mixed $mimes An array of mime types supported by the endpoint
     * 
@@ -201,11 +210,11 @@
     }
     
     /**
-    * Set the base structWSF network URL. This value is appended in from of the "endpoint URL"
+    * Set the base OSF network URL. This value is appended in from of the "endpoint URL"
     * to create the full endpoint's URL
     * Example: http://localhost/ws/
     * 
-    * @param mixed $network Base structWSF network URL
+    * @param mixed $network Base OSF network URL
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -251,20 +260,6 @@
       
       return($this);
     }  
-    
-    /**
-    * Set the register_ip parameter for this query.
-    * 
-    * @param mixed $ip Registered IP address
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.
-    */
-    public function registeredIp($ip)
-    {
-      $this->params["registered_ip"] = $ip; 
-      
-      return($this);
-    } 
     
     /**
     * Check if the query that has been sent is successful or not

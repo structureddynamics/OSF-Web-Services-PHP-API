@@ -1,19 +1,19 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\create\OntologyCreateQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\ontology\create\OntologyCreateQuery.php
       @brief OntologyCreateQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\ontology\create;
+  namespace StructuredDynamics\osf\php\api\ws\ontology\create;
 
-  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   
   /**
   * The Ontology Create service is used to create/import a new OWL ontology into the 
-  * structWSF instance.
+  * OSF instance.
   * 
   * This service is a web service wrapper over the OWLAPI ontology library. It wraps 
   * all the needed functionalities related to ontology creation/import. Most of the 
@@ -21,29 +21,29 @@
   * related services) turns the OWLAPI into a web service API. 
   * 
   * This Web service is intended to be used by content management systems, developers 
-  * or administrators to create ontologies that are hosted on a structWSF instance, 
+  * or administrators to create ontologies that are hosted on a OSF instance, 
   * and that are used to describe the named entities in the system.
   * 
   * This endpoint, along with the other related endpoints: Ontology Read, Ontology 
-  * Update and Ontology Delete; can be seen as the brain of your structWSF instance. 
+  * Update and Ontology Delete; can be seen as the brain of your OSF instance. 
   * 
   * Here is a code example of how this class can be used by developers: 
   * 
   * @code
   * 
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\create\OntologyCreateQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetLoadedOntologiesFunction;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\create\OntologyCreateQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\read\OntologyReadQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\read\GetLoadedOntologiesFunction;
   *  
   *  $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
   *  
   *  // Create the vcard ontology for which its description is located somewhere on the Web
   *  $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
   *  
-  *  // Enable advanced indexation to have access to it on all structWSF endpoints
+  *  // Enable advanced indexation to have access to it on all OSF endpoints
   *  $ontologyCreate->enableAdvancedIndexation();
   *  
-  *  // Enable reasoner to persist inferred facts into all endpoints of structWSF
+  *  // Enable reasoner to persist inferred facts into all endpoints of OSF
   *  $ontologyCreate->enableReasoner();
   *  
   *  // Import the new ontology
@@ -78,17 +78,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class OntologyCreateQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class OntologyCreateQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 
@@ -105,7 +111,6 @@
       $this->setEndpoint("ontology/create/");
       
       // Set default parameters for this query
-      $this->globalPermissions(new CRUDPermission(FALSE, FALSE, FALSE, FALSE));
       $this->disableAdvancedIndexation();
       $this->sourceInterface("default");      
     }
@@ -133,35 +138,12 @@
       $this->params["uri"] = urlencode($ontologyUri);
       
       return($this);
-    }
-    
-    /**
-    * Set the global permissions for this new ontology
-    * 
-    * The default value for this call is no global permissions enabled for anybody
-    * 
-    * @param mixed $crudPermission A CRUDPermission object instance that define the global CRUD permissions 
-    *                              to use for this new ontology
-    * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.
-    * 
-    */
-    public function globalPermissions($crudPermission)
-    {
-      $this->params["globalPermissions"] = urlencode(($crudPermission->getCreate() ? "True" : "False").";".
-                                                     ($crudPermission->getRead() ? "True" : "False").";".
-                                                     ($crudPermission->getUpdate() ? "True" : "False").";".
-                                                     ($crudPermission->getDelete() ? "True" : "False"));
-                                                     
-      return($this);
-    }    
+    }   
     
     /**
     * Enable advanced indexation of the ontology. This means that the ontology's description 
     * (so all the classes, properties and named individuals) will be indexed in the other 
-    * data management system in structWSF. This means that all the information in these 
+    * data management system in OSF. This means that all the information in these 
     * ontologies will be accessible via the other endpoints such as the Search and the SPARQL 
     * web service endpoints. Enabling this option may render the creation process slower 
     * depending on the size of the created ontology. 
@@ -195,7 +177,7 @@
     }   
     
     /**
-    * Enable the reasoner for indexing the ontology into structWSF (the triple 
+    * Enable the reasoner for indexing the ontology into OSF (the triple 
     * store and the full text engine) 
     * 
     * This is the default behavior of this service.
@@ -214,7 +196,7 @@
     }
     
     /**
-    * Disable the reasoner for for indexing the ontology into structWSF (the triple 
+    * Disable the reasoner for for indexing the ontology into OSF (the triple 
     * store and the full text engine) 
     * 
     * @see http://techwiki.openstructs.org/index.php/Ontology_Create#Web_Service_Endpoint_Information

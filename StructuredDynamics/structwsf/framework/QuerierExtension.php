@@ -1,15 +1,15 @@
 <?php
 
-/*! @ingroup StructWSFPHPAPIFramework Framework of the structWSF PHP API library */
+/*! @ingroup OSFPHPAPIFramework Framework of the OSF PHP API library */
 //@{
 
-/*! @file \StructuredDynamics\structwsf\framework\QuerierExtension.php
+/*! @file \StructuredDynamics\osf\framework\QuerierExtension.php
     @brief Querying a RESTFull web service endpoint
 
 */
 
-namespace StructuredDynamics\structwsf\framework;
-use StructuredDynamics\structwsf\php\api\framework\WebServiceQuery;
+namespace StructuredDynamics\osf\framework;
+use StructuredDynamics\osf\php\api\framework\WebServiceQuery;
 
 
 /**
@@ -52,9 +52,8 @@ class QuerierExtension {
    * @param $wsq WebServiceQuerier that is executing
    * @param $curl_handle cURL handle that will be executed
    */
-  function alterQuery(WebServiceQuerier $wsq, $curl_handle) {
-    curl_setopt($curl_handle, CURLOPT_SSL_VERIFYPEER, FALSE);
-  }
+  function alterQuery(WebServiceQuerier $wsq, $curl_handle) {                                                  
+  } 
 
   /**
    * Allow for environment specific error message display

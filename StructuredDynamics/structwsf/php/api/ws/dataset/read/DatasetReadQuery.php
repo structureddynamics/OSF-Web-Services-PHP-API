@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\dataset\read\DatasetReadQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\dataset\read\DatasetReadQuery.php
       @brief DatasetDeleteQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\dataset\read;
+  namespace StructuredDynamics\osf\php\api\ws\dataset\read;
   
   /**
-  * Dataset Read Query to a structWSF Dataset Read web service endpoint
+  * Dataset Read Query to a OSF Dataset Read web service endpoint
   * 
   * The Dataset: Read Web service is used to get information (title, 
   * description, creator, contributor(s), creation date and last modification 
@@ -20,7 +20,7 @@
   * 
   * @code
   * 
-  *  use \StructuredDynamics\structwsf\php\api\ws\dataset\read\DatasetReadQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\dataset\read\DatasetReadQuery;
   *  
   *  $dRead = new DatasetReadQuery("http://localhost/ws/");
   *
@@ -46,17 +46,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class DatasetReadQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class DatasetReadQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 
@@ -74,7 +80,6 @@
       
       // Set default parameters for this query
       $this->uri("all");
-      $this->excludeMeta();
       $this->sourceInterface("default");      
     }
     
@@ -94,39 +99,7 @@
       $this->params["uri"] = urlencode($uri);
       
       return($this);
-    }  
-    
-    /**
-    * Include possibly existing meta-data about the dataset when the webservice returns
-    * the description of the dataset.
-    * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Read#Web_Service_Endpoint_Information
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.* 
-    */
-    public function includeMeta()
-    {
-      $this->params["meta"] = "True";
-      
-      return($this);
-    }
-    
-    /**
-    * Exclude possibly existing meta-data about the dataset when the webservice returns
-    * the description of the dataset.
-    * 
-    * *This is the default behavior of the service*
-    * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Read#Web_Service_Endpoint_Information
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.* 
-    */
-    public function excludeMeta()
-    {
-      $this->params["meta"] = "False";
-      
-      return($this);
-    }     
+    }   
    }       
  
 //@}    

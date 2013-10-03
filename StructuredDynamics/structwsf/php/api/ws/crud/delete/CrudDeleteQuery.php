@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudDeleteQuery.php  
+  /*! @file \StructuredDynamics\osf\php\api\ws\crud\delete\CrudDeleteQuery.php  
       @brief CrudDeleteQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\crud\delete;
+  namespace StructuredDynamics\osf\php\api\ws\crud\delete;
 
   /**
-  * Crud Delete Query to a structWSF Crud Delete web service endpoint
+  * Crud Delete Query to a OSF Crud Delete web service endpoint
   * 
   * The CRUD: Delete Web service is used to delete an existing instance record indexed 
   * in some target dataset of a WSF. When the instance record gets deleted, all of the 
@@ -21,7 +21,7 @@
   * @code
   * 
   *  // Use the CrudDeleteQuery class
-  *  use \StructuredDynamics\structwsf\php\api\ws\crud\delete\CrudDeleteQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\crud\delete\CrudDeleteQuery;
   *  
   *  // Create the CrudDeleteQuery object
   *  $crudDelete = new CrudDeleteQuery("http://localhost/ws/");
@@ -51,17 +51,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class CrudDeleteQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class CrudDeleteQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 

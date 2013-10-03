@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\revision\read\RevisionReadQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\revision\read\RevisionReadQuery.php
       @brief RevisionReadQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\revision\read;
+  namespace StructuredDynamics\osf\php\api\ws\revision\read;
 
   /**
-  * Revision Read Query to a structWSF Revision Read web service endpoint
+  * Revision Read Query to a OSF Revision Read web service endpoint
   * 
   * The Revision: Read web service endpoint is used to read a specific revision of a record. 
   * This endpoint will return all the triples, including reification triples, of a specific 
@@ -25,7 +25,7 @@
   * @code
   * 
   *  // Use the RevisionReadQuery class
-  *  use \StructuredDynamics\structwsf\php\api\ws\revision\read\RevisionReadQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\revision\read\RevisionReadQuery;
   *  
   *  // Create the RevisionReadQuery object
   *  $revisionread = new RevisionReadQuery("http://demo.citizen-dan.org/ws/");
@@ -51,17 +51,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class RevisionReadQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class RevisionReadQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 

@@ -1,19 +1,19 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\update\OntologyUpdateQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\ontology\update\OntologyUpdateQuery.php
       @brief OntologyUpdateQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\ontology\update;
+  namespace StructuredDynamics\osf\php\api\ws\ontology\update;
 
-  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   
   /**
   * The Ontology Update service is used to update an OWL ontology existing in the 
-  * structWSF instance.
+  * OSF instance.
   * 
   * This service is a web service wrapper over the OWLAPI ontology library. It wraps 
   * all the needed functionalities related to updating an ontology. Most of the 
@@ -34,12 +34,12 @@
   * 
   * @code
   * 
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\create\OntologyCreateQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\update\OntologyUpdateQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\update\CreateOrUpdateEntityFunction;
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\update\UpdateEntityUriFunction;
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\OntologyReadQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetClassFunction;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\create\OntologyCreateQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\update\OntologyUpdateQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\update\CreateOrUpdateEntityFunction;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\update\UpdateEntityUriFunction;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\read\OntologyReadQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\ontology\read\GetClassFunction;
   *  
   *  // First, let's create an initial ontology
   *  $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
@@ -47,10 +47,10 @@
   *  // Create the vcard ontology for which its description is located somewhere on the Web
   *  $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
   *  
-  *  // Enable advanced indexation to have access to it on all structWSF endpoints
+  *  // Enable advanced indexation to have access to it on all OSF endpoints
   *  $ontologyCreate->enableAdvancedIndexation();
   *  
-  *  // Enable reasoner to persist inferred facts into all endpoints of structWSF
+  *  // Enable reasoner to persist inferred facts into all endpoints of OSF
   *  $ontologyCreate->enableReasoner();
   *  
   *  // Import the new ontology
@@ -115,17 +115,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class OntologyUpdateQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class OntologyUpdateQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 
@@ -172,7 +178,7 @@
     }    
     
     /**
-    * Enable the reasoner for indexing the ontology into structWSF (the triple 
+    * Enable the reasoner for indexing the ontology into OSF (the triple 
     * store and the full text engine) 
     * 
     * This is the default behavior of this service.
@@ -191,7 +197,7 @@
     }
     
     /**
-    * Disable the reasoner for for indexing the ontology into structWSF (the triple 
+    * Disable the reasoner for for indexing the ontology into OSF (the triple 
     * store and the full text engine) 
     * 
     * @see http://techwiki.openstructs.org/index.php/Ontology_Update#Web_Service_Endpoint_Information
@@ -232,7 +238,7 @@
     */
     public function createOrUpdateEntity(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\update\CreateOrUpdateEntityFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\update\CreateOrUpdateEntityFunction')
       {
         $this->params["function"] = "createOrUpdateEntity";
         
@@ -255,7 +261,7 @@
     */
     public function updateEntityUri(&$function)
     {
-      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\update\UpdateEntityUriFunction')
+      if(get_class($function) == 'StructuredDynamics\osf\php\api\ws\ontology\update\UpdateEntityUriFunction')
       {
         $this->params["function"] = "updateEntityUri";
         

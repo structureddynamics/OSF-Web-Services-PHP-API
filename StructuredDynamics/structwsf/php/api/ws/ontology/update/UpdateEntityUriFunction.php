@@ -1,13 +1,13 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\update\UpdateEntityUriFunction.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\ontology\update\UpdateEntityUriFunction.php
       @brief UpdateEntityUriFunction class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\ontology\update;
+  namespace StructuredDynamics\osf\php\api\ws\ontology\update;
   
   /**
   * Class used to define the parameters to use send a "updateEntityUriFunction" call 
@@ -17,7 +17,7 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
-  class UpdateEntityUriFunction extends \StructuredDynamics\structwsf\php\api\framework\OntologyFunctionCall
+  class UpdateEntityUriFunction extends \StructuredDynamics\osf\php\api\framework\OntologyFunctionCall
   {
     function __construct()
     {
@@ -67,7 +67,7 @@
     /**
     * Enable advanced indexation of the ontology. This means that the ontology's description 
     * (so all the classes, properties and named individuals) will be indexed in the other 
-    * data management system in structWSF. This means that all the information in these 
+    * data management system in OSF. This means that all the information in these 
     * ontologies will be accessible via the other endpoints such as the Search and the SPARQL 
     * web service endpoints. Enabling this option may render the creation process slower 
     * depending on the size of the created ontology. 

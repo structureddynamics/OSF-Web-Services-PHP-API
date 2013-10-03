@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery.php
       @brief AuthListerQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\auth\lister;
+  namespace StructuredDynamics\osf\php\api\ws\auth\lister;
 
   /**
-  * Auth Lister Query to a structWSF Auth Lister web service endpoint
+  * Auth Lister Query to a OSF Auth Lister web service endpoint
   * 
   * The Auth: Lister Web service is used to list all of the datasets accessible to a given user, 
   * list all of the datasets accessible to a given user with all of its CRUD permissions, to 
@@ -25,7 +25,7 @@
   * @code
   * 
   *  // Use the AuthListerQuery class
-  *  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
   *  
   *  // Create the AuthListerQuery object
   *  $authlister = new AuthListerQuery("http://demo.citizen-dan.org/ws/");
@@ -48,17 +48,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class AuthListerQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class AuthListerQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 
@@ -82,7 +88,7 @@
     
     /**
     * Specifies that this query will return all the datasets URI currently existing, and accessible by the user,
-    * in the structWSF network instance.
+    * in the OSF network instance.
     * 
     * This is the default behavior of this service.
     * 
@@ -99,7 +105,7 @@
 
     /**
     * Specifies that this query will return all the web service endpoints URI currently registered
-    * to this structWSF network instance.
+    * to this OSF network instance.
     * 
     * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
@@ -113,8 +119,8 @@
     }
 
     /**
-    * Specifies that this query will return all the users access records in the structWSF network instance.
-    * This information will only be returned if the requester has permissions on the core structWSF registry dataset.
+    * Specifies that this query will return all the users access records in the OSF network instance.
+    * This information will only be returned if the requester has permissions on the core OSF registry dataset.
     * 
     * @param $datasetUri the URI of the target dataset for which you want the access records for all its users
     * 
@@ -132,21 +138,60 @@
     
     /**
     * Specifies that this query will return all the datasets URI currently existing, and accessible by the user,
-    * in the structWSF network instance, along with their CRUD permissions.
-    * 
-    * @param $ip IP address of the user for which you want the complete list of all its accessible datasets
+    * in the OSF network instance, along with their CRUD permissions.
     * 
     * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
-    public function getUserAccesses($ip)
+    public function getUserAccesses()
     {
       $this->params["mode"] = "access_user";
-      $this->registeredIp($ip);
       
       return($this);
     }  
+        
+    /**
+    * Specifies that this query will return all the groups currently defined in the OSF instance.
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function getGroups()
+    {
+      $this->params["mode"] = "groups";
+      
+      return($this);
+    }      
+    
+    /**
+    * Specifies that this query will return all the users registered to a group
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function getGroupUsers()
+    {
+      $this->params["mode"] = "group_users";
+      
+      return($this);
+    }   
+               
+    /**
+    * Specifies that this query will return all the groups where the user is registered to
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function getUserGroups()
+    {
+      $this->params["mode"] = "user_groups";
+      
+      return($this);
+    } 
     
     /**
     * Specifies if you want to get all the WebService URIs along with all the access records.

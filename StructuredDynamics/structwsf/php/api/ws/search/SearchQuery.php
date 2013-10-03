@@ -1,17 +1,17 @@
 <?php
                
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\search\SearchQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\search\SearchQuery.php
       @brief SearchQuery class description
    */               
                
-  namespace StructuredDynamics\structwsf\php\api\ws\search;
+  namespace StructuredDynamics\osf\php\api\ws\search;
   
   /**
   * The Search Web service is used to perform full text searches on the structured 
-  * data indexed on a structWSF instance. A search query can be as simple as querying 
+  * data indexed on a OSF instance. A search query can be as simple as querying 
   * the data store for a single keyword, or to query it using a series of complex 
   * filters. Each search query can be applied to all, or a subset of, datasets 
   * accessible by the requester. All of the full text queries comply with the 
@@ -22,15 +22,15 @@
   *  + Dataset where the record(s) got indexed
   *  + Presence of an attribute describing the record(s)
   *  + A specific value, for a specific attribute describing the record(s)
-  *  + A distance from a lat/long coordinate (for geo-enabled structWSF instance)
-  *  + A range of lat/long coordinates (for geo-enabled structWSF instance) 
+  *  + A distance from a lat/long coordinate (for geo-enabled OSF instance)
+  *  + A range of lat/long coordinates (for geo-enabled OSF instance) 
   * 
   * Here is a code example of how this class can be used by developers: 
   * 
   * @code
   * 
   *  // Use the SearchQuery class
-  *  use StructuredDynamics\structwsf\php\api\ws\search\SearchQuery;
+  *  use StructuredDynamics\osf\php\api\ws\search\SearchQuery;
   *  
   *  // Create the SearchQuery object
   *  $search = new SearchQuery("http://demo.citizen-dan.org/ws/");
@@ -53,17 +53,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */  
-  class SearchQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class SearchQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
-    */    
-    function __construct($network)
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
+    */
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 

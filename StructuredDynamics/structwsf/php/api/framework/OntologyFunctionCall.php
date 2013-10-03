@@ -1,13 +1,13 @@
 <?php
 
-/*! @ingroup StructWSFPHPAPIFramework Framework of the structWSF PHP API library */
+/*! @ingroup OSFPHPAPIFramework Framework of the OSF PHP API library */
 //@{
 
-/*! @file \StructuredDynamics\structwsf\php\api\framework\OntologyFunctionCall.php
+/*! @file \StructuredDynamics\osf\php\api\framework\OntologyFunctionCall.php
     @brief An internal OntologyFunctionCall class
 */
 
-  namespace StructuredDynamics\structwsf\php\api\framework;
+  namespace StructuredDynamics\osf\php\api\framework;
 
   /**
   * Class defining the basic interface for an ontology function call.

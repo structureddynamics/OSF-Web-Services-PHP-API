@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\dataset\delete\DatasetDeleteQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\dataset\delete\DatasetDeleteQuery.php
       @brief DatasetDeleteQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\dataset\delete;
+  namespace StructuredDynamics\osf\php\api\ws\dataset\delete;
   
   /**
-  * Dataset Delete Query to a structWSF Dataset Delete web service endpoint
+  * Dataset Delete Query to a OSF Dataset Delete web service endpoint
   * 
   * The Dataset: Delete Web service is used to delete an existing dataset in a 
   * WSF (Web Services Framework). When a dataset gets deleted, all of the 
@@ -21,11 +21,11 @@
   * 
   * @code
   * 
-  *  use \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\dataset\delete\DatasetDeleteQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  *  use \StructuredDynamics\structwsf\framework\Namespaces;
-  *  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  *  use \StructuredDynamics\osf\php\api\ws\dataset\create\DatasetCreateQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\dataset\delete\DatasetDeleteQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
+  *  use \StructuredDynamics\osf\framework\Namespaces;
+  *  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   *      
   *  // First, let's create a new dataset to delete after
   *  
@@ -108,17 +108,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class DatasetDeleteQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class DatasetDeleteQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 

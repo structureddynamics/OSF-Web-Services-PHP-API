@@ -1,16 +1,16 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\auth\registrar\access\AuthRegistrarAccessQuery.php  
+  /*! @file \StructuredDynamics\osf\php\api\ws\auth\registrar\access\AuthRegistrarAccessQuery.php  
       @brief AuthRegistrarAccessQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\auth\registrar\access;
+  namespace StructuredDynamics\osf\php\api\ws\auth\registrar\access;
 
   /**
-  * Auth Registrar Access Query to a structWSF Auth Registrar Access web service endpoint
+  * Auth Registrar Access Query to a OSF Auth Registrar Access web service endpoint
   * 
   * The Auth Registrar: Access Web service is used to register (create, update and delete) 
   * an access for a given IP address, to a specific dataset and all the registered Web 
@@ -37,10 +37,10 @@
   * 
   * @code
   * 
-  *  use \StructuredDynamics\structwsf\framework\Namespaces;
-  *  use \StructuredDynamics\structwsf\php\api\ws\auth\registrar\access\AuthRegistrarAccessQuery;
-  *  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  *  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  *  use \StructuredDynamics\osf\framework\Namespaces;
+  *  use \StructuredDynamics\osf\php\api\ws\auth\registrar\access\AuthRegistrarAccessQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
+  *  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   *    
   *  // Get all the web services registered on this instance with a 
   *  
@@ -105,17 +105,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class AuthRegistrarAccessQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class AuthRegistrarAccessQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 
@@ -138,7 +144,7 @@
     /**
     * Create a new access permissions record
     * 
-    * @param mixed $userIP IP address that idenfies the user link to this access record.
+    * @param mixed $group Target Group URI related to the acces record being created
     * @param mixed $datasetUri Specifies which dataset URI is targeted by the access record.
     * @param mixed $crudPermission A CRUDPermission object instance that define the permissions granted 
     *                              for the target IP, target Dataset and target Web Service Endpoints of 
@@ -147,16 +153,16 @@
     *                               Only the web service endpoints URIs that will be defined in this access record
     *                               will be able to access/use data for the user and dataset defined in this access
     *                               record. Note: you can get the complete list of webservice endpoint URIs 
-    *                               registered to a structWSF network instance by using the AuthListerQuery class 
+    *                               registered to a OSF network instance by using the AuthListerQuery class 
     *                               and by using the getWebServicesList() function.
     * 
     * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
-    public function create($userIP, $datasetUri, $crudPermission, $webservicesUris)
+    public function create($group, $datasetUri, $crudPermission, $webservicesUris)
     {
-      $this->params["registered_ip"] = urlencode($userIP);                                                                                   
+      $this->params["group"] = urlencode($group);
       
       $this->params["crud"] = urlencode(($crudPermission->getCreate() ? "True" : "False").";".
                                         ($crudPermission->getRead() ? "True" : "False").";".
@@ -175,16 +181,16 @@
     /**
     * Delete a target access permissions record for a specific IP address and a specific dataset 
     * 
-    * @param mixed $userIP User IP address defined for the access record to delete
+    * @param mixed $group Target Group URI related to the acces record being created
     * @param mixed $datasetUri Dataset URI defined for the access record to delete
     * 
     * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
-    public function deleteTarget($userIP, $datasetUri)
+    public function deleteTarget($group, $datasetUri)
     {
-      $this->params["registered_ip"] = urlencode($userIP);   
+      $this->params["group"] = urlencode($group);   
       
       $this->params["dataset"] = urlencode($datasetUri); 
       
@@ -234,7 +240,7 @@
     * Create a new access permissions record
     * 
     * @param mixed $accessRecordUri Access record URI to modify
-    * @param mixed $userIP IP address that idenfies the user link to this access record.
+    * @param mixed $group Target Group URI related to the acces record being created
     * @param mixed $datasetUri Specifies which dataset URI is targeted by the access record.
     * @param mixed $crudPermission A CRUDPermission object instance that define the permissions granted 
     *                              for the target IP, target Dataset and target Web Service Endpoints of 
@@ -243,18 +249,18 @@
     *                               Only the web service endpoints URIs that will be defined in this access record
     *                               will be able to access/use data for the user and dataset defined in this access
     *                               record. Note: you can get the complete list of webservice endpoint URIs 
-    *                               registered to a structWSF network instance by using the AuthListerQuery class 
+    *                               registered to a OSF network instance by using the AuthListerQuery class 
     *                               and by using the getWebServicesList() function.
     * 
     * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
-    public function update($accessRecordUri, $userIP, $datasetUri, $crudPermission, $webservicesUris)
+    public function update($accessRecordUri, $group, $datasetUri, $crudPermission, $webservicesUris)
     {
       $this->params["target_access_uri"] = urlencode($accessRecordUri);                                                                             
       
-      $this->params["registered_ip"] = urlencode($userIP);                                                                                         
+      $this->params["group"] = urlencode($group);                                                                                         
       
       $this->params["crud"] = urlencode(($crudPermission->getCreate() ? "True" : "False").";".
                                         ($crudPermission->getRead() ? "True" : "False").";".

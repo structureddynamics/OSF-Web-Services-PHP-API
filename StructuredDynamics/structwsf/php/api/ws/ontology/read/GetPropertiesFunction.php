@@ -1,13 +1,13 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetPropertiesFunction.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\ontology\read\GetPropertiesFunction.php
       @brief GetPropertiesFunction class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\ontology\read;  
+  namespace StructuredDynamics\osf\php\api\ws\ontology\read;  
 
  /**
   * Get all the properties that have been defined in an ontology. The 
@@ -17,7 +17,7 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
-  class GetPropertiesFunction extends \StructuredDynamics\structwsf\php\api\framework\OntologyFunctionCall
+  class GetPropertiesFunction extends \StructuredDynamics\osf\php\api\framework\OntologyFunctionCall
   {
     function __construct()
     {

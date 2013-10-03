@@ -1,13 +1,13 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\ontology\read\GetNamedIndividualFunction.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\ontology\read\GetNamedIndividualFunction.php
       @brief GetNamedIndividualFunction class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\ontology\read;  
+  namespace StructuredDynamics\osf\php\api\ws\ontology\read;  
 
   
  /**
@@ -18,7 +18,7 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
-  class GetNamedIndividualFunction extends \StructuredDynamics\structwsf\php\api\framework\OntologyFunctionCall
+  class GetNamedIndividualFunction extends \StructuredDynamics\osf\php\api\framework\OntologyFunctionCall
   {
     /**
     * Specifies the URI of the named individual to get its description from the ontology

@@ -1,18 +1,18 @@
 <?php
 
-  /*! @ingroup StructWSFPHPAPIWebServices structWSF PHP API Web Services */
+  /*! @ingroup OSFPHPAPIWebServices OSF PHP API Web Services */
   //@{
 
-  /*! @file \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery.php
+  /*! @file \StructuredDynamics\osf\php\api\ws\dataset\create\DatasetCreateQuery.php
       @brief DatasetCreateQuery class description
    */
 
-  namespace StructuredDynamics\structwsf\php\api\ws\dataset\create;
+  namespace StructuredDynamics\osf\php\api\ws\dataset\create;
 
-  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   
   /**
-  * Dataset Create Query to a structWSF Dataset Create web service endpoint
+  * Dataset Create Query to a OSF Dataset Create web service endpoint
   * 
   * The Dataset: Create Web service is used to create a new dataset in a WSF 
   * (Web Services Framework). When a dataset is created, it gets described and 
@@ -23,7 +23,7 @@
   * @code
   * 
   *  // Use the DatasetCreateQuery class
-  *  use \StructuredDynamics\structwsf\php\api\ws\dataset\create\DatasetCreateQuery;
+  *  use \StructuredDynamics\osf\php\api\ws\dataset\create\DatasetCreateQuery;
   *  
   *  // Create the DatasetCreateQuery object
   *  $dcreate = new DatasetCreateQuery("http://localhost/ws/");
@@ -42,8 +42,8 @@
   *  
   *  
   *  // Get all the web services registered on this instance with a 
-  *  use \StructuredDynamics\structwsf\php\api\ws\auth\lister\AuthListerQuery;
-  *  use \StructuredDynamics\structwsf\framework\Namespaces;
+  *  use \StructuredDynamics\osf\php\api\ws\auth\lister\AuthListerQuery;
+  *  use \StructuredDynamics\osf\framework\Namespaces;
   *  
   *  // Create the AuthListerQuery object
   *  $authlister = new AuthListerQuery("http://localhost/ws/");
@@ -74,7 +74,7 @@
   *  // registered web service endpoints of the network.
   *  $dcreate->targetWebservices($webservices);
   *  
-  *  use \StructuredDynamics\structwsf\php\api\framework\CRUDPermission;
+  *  use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   *  
   *  // We make this new dataset world readable
   *  $dcreate->globalPermissions(new CRUDPermission(FALSE, TRUE, FALSE, FALSE));
@@ -105,17 +105,23 @@
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
-  class DatasetCreateQuery extends \StructuredDynamics\structwsf\php\api\framework\WebServiceQuery
+  class DatasetCreateQuery extends \StructuredDynamics\osf\php\api\framework\WebServiceQuery
   {
     /**
     * Constructor
     * 
-    * @param mixed $network structWSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $network OSF network where to send this query. Ex: http://localhost/ws/
+    * @param mixed $appID The Application ID of the instance instance to key. The APP-ID is related to the API-KEY
+    * @param mixed $apiKey The API Key of the OSF web service endpoints
+    * @param mixed $userID The ID of the user that is doing the query
     */
-    function __construct($network)
+    function __construct($network, $appID, $apiKey, $userID)
     {
-      // Set the structWSF network to use for this query.
+      // Set the OSF network & credentials to use for this query.
       $this->setNetwork($network);
+      $this->appID = $appID;
+      $this->apiKey = $apiKey;
+      $this->userID = $userID;
       
       // Set default configarations for this web service query
       $this->setSupportedMimes(array("text/xml", 
@@ -132,7 +138,6 @@
       $this->setEndpoint("dataset/create/");
       
       // Set default parameters for this query
-      $this->globalPermissions(new CRUDPermission(FALSE, FALSE, FALSE, FALSE));
       $this->sourceInterface("default");      
     }
     
@@ -213,7 +218,7 @@
     * 
     * **Required**: This function must be called before sending the query 
     * 
-    * Note: you can get the complete list of webservice endpoint URIs registered to a structWSF network
+    * Note: you can get the complete list of webservice endpoint URIs registered to a OSF network
     *       instance by using the AuthListerQuery class and by using the getWebServicesList() function.
     * 
     * @param $webservicesUri An array of webservice URIs that have access to the content of this dataset.
@@ -233,30 +238,7 @@
       $this->params["webservices"] = urlencode(implode(";", $webservicesUri));
       
       return($this);
-    }   
-    
-    /**
-    * Set the global permissions for this new dataset
-    * 
-    * The default value for this call is no global permissions enabled for anybody
-    * 
-    * @param mixed $crudPermission A CRUDPermission object instance that define the global CRUD permissions 
-    *                              to use for this new dataset.
-    * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
-    * 
-    * @author Frederick Giasson, Structured Dynamics LLC.
-    * 
-    */
-    public function globalPermissions($crudPermission)
-    {
-      $this->params["globalPermissions"] = urlencode(($crudPermission->getCreate() ? "True" : "False").";".
-                                                     ($crudPermission->getRead() ? "True" : "False").";".
-                                                     ($crudPermission->getUpdate() ? "True" : "False").";".
-                                                     ($crudPermission->getDelete() ? "True" : "False"));
-                                                     
-      return($this);
-    }          
+    }         
    }       
    
    
