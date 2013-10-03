@@ -88,7 +88,7 @@ class WebServiceQuerier
   *    
   *   @author Frederick Giasson, Structured Dynamics LLC.
   */
-  function __construct($url, $method, $mime, $parameters, $timeout = 0, $extension = NULL, $appID, $apiKey, $userID)
+  function __construct($url, $method, $mime, $parameters, $appID, $apiKey, $userID, $timeout = 0, $extension = NULL)
   {
     $this->url = $url;
     $this->method = $method;

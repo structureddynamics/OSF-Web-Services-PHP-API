@@ -152,11 +152,11 @@
                                    $this->method, 
                                    ($this->mime == "resultset" ? "text/xml" : $this->mime), 
                                    $parameters, 
-                                   $this->timeout,
-                                   $query_extension,
                                    $this->appID,
                                    $this->apiKey,
-                                   $this->userID);
+                                   $this->userID,
+                                   $this->timeout,
+                                   $query_extension);
                                    
       $this->httpStatus = $wsq->getStatus();
       $this->httpStatusMessage = $wsq->getStatusMessage();
