@@ -129,7 +129,7 @@ class WebServiceQuerier
                                                    'OSF-APP-ID: '. $this->appID,
                                                    'OSF-USER-URI: '. $this->userID,
                                                    'Authorization: ' . $this->securityHash(
-                                                                         $this->parameters,
+                                                                         urldecode($this->parameters),
                                                                          strtoupper($this->getMethod()),
                                                                          $request_url['path'],
                                                                          $this->apiKey,

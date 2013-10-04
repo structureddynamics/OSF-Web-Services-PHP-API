@@ -172,9 +172,11 @@
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
-    public function getGroupUsers()
+    public function getGroupUsers($group)
     {
       $this->params["mode"] = "group_users";
+      
+      $this->params["group"] = urlencode($group);
       
       return($this);
     }   
