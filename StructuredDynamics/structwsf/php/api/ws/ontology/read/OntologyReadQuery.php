@@ -331,6 +331,28 @@
     }  
     
     /**
+    * Get all the datatypes that have been defined in an ontology. The requester can get 
+    * a list of URIs or the full description of the datatypes. 
+    * 
+    * @param mixed $function A reference to a GetDatatypesFunction object instance.
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getDatatypes
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.
+    */
+    public function getDatatypes(&$function)
+    {
+      if(get_class($function) == 'StructuredDynamics\structwsf\php\api\ws\ontology\read\GetDatatypesFunction')
+      {
+        $this->params["function"] = "getDatatypes";
+        
+        $this->params["parameters"] = $function->getParameters();
+      }
+      
+      return($this);
+    }  
+    
+    /**
     * Get all the sub-classes of a target class of the ontology. The requester can 
     * get a list of URIs or the full description of the sub-classes. 
     * 
