@@ -969,7 +969,7 @@ class Resultset
   */   
   public function getResultsetIronJSON()
   {
-    $ws_irv = new ConverterIrJSON($this->getResultsetXML(), "text/xml", "true", "self", "self");
+    $ws_irv = new ConverterIrJSON($this->getResultsetXML(), "text/xml", "true");
 
     $ws_irv->pipeline_conneg("application/iron+json", "", "text/xml", "");
 
@@ -1001,7 +1001,7 @@ class Resultset
   */     
   public function getResultsetIronCOMMON()
   {
-    $ws_irc = new ConverterCommON($this->getResultsetXML(), "text/xml", "true", "self", "self");
+    $ws_irc = new ConverterCommON($this->getResultsetXML(), "text/xml", "true");
 
     $ws_irc->pipeline_conneg("application/iron+csv", "", "text/xml", "");
 
@@ -1255,7 +1255,7 @@ class Resultset
             case "prefLabel":
               if($attributeValues != "")
               {
-                if(!$this->in_array_r($attributeValues, $record[Namespaces::$iron.'prefLabel']))
+                if(!isset($record[Namespaces::$iron.'prefLabel']) || !$this->in_array_r($attributeValues, $record[Namespaces::$iron.'prefLabel']))
                 {                
                   $json .= $jsonPaddingSize.'iron:prefLabel """'.$this->jsonEncode($attributeValues).'"""'." ;\n";              
                 }
@@ -1266,7 +1266,7 @@ class Resultset
               {
                 if($altLabel != "")
                 {
-                  if(!$this->in_array_r($altLabel, $record[Namespaces::$iron.'altLabel']))
+                  if(!isset($record[Namespaces::$iron.'altLabel']) || !$this->in_array_r($altLabel, $record[Namespaces::$iron.'altLabel']))
                   {                
                     $json .= $jsonPaddingSize.'iron:altLabel """'.$this->jsonEncode($altLabel).'"""'." ;\n";              
                   }
@@ -1276,7 +1276,7 @@ class Resultset
             case "description":   
               if($attributeValues != "")
               {
-                if(!$this->in_array_r($attributeValues, $record[Namespaces::$iron.'description']))
+                if(!isset($record[Namespaces::$iron.'description']) || !$this->in_array_r($attributeValues, $record[Namespaces::$iron.'description']))
                 {                
                   $json .= $jsonPaddingSize.'iron:description """'.$this->jsonEncode($attributeValues).'"""'." ;\n";              
                 }
@@ -1285,7 +1285,7 @@ class Resultset
             case "prefURL":
               if($attributeValues != "")
               {
-                if(!$this->in_array_r($attributeValues, $record[Namespaces::$iron.'prefURL']))
+                if(!isset($record[Namespaces::$iron.'prefURL']) || !$this->in_array_r($attributeValues, $record[Namespaces::$iron.'prefURL']))
                 {                
                   $json .= $jsonPaddingSize.'iron:prefURL """'.$this->jsonEncode($attributeValues).'"""'." ;\n";              
                 }
