@@ -150,6 +150,23 @@
       
       return($this);
     }  
+    
+    /**
+    * Specifies that this query will return all the datasets URI currently existing, and accessible by the group,
+    * in the OSF network instance, along with their CRUD permissions.
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function getGroupAccesses($group)
+    {
+      $this->params["mode"] = "access_group";
+      
+      $this->params["group"] = urlencode($group);
+      
+      return($this);
+    }  
         
     /**
     * Specifies that this query will return all the groups currently defined in the OSF instance.
