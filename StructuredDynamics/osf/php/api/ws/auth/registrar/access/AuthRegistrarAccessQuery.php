@@ -219,7 +219,7 @@
     }    
 
     /**
-    * Delete a target access permissions record for a specific IP address and a specific dataset 
+    * Delete all accesses permissions records for a specific dataset
     *     
     * @param mixed $datasetUri Dataset URI for which we delete all the access record defined for it
     * 
@@ -227,9 +227,27 @@
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
-    public function deleteAll($datasetUri)
+    public function deleteAllDatasets($datasetUri)
     {
       $this->params["dataset"] = urlencode($datasetUri);
+      
+      $this->params["action"] = "delete_all";
+      
+      return($this);
+    }
+    
+    /**
+    * Delete all accesses permissions records for a specific group
+    *     
+    * @param mixed $groupUri Group URI for which we delete all the access record defined for it
+    * 
+    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function deleteAllGroups($groupUri)
+    {
+      $this->params["group"] = urlencode($groupUri);
       
       $this->params["action"] = "delete_all";
       
