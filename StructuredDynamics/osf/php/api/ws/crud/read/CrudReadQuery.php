@@ -110,6 +110,11 @@
       }
       else
       {
+        foreach($uris as $key => $uri)
+        {
+          $uris[$key] = str_replace(";", "%3B", $uri);
+        } 
+        
         $this->params["uri"] = urlencode(implode(";", $uris));
       }
       
