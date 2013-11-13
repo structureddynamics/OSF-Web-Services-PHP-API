@@ -99,7 +99,7 @@
       }
       else
       {
-        $this->extendedAttributes .= "(type:".urlencode('"'.$type.'"')." OR ".
+        $this->extendedAttributes .= "(type:".urlencode('"'.$type.'"').urlencode(" OR ").
                                      "inferred_type:".urlencode('"'.$type.'"').")";
       }
       
@@ -144,7 +144,7 @@
     */
     public function and_()
     {
-      $this->extendedAttributes .= " AND ";
+      $this->extendedAttributes .= urlencode(" AND ");
       
       return($this);
     }
@@ -154,7 +154,7 @@
     */
     public function or_()
     {
-      $this->extendedAttributes .= " OR ";
+      $this->extendedAttributes .= urlencode(" OR ");
       
       return($this);
     }
@@ -164,7 +164,7 @@
     */
     public function not_()
     {
-      $this->extendedAttributes .= " NOT ";
+      $this->extendedAttributes .= urlencode(" NOT ");
       
       return($this);
     }
