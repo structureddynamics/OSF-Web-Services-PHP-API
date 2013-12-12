@@ -1,7 +1,7 @@
 Auto-loading of Classes
 =======================
 
-The OSF PHP API does comply with the [PSR-0 Standard Document](https://gist.github.com/1234504) 
+The OSF Web Services PHP API does comply with the [PSR-0 Standard Document](https://gist.github.com/1234504) 
 for auto-loading the classes of the framework. The SplClassLoader class that has been developed by
 the same group can be used as the classes auto-loader.
 
@@ -28,7 +28,7 @@ Here is an example of how you can auto-load the classes of the OSF PHP API frame
   use StructuredDynamics\osf\php\api\ws\search\SearchQuery;
   
   // Create the SearchQuery object
-  $search = new SearchQuery("http://localhost/ws/");
+  $search = new SearchQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Set the query parameter with the search keyword "elm"
   $search->query("elm");

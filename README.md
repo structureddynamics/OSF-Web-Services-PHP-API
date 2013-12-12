@@ -1,9 +1,9 @@
 Introduction
 ============
 
-The **OSF PHP API** is a framework available to PHP developers to help them generate queries to any
+The **OSF Web Services PHP API** is a framework available to PHP developers to help them generate queries to any
 OSF web service endpoint. Each OSF web service endpoint has its own WebServiceQuery class in the
-OSF PHP API. This class is used to generate any query, to send it to be endpoint of a OSF instance
+OSF Web Services PHP API. This class is used to generate any query, to send it to be endpoint of a OSF instance
 and to get back a resultset. The resultset can then be manipulated by using the Resultset API. This same API
 can be used to transform the resultset into different formats.
 
@@ -23,7 +23,7 @@ The use of this API is simple. Developers normally have three easy steps to do:
 + Define all the parameters/features/behaviors of the web service by invoking different methods of the class
 + Send the resulting query using the send() method
 
-Here is an example of a query that is generated using the OSF PHP API and sent to specific
+Here is an example of a query that is generated using the OSF Web Services PHP API and sent to specific
 OSF network instance:
 
 ```php
@@ -34,7 +34,7 @@ OSF network instance:
   //
   
   // Create the SearchQuery object
-  $search = new SearchQuery("http://localhost/ws/");
+  $search = new SearchQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   //
   // Step #2: Define all the parameters/features/behaviors of the web service by invoking different methods of the class
@@ -97,7 +97,7 @@ Here is an example of how you can auto-load the classes of the OSF PHP API frame
   use StructuredDynamics\osf\php\api\ws\search\SearchQuery;
   
   // Create the SearchQuery object
-  $search = new SearchQuery("http://localhost/ws/");
+  $search = new SearchQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Set the query parameter with the search keyword "elm"
   $search->query("elm");
@@ -162,7 +162,7 @@ Auth Registrar Access
   // Get all the web services registered on this instance with a 
   
   // Create the AuthListerQuery object
-  $authlister = new AuthListerQuery("http://localhost/ws/");
+  $authlister = new AuthListerQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specifies that we want to get all the list of all registered web service endpoints.
   $authlister->getRegisteredWebServiceEndpointsUri();
@@ -187,9 +187,9 @@ Auth Registrar Access
   unset($authlister);
 
   // Create a new Access record
-  $ara = new AuthRegistrarAccessQuery("http://localhost/ws/");
+  $ara = new AuthRegistrarAccessQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
-  $ara->create("192.168.0.1", "http://localhost/ws/dataset/my-new-dataset-3/", new CRUDPermission(TRUE, TRUE, TRUE, TRUE), $webservices);
+  $ara->create("some-group", "http://localhost/ws/dataset/my-new-dataset-3/", new CRUDPermission(TRUE, TRUE, TRUE, TRUE), $webservices);
   
   $ara->send();
 
@@ -197,7 +197,7 @@ Auth Registrar Access
   {
     // Now, let's make sure that  the record access is properly created.'
     // Create the AuthListerQuery object
-    $authlister = new AuthListerQuery("http://localhost/ws/");
+    $authlister = new AuthListerQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
     
     // Specifies that we want to get all the list of all registered web service endpoints.
     $authlister->getDatasetUsersAccesses("http://localhost/ws/dataset/my-new-dataset-3/");
@@ -230,7 +230,7 @@ Auth: Registrar WS
   use \StructuredDynamics\osf\php\api\framework\CRUDPermission;
   
   // Register a new web service endpoint to the OSF instance
-  $arws = new AuthRegistrarWsQuery("http://localhost/ws/");
+  $arws = new AuthRegistrarWsQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
 
   // Define the title 
   $arws->title("A new web service endpoint");
@@ -249,7 +249,7 @@ Auth: Registrar WS
   if($arws->isSuccessful())
   {
     // Now, let's use the auth: lister endpoint to make sure we can see it in the OSF instance
-    $authlister = new AuthListerQuery("http://localhost/ws/");
+    $authlister = new AuthListerQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
     
     // Specifies that we want to get all the list of all registered web service endpoints.
     $authlister->getRegisteredWebServiceEndpointsUri();
@@ -282,36 +282,6 @@ Auth: Registrar WS
   ?>
 ```    
 
-Auth: Validator
----------------
-```php
-  <?php
-  
-  use \StructuredDynamics\osf\php\api\ws\auth\validator\AuthValidatorQuery;
-  
-  $authValidator = new AuthValidatorQuery("http://localhost/ws/");
-  
-  $authValidator->ip("127.0.0.1");
-  
-  $authValidator->datasets(array("http://localhost/ws/dataset/my-new-dataset-3/"));
-  
-  $authValidator->webServiceUri("http://localhost/wsf/ws/crud/read/");
-  
-  $authValidator->send();
-  
-  if($authValidator->isSuccessful())
-  {
-    echo "Query validated! Move on...";
-  }
-  else
-  {
-    echo "Query validation failed: ".$authValidator->getStatus()." (".$authValidator->getStatusMessage().")\n";
-    echo $authValidator->getStatusMessageDescription();  
-  }  
-  
-  ?>
-```
-
 Dataset: Create
 ---------------
 ```php
@@ -321,7 +291,7 @@ Dataset: Create
   use \StructuredDynamics\osf\php\api\ws\dataset\create\DatasetCreateQuery;
   
   // Create the DatasetCreateQuery object
-  $dcreate = new DatasetCreateQuery("http://localhost/ws/");
+  $dcreate = new DatasetCreateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Set the URI of the new dataset
   $dcreate->uri("http://localhost/ws/dataset/my-new-dataset/");
@@ -341,7 +311,7 @@ Dataset: Create
   use \StructuredDynamics\osf\framework\Namespaces;
   
   // Create the AuthListerQuery object
-  $authlister = new AuthListerQuery("http://localhost/ws/");
+  $authlister = new AuthListerQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specifies that we want to get all the list of all registered web service endpoints.
   $authlister->getRegisteredWebServiceEndpointsUri();
@@ -381,7 +351,7 @@ Dataset: Create
   // using the Auth Lister again
   
   // Create the AuthListerQuery object
-  $authlister = new AuthListerQuery("http://localhost/ws/");
+  $authlister = new AuthListerQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specifies that we want to get all the list of all registered web service endpoints.
   $authlister->getDatasetUsersAccesses("http://localhost/ws/dataset/my-new-dataset/");
@@ -404,7 +374,7 @@ Dataset: Read
 
   use \StructuredDynamics\osf\php\api\ws\dataset\read\DatasetReadQuery;
   
-  $dRead = new DatasetReadQuery("http://localhost/ws/");
+  $dRead = new DatasetReadQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
 
   // Specify the Dataset URI for which we want its description
   $dRead->uri("http://localhost/ws/dataset/my-new-dataset-3/");
@@ -440,7 +410,7 @@ Dataset: Update
   // First, let's create a new dataset to update after
   
   // Create the DatasetCreateQuery object
-  $dcreate = new DatasetCreateQuery("http://localhost/ws/");
+  $dcreate = new DatasetCreateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Set the URI of the new dataset
   $dcreate->uri("http://localhost/ws/dataset/my-new-dataset-6/");
@@ -458,7 +428,7 @@ Dataset: Update
   // Get all the web services registered on this instance with a 
   
   // Create the AuthListerQuery object
-  $authlister = new AuthListerQuery("http://localhost/ws/");
+  $authlister = new AuthListerQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specifies that we want to get all the list of all registered web service endpoints.
   $authlister->getRegisteredWebServiceEndpointsUri();
@@ -492,7 +462,7 @@ Dataset: Update
   // Send the crud read query to the endpoint
   $dcreate->send();   
   
-  $dupdate = new DatasetUpdateQuery("http://localhost/ws/");
+  $dupdate = new DatasetUpdateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Set the URI of the dataset to update
   $dupdate->uri("http://localhost/ws/dataset/my-new-dataset-6/");
@@ -517,7 +487,7 @@ Dataset: Update
   {
     // Now that it is updated, use the Dataset Read endpoint to get the description
     // of our updated dataset in RDF+XML
-    $dRead = new DatasetReadQuery("http://localhost/ws/");
+    $dRead = new DatasetReadQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
 
     // Specify the Dataset URI for which we want its description
     $dRead->uri("http://localhost/ws/dataset/my-new-dataset-6/");
@@ -558,7 +528,7 @@ Dataset: Delete
   // First, let's create a new dataset to delete after
   
   // Create the DatasetCreateQuery object
-  $dcreate = new DatasetCreateQuery("http://localhost/ws/");
+  $dcreate = new DatasetCreateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Set the URI of the new dataset
   $dcreate->uri("http://localhost/ws/dataset/my-new-dataset-5/");
@@ -576,7 +546,7 @@ Dataset: Delete
   // Get all the web services registered on this instance with a 
   
   // Create the AuthListerQuery object
-  $authlister = new AuthListerQuery("http://localhost/ws/");
+  $authlister = new AuthListerQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specifies that we want to get all the list of all registered web service endpoints.
   $authlister->getRegisteredWebServiceEndpointsUri();
@@ -611,7 +581,7 @@ Dataset: Delete
   $dcreate->send();
   
   // Now, let's delete that dataset!  
-  $dDelete = new DatasetDeleteQuery("http://localhost/ws/");
+  $dDelete = new DatasetDeleteQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specify the URI of the dataset we want to remove
   $dDelete->uri("http://localhost/ws/dataset/my-new-dataset-5/");
@@ -643,7 +613,7 @@ Crud: Create
   use \StructuredDynamics\osf\php\api\ws\crud\create\CrudCreateQuery;
   
   // Create the CrudCreateQuery object
-  $crudCreate = new CrudCreateQuery("http://localhost/ws/");
+  $crudCreate = new CrudCreateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specifies where we want to add the RDF content
   $crudCreate->dataset("http://localhost/ws/dataset/my-new-dataset/");
@@ -673,7 +643,7 @@ Crud: Create
     // Now that it got imported, let's try to search for that new record using the Search endpoint.
     
     // Create the SearchQuery object
-    $search = new SearchQuery("http://localhost/ws/");
+    $search = new SearchQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
     
     // Set the query parameter with the search keyword "elm"
     $search->query("Consortium");
@@ -749,7 +719,7 @@ CRUD: Update
   // First, let's create our object that we will then modify.
   
   // Create the CrudCreateQuery object
-  $crudCreate = new CrudCreateQuery("http://localhost/ws/");
+  $crudCreate = new CrudCreateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specifies where we want to add the RDF content
   $crudCreate->dataset("http://localhost/ws/dataset/my-new-dataset/");
@@ -777,7 +747,7 @@ CRUD: Update
     // Now that it got created, let's try to modify it.
     
     // Create the CrudUpdateQuery object
-    $crudUpdate = new CrudUpdateQuery("http://localhost/ws/");
+    $crudUpdate = new CrudUpdateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
     
     // Specifies where we want to add the RDF content
     $crudUpdate->dataset("http://localhost/ws/dataset/my-new-dataset/");
@@ -802,7 +772,7 @@ CRUD: Update
       // If the document has been properly updated, let's try to search for it.
       
       // Create the SearchQuery object
-      $search = new SearchQuery("http://localhost/ws/");
+      $search = new SearchQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
       
       // Set the query parameter with the search keyword "elm"
       $search->query("Update testing");
@@ -842,7 +812,7 @@ CRUD: Delete
   use \StructuredDynamics\osf\php\api\ws\crud\delete\CrudDeleteQuery;
   
   // Create the CrudDeleteQuery object
-  $crudDelete = new CrudDeleteQuery("http://localhost/ws/");
+  $crudDelete = new CrudDeleteQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specifies where the record we want to delete is indexed
   $crudDelete->dataset("http://localhost/ws/dataset/my-new-dataset/");
@@ -875,7 +845,7 @@ Ontology: Create
   use \StructuredDynamics\osf\php\api\ws\ontology\read\OntologyReadQuery;
   use \StructuredDynamics\osf\php\api\ws\ontology\read\GetLoadedOntologiesFunction;
   
-  $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
+  $ontologyCreate = new OntologyCreateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Create the vcard ontology for which its description is located somewhere on the Web
   $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
@@ -892,7 +862,7 @@ Ontology: Create
   if($ontologyCreate->isSuccessful())
   {
     // Now, let's use the ontology read service to make sure it got loaded.
-    $ontologyRead = new OntologyReadQuery("http://localhost/ws/");
+    $ontologyRead = new OntologyReadQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
     
     $ontologyRead->ontology("http://www.w3.org/2006/vcard/ns");
 
@@ -977,7 +947,7 @@ Ontology: Update
   use \StructuredDynamics\osf\php\api\ws\ontology\read\GetClassFunction;
   
   // First, let's create an initial ontology
-  $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
+  $ontologyCreate = new OntologyCreateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Create the vcard ontology for which its description is located somewhere on the Web
   $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
@@ -996,7 +966,7 @@ Ontology: Update
     // Now, let's change the URI of the class "http://www.w3.org/2006/vcard/ns#Address"
     // to http://www.w3.org/2006/vcard/ns#Addr
 
-    $ontologyUpdate = new OntologyUpdateQuery("http://localhost/ws/");
+    $ontologyUpdate = new OntologyUpdateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
     
     $ontologyUpdate->ontology("http://www.w3.org/2006/vcard/ns");
     
@@ -1014,7 +984,7 @@ Ontology: Update
     {
       // Now, let's read information about the Address class, using its 
       // brand new URI.
-      $ontologyRead = new OntologyReadQuery("http://localhost/ws/");
+      $ontologyRead = new OntologyReadQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
       
       $ontologyRead->mime("application/rdf+n3");
       
@@ -1056,7 +1026,7 @@ Ontology: Delete
   use \StructuredDynamics\osf\php\api\ws\ontology\delete\OntologyDeleteQuery;
   use \StructuredDynamics\osf\php\api\ws\ontology\delete\DeleteClassFunction;
   
-  $ontologyCreate = new OntologyCreateQuery("http://localhost/ws/");
+  $ontologyCreate = new OntologyCreateQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Create the vcard ontology for which its description is located somewhere on the Web
   $ontologyCreate->uri("http://www.w3.org/2006/vcard/ns");
@@ -1073,7 +1043,7 @@ Ontology: Delete
   if(!$ontologyCreate->isSuccessful())
   {
     // Now delete one of the class of this ontology
-    $ontologyDelete = new OntologyDeleteQuery("http://localhost/ws/");
+    $ontologyDelete = new OntologyDeleteQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
     
     $ontologyDelete->ontology("http://www.w3.org/2006/vcard/ns");
     
@@ -1137,7 +1107,7 @@ Scones
   
   use \StructuredDynamics\osf\php\api\ws\scones\SconesQuery;
   
-  $scones = new SconesQuery("http://localhost/ws/");
+  $scones = new SconesQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specify the document (in this case, a web page) you want to tag using that Scones instance.
   $scones->document("http://fgiasson.com");
