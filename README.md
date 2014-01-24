@@ -200,7 +200,7 @@ Auth Registrar Access
     $authlister = new AuthListerQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
     
     // Specifies that we want to get all the list of all registered web service endpoints.
-    $authlister->getDatasetUsersAccesses("http://localhost/ws/dataset/my-new-dataset-3/");
+    $authlister->getDatasetGroupsAccesses("http://localhost/ws/dataset/my-new-dataset-3/");
     
     // Send the auth lister query to the endpoint
     $authlister->send();
@@ -354,7 +354,7 @@ Dataset: Create
   $authlister = new AuthListerQuery('http://localhost/ws/', 'some-app-id', 'some-api-key', 'http://localhost/users/foo');
   
   // Specifies that we want to get all the list of all registered web service endpoints.
-  $authlister->getDatasetUsersAccesses("http://localhost/ws/dataset/my-new-dataset/");
+  $authlister->getDatasetGroupsAccesses("http://localhost/ws/dataset/my-new-dataset/");
   
   // Send the auth lister query to the endpoint
   $authlister->send();

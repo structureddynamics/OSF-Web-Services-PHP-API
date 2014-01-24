@@ -119,7 +119,7 @@
     }
 
     /**
-    * Specifies that this query will return all the users access records in the OSF network instance.
+    * Specifies that this query will return all the group access records in the OSF network instance.
     * This information will only be returned if the requester has permissions on the core OSF registry dataset.
     * 
     * @param $datasetUri the URI of the target dataset for which you want the access records for all its users
@@ -128,7 +128,7 @@
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
-    public function getDatasetUsersAccesses($datasetUri)
+    public function getDatasetGroupsAccesses($datasetUri)
     {
       $this->params["mode"] = "access_dataset";
       $this->params["dataset"] = urlencode($datasetUri);

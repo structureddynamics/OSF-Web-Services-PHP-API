@@ -89,7 +89,7 @@
   *  $authlister = new AuthListerQuery("http://localhost/ws/");
   *  
   *  // Specifies that we want to get all the list of all registered web service endpoints.
-  *  $authlister->getDatasetUsersAccesses("http://localhost/ws/dataset/my-new-dataset/");
+  *  $authlister->getDatasetGroupsAccesses("http://localhost/ws/dataset/my-new-dataset/");
   *  
   *  // Send the auth lister query to the endpoint
   *  $authlister->send();

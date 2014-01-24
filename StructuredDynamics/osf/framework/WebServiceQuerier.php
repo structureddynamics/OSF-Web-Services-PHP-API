@@ -93,7 +93,12 @@ class WebServiceQuerier
     $this->url = $url;
     $this->method = $method;
     $this->parameters = $parameters;     
-    //$this->parameters = $parameters . "&DBGSESSID=1@localhost:7869;d=1,p=0 ";      
+    /*
+    if(strpos($url, '/search') !== FALSE)
+    {
+      $this->parameters = $parameters . "&DBGSESSID=1@localhost:7869;d=1,p=0 ";      
+    } 
+    */
     $this->mime = $mime;
     $this->timeout = $timeout;
     $this->extension = ($extension === NULL) ? new QuerierExtension() : $extension;
