@@ -1322,7 +1322,7 @@ class Resultset
                         {
                           if($reifiedValue !== "")
                           {
-                            $jsonRei .= "_:" . md5($recordURI . $attributeURI . $value["value"]). " a rdf:Statement ;\n";
+                            $jsonRei .= "_:b" . md5($recordURI . $attributeURI . $value["value"]). " a rdf:Statement ;\n";
                             $jsonRei .= "    rdf:subject <" . $recordURI . "> ;\n";
                             $jsonRei .= "    rdf:predicate <" . $attributeURI . "> ;\n";
                             $jsonRei .= "    rdf:object \"\"\"" . $value["value"] . "\"\"\" ;\n";
@@ -1348,7 +1348,7 @@ class Resultset
                         {
                           if($reifiedValue !== "")
                           {
-                            $jsonRei .= "_:" . md5($recordURI . $attributeURI . $value["uri"]). " a rdf:Statement ;\n";
+                            $jsonRei .= "_:b" . md5($recordURI . $attributeURI . $value["uri"]). " a rdf:Statement ;\n";
                             $jsonRei .= "    rdf:subject <" . $recordURI . "> ;\n";
                             $jsonRei .= "    rdf:predicate <" . $attributeURI . "> ;\n";
                             $jsonRei .= "    rdf:object <" . $value["uri"] . "> ;\n";
