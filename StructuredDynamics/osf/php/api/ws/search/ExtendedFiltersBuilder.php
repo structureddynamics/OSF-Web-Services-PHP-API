@@ -120,12 +120,14 @@
       // Check if there are Search endpoint control characters in the query.
       // If there are, then we don't escape the values and we assume
       // they are properly escaped.
+      //
+      // EXCEPT if the value is a URI
       
       str_replace(array(' OR ', ' AND ', ' NOT ', '\\', '+', '-', '&', 
                                '|', '!', '(', ')', '{', '}', '[', ']', '^', 
                                '~', '*', '?', '"', ';', ' '), "", $value, $found);
       
-      if($found > 0)
+      if($found > 0 && !$valueIsUri)
       {
         $this->extendedAttributes .= urlencode(urlencode($attribute)).($valueIsUri === TRUE ? "[uri]" : "").":".
                                      urlencode(urlencode($value));
