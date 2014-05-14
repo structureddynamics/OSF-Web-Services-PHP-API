@@ -3,7 +3,7 @@
   namespace StructuredDynamics\osf\framework;
   
   use \StructuredDynamics\osf\framework\Value;
-  use \StructuredDynamics\osf\framework\Resource;
+  use \StructuredDynamics\osf\framework\BaseResource;
   
   /**
   * Class describing a Property of a Resource
@@ -218,11 +218,11 @@
     * This function is not intended to be used except by the BaseResource()
     * class.
     * 
-    * @param Resource $resource Resource reference that is defined by this property
+    * @param BaseResource $resource Resource reference that is defined by this property
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
-    public function defineResource(Resource &$resource)
+    public function defineResource(BaseResource &$resource)
     {
       $this->resource = $resource;
       
