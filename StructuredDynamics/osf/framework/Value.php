@@ -99,13 +99,13 @@
     * Add reification statement(s) to the value (in fact, the entire triple formed by the 
     * resource->property->value)
     * 
-    * @param ReificationStatementResource ReificationStatement that describe the set of 
+    * @param Array ReificationStatement that describe the set of 
     *                                     reification statements for this triple
     * @return Value
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
-    public function addReifications(ReificationStatementResource $reifications)
+    public function addReifications($reifications)
     {
       $this->reifications = $reifications;
       
