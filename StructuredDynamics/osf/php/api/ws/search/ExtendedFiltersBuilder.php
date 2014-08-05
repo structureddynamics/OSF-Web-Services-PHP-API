@@ -68,7 +68,7 @@
     */
     function getExtendedFilters()
     {
-      return($this->extendedAttributes);
+      return($this->extendedFilters);
     }
 
     /**
@@ -79,7 +79,7 @@
     */
     public function datasetFilter($dataset)
     {
-      $this->extendedAttributes .= "dataset:".urlencode('"'.$dataset.'"');
+      $this->extendedFilters .= "dataset:".urlencode('"'.$dataset.'"');
       
       return($this);
     }
@@ -95,11 +95,11 @@
     {
       if($enableInference === FALSE)
       {
-        $this->extendedAttributes .= "type:".urlencode('"'.$type.'"');
+        $this->extendedFilters .= "type:".urlencode('"'.$type.'"');
       }
       else
       {
-        $this->extendedAttributes .= "(type:".urlencode('"'.$type.'"').urlencode(" OR ").
+        $this->extendedFilters .= "(type:".urlencode('"'.$type.'"').urlencode(" OR ").
                                      "inferred_type:".urlencode('"'.$type.'"').")";
       }
       
@@ -129,12 +129,12 @@
       
       if($found > 0 && !$valueIsUri)
       {
-        $this->extendedAttributes .= urlencode(urlencode($attribute)).($valueIsUri === TRUE ? "[uri]" : "").":".
+        $this->extendedFilters .= urlencode(urlencode($attribute)).($valueIsUri === TRUE ? "[uri]" : "").":".
                                      urlencode(urlencode($value));
       }
       else
       {
-        $this->extendedAttributes .= urlencode(urlencode($attribute)).($valueIsUri === TRUE ? "[uri]" : "").":".
+        $this->extendedFilters .= urlencode(urlencode($attribute)).($valueIsUri === TRUE ? "[uri]" : "").":".
                                      urlencode(urlencode($this->escape($value)));  
       }
       
@@ -146,7 +146,7 @@
     */
     public function and_()
     {
-      $this->extendedAttributes .= urlencode(" AND ");
+      $this->extendedFilters .= urlencode(" AND ");
       
       return($this);
     }
@@ -156,7 +156,7 @@
     */
     public function or_()
     {
-      $this->extendedAttributes .= urlencode(" OR ");
+      $this->extendedFilters .= urlencode(" OR ");
       
       return($this);
     }
@@ -166,7 +166,7 @@
     */
     public function not_()
     {
-      $this->extendedAttributes .= urlencode(" NOT ");
+      $this->extendedFilters .= urlencode(" NOT ");
       
       return($this);
     }
@@ -176,7 +176,7 @@
     */
     public function startGrouping()
     {
-      $this->extendedAttributes .= "(";
+      $this->extendedFilters .= "(";
       
       return($this);
     }
@@ -186,7 +186,7 @@
     */
     public function endGrouping()
     {
-      $this->extendedAttributes .= ")";
+      $this->extendedFilters .= ")";
       
       return($this);
     }
