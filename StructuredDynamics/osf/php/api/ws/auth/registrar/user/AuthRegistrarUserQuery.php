@@ -50,7 +50,7 @@
   * 
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Group
+  * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_Group
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -97,7 +97,7 @@
     * 
     * @param mixed $uri URI of the target user
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_User#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_User#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC. 
     */
@@ -115,7 +115,7 @@
     * 
     * @param mixed $uri URI of the group where to register/unregister the user
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_User#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_User#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC. 
     */
@@ -131,7 +131,7 @@
     * 
     * **Required**: This function must be called before sending the query 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_User#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_User#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC. 
     */
@@ -147,7 +147,7 @@
     * 
     * **Required**: This function must be called before sending the query 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_User#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_User#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC. 
     */

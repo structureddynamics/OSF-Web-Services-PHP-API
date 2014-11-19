@@ -44,7 +44,7 @@
   * 
   * @endcode
   *  
-  * @see http://techwiki.openstructs.org/index.php/Auth:_Lister
+  * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -92,7 +92,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -107,7 +107,7 @@
     * Specifies that this query will return all the web service endpoints URI currently registered
     * to this OSF network instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -124,7 +124,7 @@
     * 
     * @param $datasetUri the URI of the target dataset for which you want the access records for all its users
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -140,7 +140,7 @@
     * Specifies that this query will return all the datasets URI currently existing, and accessible by the user,
     * in the OSF network instance, along with their CRUD permissions.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -155,7 +155,7 @@
     * Specifies that this query will return all the datasets URI currently existing, and accessible by the group,
     * in the OSF network instance, along with their CRUD permissions.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -171,7 +171,7 @@
     /**
     * Specifies that this query will return all the groups currently defined in the OSF instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -185,7 +185,7 @@
     /**
     * Specifies that this query will return all the users registered to a group
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -201,7 +201,7 @@
     /**
     * Specifies that this query will return all the groups where the user is registered to
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -219,7 +219,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -233,7 +233,7 @@
     /**
     * Specifies if you do not want to include any web service URIs for the access records.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -249,7 +249,7 @@
     * 
     * @param mixed $uri URI of the web service endpoint to include
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */

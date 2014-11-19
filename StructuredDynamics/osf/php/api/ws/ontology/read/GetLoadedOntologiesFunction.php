@@ -13,7 +13,7 @@
   * Class used to define the parameters to use send a "GetLoadedOntologies" call 
   * to the Ontology: Read web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getLoadedOntologies
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getLoadedOntologies
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -27,7 +27,7 @@
     /**
     * Set the mode of the request to "uris"
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getLoadedOntologies
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getLoadedOntologies
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -41,7 +41,7 @@
     /**
     * Set the mode of the request to "descriptions"
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getLoadedOntologies
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getLoadedOntologies
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

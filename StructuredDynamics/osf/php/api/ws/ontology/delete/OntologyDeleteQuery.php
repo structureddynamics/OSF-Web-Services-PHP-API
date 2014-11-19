@@ -77,7 +77,7 @@
   * 
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Delete
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -129,7 +129,7 @@
     * 
     * @param mixed $ontologyUri URI of the ontology to query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -143,7 +143,7 @@
     /**
     * Delete an ontology from the system
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteOntology
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#deleteOntology
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -159,7 +159,7 @@
     * 
     * @param mixed $function A reference to a DeleteClassFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteClass
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#deleteClass
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -180,7 +180,7 @@
     * 
     * @param mixed $function A reference to a DeletePropertyFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteProperty
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#deleteProperty
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -201,7 +201,7 @@
     * 
     * @param mixed $function A reference to a DeleteNamedIndividualFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteNamedIndividual
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#deleteNamedIndividual
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -222,7 +222,7 @@
   * Class used to define the parameters to use send a "deleteClass" call 
   * to the Ontology: Delete web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteClass
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#deleteClass
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -233,7 +233,7 @@
     * 
     * @param mixed $uri URI of the class to delete from the ontology
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteClass
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#deleteClass
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -247,7 +247,7 @@
   * Class used to define the parameters to use send a "deleteProperty" call 
   * to the Ontology: Delete web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteProperty
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#deleteProperty
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -258,7 +258,7 @@
     * 
     * @param mixed $uri URI of the property to delete from the ontology
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteProperty
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#deleteProperty
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -272,7 +272,7 @@
   * Class used to define the parameters to use send a "deleteNamedIndividual" call 
   * to the Ontology: Delete web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteNamedIndividual
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#deleteNamedIndividual
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -283,7 +283,7 @@
     * 
     * @param mixed $uri URI of the named individual to delete from the ontology
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Delete#deleteNamedIndividual
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Delete#deleteNamedIndividual
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

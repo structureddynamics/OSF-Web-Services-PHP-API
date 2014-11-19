@@ -101,7 +101,7 @@
   *  
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access
+  * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_Access
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -156,7 +156,7 @@
     *                               registered to a OSF network instance by using the AuthListerQuery class 
     *                               and by using the getWebServicesList() function.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -184,7 +184,7 @@
     * @param mixed $group Target Group URI related to the acces record being created
     * @param mixed $datasetUri Dataset URI defined for the access record to delete
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -205,7 +205,7 @@
     * 
     * @param mixed $accessRecordUri URI of the access record to deleten from the system
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -223,7 +223,7 @@
     *     
     * @param mixed $datasetUri Dataset URI for which we delete all the access record defined for it
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -241,7 +241,7 @@
     *     
     * @param mixed $groupUri Group URI for which we delete all the access record defined for it
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -270,7 +270,7 @@
     *                               registered to a OSF network instance by using the AuthListerQuery class 
     *                               and by using the getWebServicesList() function.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_Access#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */

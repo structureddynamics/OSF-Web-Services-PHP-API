@@ -132,7 +132,7 @@
   *  
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Dataset:_Update
+  * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Update
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -179,7 +179,7 @@
     * 
     * @param mixed $uri URI of the dataset to update
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -197,7 +197,7 @@
     * 
     * @param $title title of the dataset to update
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -215,7 +215,7 @@
     * 
     * @param $description description of the dataset to update
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -234,7 +234,7 @@
     * 
     * @param mixed $contributorsUris Array of contributors URIs
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -256,7 +256,7 @@
     * 
     * @param mixed $date Date of the modification of the dataset
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */

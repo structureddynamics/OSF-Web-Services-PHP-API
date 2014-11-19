@@ -101,7 +101,7 @@
   *  
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Dataset:_Create
+  * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Create
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -148,7 +148,7 @@
     * 
     * @param mixed $uri URI of the new dataset to create
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -166,7 +166,7 @@
     * 
     * @param $title title of the dataset to create
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -184,7 +184,7 @@
     * 
     * @param $description description of the dataset to create
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -202,7 +202,7 @@
     * 
     * @param mixed $creatorUri URI of the creator of this new dataset
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -223,7 +223,7 @@
     * 
     * @param $webservicesUri An array of webservice URIs that have access to the content of this dataset.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

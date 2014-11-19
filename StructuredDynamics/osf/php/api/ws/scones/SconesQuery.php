@@ -57,7 +57,7 @@
   *  
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Scones
+  * @see http://wiki.opensemanticframework.org/index.php/Scones
   * @see https://github.com/structureddynamics/Scones
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
@@ -118,7 +118,7 @@
     * @param mixed $document Full text document, or URL where the document can be accessed of the
     *                        document to tag using Scones.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Scones#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Scones#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -138,7 +138,7 @@
     *                           If other applications are available, these should be listed 
     *                           somewhere on the website of the agent that host the service. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Scones#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Scones#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */

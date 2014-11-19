@@ -49,7 +49,7 @@
     *  OR http%253A%252F%252Fpurl.org%252Fontology%252Fnhccn%2523useGroupSignificant:cancer) AND 
     *  dataset:%22file%3A%2F%2Flocalhost%2Fdata%2Fontologies%2Ffiles%2Fdoha.owl%22
     *  
-    * @see http://techwiki.openstructs.org/index.php/Search
+    * @see http://wiki.opensemanticframework.org/index.php/Search
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

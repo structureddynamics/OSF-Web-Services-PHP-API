@@ -49,7 +49,7 @@
   * 
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Search
+  * @see http://wiki.opensemanticframework.org/index.php/Search
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */  
@@ -105,7 +105,7 @@
     * 
     * **Optional**: This function could be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @param mixed $query Keywords to use to search for this query. Keywords can use some boolean operations. An empty string returns everything.
     * 
@@ -123,7 +123,7 @@
     * 
     * **Optional**: This function could be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @param mixed $types An array of types URI to use to filter the returned results.
     * 
@@ -154,7 +154,7 @@
     * 
     * **Optional**: This function could be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @param mixed $type A type URI to use to filter the returned results.
     * 
@@ -214,7 +214,7 @@
     * 
     * **Optional**: This function could be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @param mixed $datasets An array of datasets URI to use to filter the returned results.
     * 
@@ -245,7 +245,7 @@
     * 
     * **Optional**: This function could be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @param mixed $dataset A datasets URI to use to filter the returned results.
     * 
@@ -316,7 +316,7 @@
     * 
     *                          Array("attribute-uri-1" => array("value-to-filter"), ...)
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -434,7 +434,7 @@
     * @param mixed $attribute Attribute URI of the filter
     * @param mixed $values A single value, or an array of values for which we want to filter the search query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -504,7 +504,7 @@
     * Set the attributes boolean operator to OR. If you have multiple attribute/value filters defined for this
     * search query, then the Search endpoint will OR all of them.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -521,7 +521,7 @@
     * information is available for a record, for a requested language, then only non-textual 
     * information will be returned about the record.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -538,7 +538,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -560,7 +560,7 @@
     * 
     * @param mixed $attributes An array of attribute URIs to see in the resultset
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -588,7 +588,7 @@
     * 
     * @param mixed $attribute An attribute URI to see in the resultset
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -617,7 +617,7 @@
     * 
     * **Optional**: This function could be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -635,7 +635,7 @@
     * 
     * @param mixed $items The number of items to return in a single resultset 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -659,7 +659,7 @@
     *     
     * @param mixed $page The offset of the resultset to return. By example, to get the item 90 to 100, this parameter should be set to 90. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -680,7 +680,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -694,7 +694,7 @@
     /**
     * Disable the inference for this query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -708,7 +708,7 @@
     /**
     * Set the default search query operator to AND
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -727,7 +727,7 @@
     *                    in this document: 
     *                    http://lucene.apache.org/solr/4_1_0/solr-core/org/apache/solr/util/doc-files/min-should-match.html
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -741,7 +741,7 @@
     /**
     * Exclude the aggregate records in the resultset of this query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -757,7 +757,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -776,7 +776,7 @@
     * 
     * @param mixed $attributes Array of attributes URI for which we want their aggregates
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -801,7 +801,7 @@
     * 
     * @param mixed $attribute Attribute URI for which we want its aggregates
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -828,7 +828,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -842,7 +842,7 @@
     /**
     * Determines that the aggregated value returned by the endpoint is a URI and a Literal
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -858,7 +858,7 @@
     * of the attribute(s) is a URI (a reference to some record) then that URI will be 
     * returned as the aggregated value. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -892,7 +892,7 @@
     * @param mixed $distance The distance from the point of origin
     * @param mixed $distanceType One of: "km" or "mile"
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -938,7 +938,7 @@
     * @param mixed $bottomRightLat Latitude of the bottom right corner of the bounding box
     * @param mixed $bottomRightLong Longitude of the bottom right corner of the bounding box
     * 
-    * @see http://techwiki.openstructs.org/index.php/Search#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Search#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

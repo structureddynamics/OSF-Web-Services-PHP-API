@@ -138,7 +138,7 @@
   *  
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/CRUD:_Update
+  * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -190,7 +190,7 @@
     * 
     * @param mixed $document RDF+XML or RDF+N3 documents to import into the system
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -206,7 +206,7 @@
     * 
     * **Required**: This function (or documentMimeIsRdfN3()) must be called before sending the query 
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -222,7 +222,7 @@
     * 
     * **Required**: This function (or documentMimeIsRdfXml()) must be called before sending the query 
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -240,7 +240,7 @@
     * 
     * @param mixed $uri Dataset URI where to index the RDF document 
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -256,7 +256,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -272,7 +272,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -288,7 +288,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -304,7 +304,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -320,7 +320,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -336,7 +336,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -352,7 +352,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -368,7 +368,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -384,7 +384,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */

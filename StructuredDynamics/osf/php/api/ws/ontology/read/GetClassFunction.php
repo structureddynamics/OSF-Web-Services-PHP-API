@@ -13,7 +13,7 @@
   * Class used to define the parameters to use send a "getClass" call 
   * to the Ontology: Read web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getClass
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getClass
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -24,7 +24,7 @@
     * 
     * @param mixed $uri URI of the property to delete from the ontology
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getClass
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getClass
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

@@ -13,7 +13,7 @@
   * Class used to define the parameters to use send a "getSuperClasses" call 
   * to the Ontology: Read web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSuperClasses
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSuperClasses
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -33,7 +33,7 @@
     * 
     * @param mixed $uri URI of the class for which the requester want its super-classes. 
     *       
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSuperClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSuperClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -47,7 +47,7 @@
     /**
     *   Get a list of URIs that refers to the super-classes described in this ontology. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSuperClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSuperClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -61,7 +61,7 @@
     /**
     * Get the list of classes description for the super-classes described in this ontology 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSuperClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSuperClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -75,7 +75,7 @@
     /**
     * Only get the direct super-classes of the target class. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSuperClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSuperClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -90,7 +90,7 @@
     * Get all the super-classes by inference (so, the sub-classes of the 
     * super-classes recursively). 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSuperClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSuperClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

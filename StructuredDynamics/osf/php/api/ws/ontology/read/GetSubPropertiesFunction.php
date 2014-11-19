@@ -13,7 +13,7 @@
   * Get all the sub-properties that have been defined in an ontology. The requester 
   * can get a list of URIs or the full description of the sub-properties. 
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubProperties
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubProperties
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -34,7 +34,7 @@
     * 
     * @param mixed $uri URI of the property for which the requester want its sub-properties. 
     *       
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -49,7 +49,7 @@
     /**
     * Get all the Datatype sub-properties of the ontology  
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -63,7 +63,7 @@
     /**
     * Get all the Object sub-properties of the ontology 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -77,7 +77,7 @@
     /**
     * Get a list of URIs that refers to the properties described in this ontology. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#v
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#v
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -91,7 +91,7 @@
     /**
     * Get the list of properties description for the classes described in this ontology.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -105,7 +105,7 @@
     /**
     * Only get the direct sub-properties of the target property. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -120,7 +120,7 @@
     * Get all the sub-properties by inference (so, the sub-properties of 
     * the sub-properties recursively). 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

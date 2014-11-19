@@ -77,7 +77,7 @@
   * 
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_WS
+  * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_WS
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -124,7 +124,7 @@
     * 
     * @param mixed $title Title of the web service to register
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_WS#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_WS#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC. 
     */
@@ -142,7 +142,7 @@
     * 
     * @param mixed $url URL of the web service endpoint that people will access on the web
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_WS#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_WS#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC. 
     */
@@ -165,7 +165,7 @@
     * 
     * @param mixed $uri URI of the web service to register to the OSF instance
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_WS#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_WS#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -190,7 +190,7 @@
     *                              for the target IP, target Dataset and target Web Service Endpoints of 
     *                              this access permission record.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Auth_Registrar:_WS#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Auth_Registrar:_WS#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

@@ -42,7 +42,7 @@
   * 
   * @endcode
   *  
-  * @see http://techwiki.openstructs.org/index.php/Revision:_Delete
+  * @see http://wiki.opensemanticframework.org/index.php/Revision:_Delete
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -88,7 +88,7 @@
     * 
     * @param $uri URI of the revision record to delete
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Delete#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Delete#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -105,7 +105,7 @@
     * @param $dataset The dataset URI where the record is indexed. This is the URI of the dataset, and not
     * the URI of the revisions dataset.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Delete#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Delete#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

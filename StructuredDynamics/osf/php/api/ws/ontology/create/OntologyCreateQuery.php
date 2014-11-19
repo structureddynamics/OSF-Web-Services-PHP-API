@@ -74,7 +74,7 @@
   * 
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Create
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Create
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -129,7 +129,7 @@
     *                           This URL can refers to a file accessible on the web, on the file system, 
     *                           etc. The endpoint will get the ontology's description from that URL. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -148,7 +148,7 @@
     * web service endpoints. Enabling this option may render the creation process slower 
     * depending on the size of the created ontology. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -165,7 +165,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -184,7 +184,7 @@
     * 
     * *Note:* This only has an effect if the advanced indexation is enabled
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -199,7 +199,7 @@
     * Disable the reasoner for for indexing the ontology into OSF (the triple 
     * store and the full text engine) 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

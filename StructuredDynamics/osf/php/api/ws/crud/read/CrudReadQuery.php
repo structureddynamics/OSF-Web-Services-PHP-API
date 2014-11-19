@@ -48,7 +48,7 @@
   *  
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/CRUD:_Read
+  * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Read
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -98,7 +98,7 @@
     * @param mixed $uris A single URI string, or an array or URI strings that refers to the
     *                    record(s) that have to be returned by the endpoint
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -135,7 +135,7 @@
     *                    dataset URIs in the same order, such that we have: array("dataset-a",
     *                    "dataset-b", "dataset-c").
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -163,7 +163,7 @@
     * Specifies that the reference to the other instance records referring to the target 
     * instance record will be added in the resultset.
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -180,7 +180,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -196,7 +196,7 @@
     * records. Reified information is meta-information about some attribute/values
     * defined for the records.
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -214,7 +214,7 @@
     * 
     * This is the default behavior of the service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC. 
     */
@@ -234,7 +234,7 @@
     * 
     * The default behavior is that the language is 'en' (English)
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC. 
     */
@@ -256,7 +256,7 @@
     * 
     * @param mixed $attributes An array of attribute URIs to see in the resultset
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

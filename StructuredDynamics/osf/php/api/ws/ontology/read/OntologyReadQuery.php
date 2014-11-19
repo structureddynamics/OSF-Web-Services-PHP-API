@@ -70,7 +70,7 @@
   * 
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -121,7 +121,7 @@
     * 
     * @param mixed $ontologyUri URI of the ontology to query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -137,7 +137,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -151,7 +151,7 @@
     /**
     * Disable the reasoner for querying this ontology
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -167,7 +167,7 @@
     * 
     * @param mixed $function A reference to a GetLoadedOntologiesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getLoadedOntologies
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getLoadedOntologies
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -190,7 +190,7 @@
     * 
     * @param mixed $function A reference to a GetOntologiesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getOntologies
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getOntologies
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -208,7 +208,7 @@
     * format (usually RDF+XML or RDF+N3) depends on the format used when the ontology 
     * got created. The same format will be used as an output of this function call. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getLoadedOntologies
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getLoadedOntologies
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -226,7 +226,7 @@
     * There are no function parameters for this function call. The ontology to 
     * serialize is determined by the ontology query parameter. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSerializedClassHierarchy
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSerializedClassHierarchy
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -244,7 +244,7 @@
     * There are no function parameters for this function call. The ontology to serialize 
     * is determined by the ontology query parameter. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSerializedPropertyHierarchy
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSerializedPropertyHierarchy
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -262,8 +262,8 @@
     * There are no function parameters for this function call. The ontology to serialize is determined 
     * by the ontology query parameter. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getIronXMLSchema
-    * @see http://techwiki.openstructs.org/index.php/Instance_Record_and_Object_Notation_(irON)_Specification#Structure_Schema_Object_2
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getIronXMLSchema
+    * @see http://wiki.opensemanticframework.org/index.php/Instance_Record_and_Object_Notation_(irON)_Specification#Structure_Schema_Object_2
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -281,8 +281,8 @@
     * There are no function parameters for this function call. The ontology to serialize is 
     * determined by the ontology query parameter. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getIronJsonSchema
-    * @see http://techwiki.openstructs.org/index.php/Instance_Record_and_Object_Notation_(irON)_Specification#Structure_Schema_Object_3
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getIronJsonSchema
+    * @see http://wiki.opensemanticframework.org/index.php/Instance_Record_and_Object_Notation_(irON)_Specification#Structure_Schema_Object_3
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -298,7 +298,7 @@
     * 
     * @param mixed $function A reference to a GetClassFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getClass
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getClass
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -320,7 +320,7 @@
     * 
     * @param mixed $function A reference to a GetClassesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -342,7 +342,7 @@
     * 
     * @param mixed $function A reference to a GetSubClassesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -364,7 +364,7 @@
     * 
     * @param mixed $function A reference to a GetSuperClassesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSuperClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSuperClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -386,7 +386,7 @@
     * 
     * @param mixed $function A reference to a GetEquivalentClassesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -408,7 +408,7 @@
     * 
     * @param mixed $function A reference to a GetDisjointClassesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getDisjointClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getDisjointClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -429,7 +429,7 @@
     * 
     * @param mixed $function A reference to a GetPropertyFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperty
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperty
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -451,7 +451,7 @@
     * 
     * @param mixed $function A reference to a GetPropertiesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -473,7 +473,7 @@
     * 
     * @param mixed $function A reference to a GetSubPropertiesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -495,7 +495,7 @@
     * 
     * @param mixed $function A reference to a GetSuperPropertiesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSuperProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSuperProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -517,7 +517,7 @@
     * 
     * @param mixed $function A reference to a GetDisjointPropertiesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getDisjointProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getDisjointProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -539,7 +539,7 @@
     * 
     * @param mixed $function A reference to a GetEquivalentPropertiesFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -560,7 +560,7 @@
     * 
     * @param mixed $function A reference to a GetNamedIndividualFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividual
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividual
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -582,7 +582,7 @@
     * 
     * @param mixed $function A reference to a GetNamedIndividualsFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividuals
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

@@ -21,7 +21,7 @@
   * 
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/SPARQL
+  * @see http://wiki.opensemanticframework.org/index.php/SPARQL
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -75,7 +75,7 @@
     * 
     * **Required**: This function must be called before sending the query 
     *  
-    * @see http://techwiki.openstructs.org/index.php/SPARQL#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/SPARQL#Web_Service_Endpoint_Information
     * 
     * @param mixed $query SPARQL query to send to the endpoint
     */
@@ -92,7 +92,7 @@
     * 
     * **Optional**: This function could be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/SPARQL#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/SPARQL#Web_Service_Endpoint_Information
     * 
     * @param mixed $dataset URI of the dataset to query 
     */
@@ -108,7 +108,7 @@
     * 
     * **Optional**: This function could be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/SPARQL#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/SPARQL#Web_Service_Endpoint_Information
     * 
     * @param mixed $defaultGraph URI of the default graph
     */
@@ -124,7 +124,7 @@
     *     
     * **Optional**: This function could be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/SPARQL#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/SPARQL#Web_Service_Endpoint_Information
     * 
     * @param mixed $namedGraph URI of the named graph
     */

@@ -102,7 +102,7 @@
   * 
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/CRUD:_Create
+  * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Create
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -151,7 +151,7 @@
     * 
     * @param mixed $document RDF+XML or RDF+N3 documents to import into the system
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -167,7 +167,7 @@
     * 
     * **Required**: This function (or documentMimeIsRdfN3()) must be called before sending the query 
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -183,7 +183,7 @@
     * 
     * **Required**: This function (or documentMimeIsRdfXml()) must be called before sending the query 
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -199,7 +199,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -213,7 +213,7 @@
     /**
     * Specifies that you want the document to be indexed in the triple store only
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -227,7 +227,7 @@
     /**
     * Specifies that you want the document to be indexed in the search engine only
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -245,7 +245,7 @@
     * 
     * @param mixed $uri Dataset URI where to index the RDF document 
     * 
-    * @see http://techwiki.openstructs.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/CRUD:_Create#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */

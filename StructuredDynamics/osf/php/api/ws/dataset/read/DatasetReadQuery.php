@@ -42,7 +42,7 @@
   * 
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Dataset:_Read
+  * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Read
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -90,7 +90,7 @@
     * 
     * @param mixed $uri URI of the new dataset to create
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */

@@ -48,7 +48,7 @@
   * 
   * @endcode
   *  
-  * @see http://techwiki.openstructs.org/index.php/Revision:_Lister
+  * @see http://wiki.opensemanticframework.org/index.php/Revision:_Lister
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -94,7 +94,7 @@
     * 
     * @param $uri URI of the record for which you want its list of revisions
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -111,7 +111,7 @@
     * @param $dataset The dataset URI where the record is indexed. This is the URI of the dataset, and not
     * the URI of the revisions dataset.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -126,7 +126,7 @@
     * Specifies that we want the short description of the results record. Returned record is described using
     * their date stamp (for ordering purposes) and their URI.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -144,7 +144,7 @@
     * 
     * Note: this is the default behvior of the endpoint
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Lister#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Lister#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

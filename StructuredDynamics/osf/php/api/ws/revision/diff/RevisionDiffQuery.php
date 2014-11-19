@@ -43,7 +43,7 @@
   * 
   * @endcode
   *  
-  * @see http://techwiki.openstructs.org/index.php/Revision:_Diff
+  * @see http://wiki.opensemanticframework.org/index.php/Revision:_Diff
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -88,7 +88,7 @@
     * 
     * @param $uri First revision URI to compare.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Diff#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Diff#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -105,7 +105,7 @@
     * 
     * @param $uri Second revision URI to compare.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Diff#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Diff#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -122,7 +122,7 @@
     * @param $dataset The dataset URI where the record is indexed. This is the URI of the dataset, and not
     * the URI of the revisions dataset.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Diff#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Diff#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

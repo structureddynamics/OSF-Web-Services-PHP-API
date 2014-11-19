@@ -13,7 +13,7 @@
   * Get all the equivalent-properties that have been defined in an ontology. The requester 
   * can get a list of URIs or the full description of the equivalent-properties. 
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentProperties
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentProperties
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -33,7 +33,7 @@
     * 
     * @param mixed $uri URI of the property for which the requester want its equivalent-properties. 
     *       
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -47,7 +47,7 @@
     /**
     * Get all the Datatype equivalent-properties of the ontology  
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -61,7 +61,7 @@
     /**
     * Get all the Object equivalent-properties of the ontology 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -75,7 +75,7 @@
     /**
     * Get a list of URIs that refers to the properties described in this ontology. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#v
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#v
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -89,7 +89,7 @@
     /**
     * Get the list of properties description for the classes described in this ontology.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

@@ -13,7 +13,7 @@
   * Class used to define the parameters to use send a "updateEntityUriFunction" call 
   * to the Ontology: Update web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Update#updateEntityUri
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#updateEntityUri
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -33,7 +33,7 @@
     * 
     * @param mixed $uri Old URI identifier
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Update#updateEntityUri
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#updateEntityUri
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -53,7 +53,7 @@
     * 
     * @param mixed $uri New URI identifier
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Update#updateEntityUri
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#updateEntityUri
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -72,7 +72,7 @@
     * web service endpoints. Enabling this option may render the creation process slower 
     * depending on the size of the created ontology. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Update#updateEntityUri
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#updateEntityUri
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -89,7 +89,7 @@
     * 
     * This is the default behavior of this service.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Update#updateEntityUri
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#updateEntityUri
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

@@ -14,7 +14,7 @@
   * Class used to define the parameters to use send a "getNamedIndividuals" call 
   * to the Ontology: Read web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividuals
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -31,7 +31,7 @@
     /**
     * Get all the named individuals belonging to that class URI
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividuals
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -45,7 +45,7 @@
     /**
     * Get a list of URIs that refers to the named individuals described in this ontology. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividuals
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -59,7 +59,7 @@
     /**
     * Get the list of named individuals description for the named individuals described in this ontology.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividuals
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -76,7 +76,7 @@
     * individuals has been optimized for list controls. Only the types and the prefLabel of the 
     * named individual has been added to its description. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividuals
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -92,7 +92,7 @@
     * 
     * @param mixed $limit The number of results the requester wants in the resultset. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividuals
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -110,7 +110,7 @@
     * 
     * @param mixed $offset Where the results to return starts in the complete list of results.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividuals
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -126,7 +126,7 @@
     * parameter, and all the named individuals that belongs to all the super-classes 
     * of that target class. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividuals
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -141,7 +141,7 @@
     *   Get all the named individuals that belong directly to 
     * that class referenced by the classuri parameter. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getNamedIndividuals
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getNamedIndividuals
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

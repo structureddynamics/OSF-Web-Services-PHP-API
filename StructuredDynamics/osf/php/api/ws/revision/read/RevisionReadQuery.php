@@ -47,7 +47,7 @@
   * 
   * @endcode
   *  
-  * @see http://techwiki.openstructs.org/index.php/Revision:_Read
+  * @see http://wiki.opensemanticframework.org/index.php/Revision:_Read
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -93,7 +93,7 @@
     * 
     * @param $uri URI of the revision record to read
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -110,7 +110,7 @@
     * @param $dataset The dataset URI where the record is indexed. This is the URI of the dataset, and not
     * the URI of the revisions dataset.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -126,7 +126,7 @@
     * to the revision (status, revision time, performed, etc). The URI of the record that will be returned will 
     * be the same as the one used for this parameter
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -145,7 +145,7 @@
     * 
     * This is the default behavior for this endpoint
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Read#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Read#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

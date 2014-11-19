@@ -50,7 +50,7 @@
   * 
   * @endcode
   *  
-  * @see http://techwiki.openstructs.org/index.php/Revision:_Update
+  * @see http://wiki.opensemanticframework.org/index.php/Revision:_Update
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -96,7 +96,7 @@
     * 
     * @param $uri URI of the revision record to update
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -113,7 +113,7 @@
     * @param $dataset The dataset URI where the record is indexed. This is the URI of the dataset, and not
     * the URI of the revisions dataset.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -129,7 +129,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -145,7 +145,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -161,7 +161,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -177,7 +177,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -193,7 +193,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -209,7 +209,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
@@ -225,7 +225,7 @@
     * 
     * **Required**: This function must be called before sending the query
     * 
-    * @see http://techwiki.openstructs.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Revision:_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */

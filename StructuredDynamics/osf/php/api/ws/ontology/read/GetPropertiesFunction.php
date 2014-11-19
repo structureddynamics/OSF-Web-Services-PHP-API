@@ -13,7 +13,7 @@
   * Get all the properties that have been defined in an ontology. The 
   * requester can get a list of URIs or the full description of the properties. 
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperties
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperties
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -29,7 +29,7 @@
     /**
     * Get all the Annotation properties of the ontology 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -43,7 +43,7 @@
     /**
     * Get all the Datatype properties of the ontology 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -57,7 +57,7 @@
     /**
     * Get all the Object properties of the ontology 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -71,7 +71,7 @@
     /**
     * Get all the Datatype, Object and Annotation properties of the ontology 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -85,7 +85,7 @@
     /**
     * Get a list of URIs that refers to the properties described in this ontology. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -99,7 +99,7 @@
     /**
     * Get the list of properties description for the classes described in this ontology.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -115,7 +115,7 @@
     * 
     * @param mixed $limit The number of results the requester wants in the resultset. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -133,7 +133,7 @@
     * 
     * @param mixed $offset Where the results to return starts in the complete list of results.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getProperties
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getProperties
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

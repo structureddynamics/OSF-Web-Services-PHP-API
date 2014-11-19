@@ -13,7 +13,7 @@
   * Class used to define the parameters to use send a "getClasses" call 
   * to the Ontology: Read web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getClasses
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getClasses
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -28,7 +28,7 @@
     /**
     * Get a list of URIs that refers to the classes described in this ontology. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -42,7 +42,7 @@
     /**
     * Get the list of classes description for the classes described in this ontology.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -58,7 +58,7 @@
     * 
     * @param mixed $limit The number of results the requester wants in the resultset. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -76,7 +76,7 @@
     * 
     * @param mixed $offset Where the results to return starts in the complete list of results.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

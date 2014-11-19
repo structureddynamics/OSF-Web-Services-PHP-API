@@ -13,7 +13,7 @@
   * Class used to define the parameters to use send a "getEquivalentClasses" call 
   * to the Ontology: Read web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentClasses
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentClasses
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -32,7 +32,7 @@
     * 
     * @param mixed $uri URI of the class for which the requester want its equivalent-classes. 
     *       
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -46,7 +46,7 @@
     /**
     *   Get a list of URIs that refers to the equivalent-classes described in this ontology. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -60,7 +60,7 @@
     /**
     * Get the list of classes description for the equivalent-classes described in this ontology 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getEquivalentClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getEquivalentClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

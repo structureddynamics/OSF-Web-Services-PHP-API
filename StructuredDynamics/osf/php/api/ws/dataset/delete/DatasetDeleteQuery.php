@@ -104,7 +104,7 @@
   *  
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Dataset:_Delete
+  * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Delete
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -151,7 +151,7 @@
     * 
     * @param mixed $uri URI of the dataset to delete
     * 
-    * @see http://techwiki.openstructs.org/index.php/Dataset:_Delete#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Dataset:_Delete#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */

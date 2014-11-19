@@ -13,7 +13,7 @@
   * Class used to define the parameters to use send a "getSubClasses" call 
   * to the Ontology: Read web service endpoint.
   *       
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubClasses
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubClasses
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.
   */
@@ -33,7 +33,7 @@
     * 
     * @param mixed $uri URI of the class for which the requester want its sub-classes. 
     *       
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -47,7 +47,7 @@
     /**
     * Get a list of URIs that refers to the sub-classes described in this ontology. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -61,7 +61,7 @@
     /**
     * Get the list of classes description for the sub-classes described in this ontology
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -84,7 +84,7 @@
     * itself other subclasses (this is mainly used to be able to display an "extend" 
     * button in a tree control). 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -98,7 +98,7 @@
     /**
     * Only get the direct sub-classes of the target class. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -113,7 +113,7 @@
     * Get all the sub-classes by inference (so, the sub-classes of the 
     * sub-classes recursively). 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Read#getSubClasses
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Read#getSubClasses
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */

@@ -111,7 +111,7 @@
   * 
   * @endcode
   * 
-  * @see http://techwiki.openstructs.org/index.php/Ontology_Update
+  * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update
   * 
   * @author Frederick Giasson, Structured Dynamics LLC.  
   */
@@ -166,7 +166,7 @@
     *                           This URL can refers to a file accessible on the web, on the file system, 
     *                           etc. The endpoint will get the ontology's description from that URL. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -185,7 +185,7 @@
     * 
     * *Note:* This only has an effect if the advanced indexation is enabled
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -200,7 +200,7 @@
     * Disable the reasoner for for indexing the ontology into OSF (the triple 
     * store and the full text engine) 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Update#Web_Service_Endpoint_Information
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -232,7 +232,7 @@
     * 
     * @param mixed $function A reference to a CreateOrUpdateEntityFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Update#createOrUpdateEntity
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#createOrUpdateEntity
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -255,7 +255,7 @@
     * 
     * @param mixed $function A reference to a UpdateEntityUriFunction object instance.
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Update#updateEntityUri
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#updateEntityUri
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
@@ -294,7 +294,7 @@
     * Finally it calls the saveOntology function of the Ontology Update web service 
     * endpoint to mark the ontology as saved. 
     * 
-    * @see http://techwiki.openstructs.org/index.php/Ontology_Update#saveOntology
+    * @see http://wiki.opensemanticframework.org/index.php/Ontology_Update#saveOntology
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.
     */
