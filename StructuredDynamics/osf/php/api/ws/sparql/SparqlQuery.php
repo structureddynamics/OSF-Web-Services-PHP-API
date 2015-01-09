@@ -44,16 +44,18 @@
       $this->userID = $userID;
       
       // Set default configarations for this web service query
-      $this->setSupportedMimes(array("text/xml", 
+      $this->setSupportedMimes(array("application/rdf+json", 
+                                     "text/rdf+n3", 
+                                     "text/turtle", 
                                      "application/json", 
-                                     "application/rdf+xml",
-                                     "application/rdf+n3",
-                                     "application/iron+json",
-                                     "application/iron+csv",
-                                     "application/sparql-results+json",
-                                     "application/sparql-results+xml",
-                                     "text/rdf+n3",
-                                     "application/rdf+json",
+                                     "text/xml", 
+                                     "application/sparql-results+xml", 
+                                     "application/sparql-results+json", 
+                                     "text/html", 
+                                     "application/rdf+xml", 
+                                     "application/rdf+n3", 
+                                     "application/iron+json", 
+                                     "application/iron+csv", 
                                      "text/plain"));
                                     
       $this->setMethodPost();
