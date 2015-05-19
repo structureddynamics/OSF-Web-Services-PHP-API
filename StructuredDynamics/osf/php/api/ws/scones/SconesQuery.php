@@ -12,10 +12,11 @@
   /**
   * Scones to a OSF Scones web service endpoint
   * 
-  * The scones web service system (subject concepts or named entities) is used 
-  * to perform subject concepts and named entities tagging on a target document. 
-  * The GATE system is used to perform the tagging. A GATE XML annotation file 
-  * is returned to the user. 
+  * The Scones web service system (subject concepts or named entities) is used 
+  * to perform subject concepts and named entities tagging on a target document.
+  * 
+  * This Scones application is meant to be use in conjunction with the Scones 
+  * OSF (Open Semantic Framework) web service endpoint.
   * 
   * This Web service is intended to be used by users that wants to tag subjects 
   * concepts and named entities using the content of a target OSF instance.
@@ -143,6 +144,13 @@
       return($this);
     }   
     
+    /**
+    * Specifies that we want to use stemming when performing the tagging operation.
+    * 
+    * @see http://wiki.opensemanticframework.org/index.php/Scones#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
     public function withStemming()
     {
       $this->params["stemming"] = "true";
@@ -150,6 +158,13 @@
       return($this);
     }   
     
+    /**
+    * Specifies that we don't want to use stemming when performing the tagging operation.
+    * 
+    * @see http://wiki.opensemanticframework.org/index.php/Scones#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
     public function noStemming()
     {
       $this->params["stemming"] = "false";
@@ -168,7 +183,7 @@
     */
     public function nounConceptTagger()
     {
-      $this->params["type"] = "plain";
+      $this->params["type"] = "noun";
       
       return($this);
     }      
