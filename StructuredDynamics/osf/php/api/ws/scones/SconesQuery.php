@@ -90,14 +90,12 @@
                                     
       $this->setMethodPost();
 
-      $this->mime("text/xml");
+      $this->mime("application/json");
       
       $this->setEndpoint("scones/");
       
-      // Set default parameters for this query
-      $this->params["docmime"] = "text/plain";
-      
-      $this->application("defaultApplication");
+      $this->plainConceptTagger();
+      $this->noStemming();
       $this->sourceInterface("default");
     }
     
@@ -130,21 +128,47 @@
     }  
     
     /**
-    * Specifies the application to use to tag the content of the input document. If other 
-    * applications are available, these should be listed somewhere on the website of the 
-    * agent that host the service. 
+    * Specifies the type of Scones tagger to be the "plain"
     * 
-    * @param mixed $application Application to use to tag the content of the input document. 
-    *                           If other applications are available, these should be listed 
-    *                           somewhere on the website of the agent that host the service. 
+    * @param mixed $type Type of the Scones tagger. Can be "plain" or "noun"
     * 
     * @see http://wiki.opensemanticframework.org/index.php/Scones#Web_Service_Endpoint_Information
     * 
     * @author Frederick Giasson, Structured Dynamics LLC.* 
     */
-    public function application($application)
+    public function plainConceptTagger()
     {
-      $this->params["application"] = urlencode($application);
+      $this->params["type"] = "plain";
+      
+      return($this);
+    }   
+    
+    public function withStemming()
+    {
+      $this->params["stemming"] = "true";
+      
+      return($this);
+    }   
+    
+    public function noStemming()
+    {
+      $this->params["stemming"] = "false";
+      
+      return($this);
+    }   
+    
+    /**
+    * Specifies the type of Scones tagger to be the "noun"
+    * 
+    * @param mixed $type Type of the Scones tagger. Can be "plain" or "noun"
+    * 
+    * @see http://wiki.opensemanticframework.org/index.php/Scones#Web_Service_Endpoint_Information
+    * 
+    * @author Frederick Giasson, Structured Dynamics LLC.* 
+    */
+    public function nounConceptTagger()
+    {
+      $this->params["type"] = "plain";
       
       return($this);
     }      
