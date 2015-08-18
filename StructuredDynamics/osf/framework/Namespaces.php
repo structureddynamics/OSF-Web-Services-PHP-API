@@ -271,7 +271,7 @@ class Namespaces
   }
   
   /**
-  * Get an array of prefixes <-> namespaces
+  * Get an array of prefixes<->namespaces
   * 
   * @return return an associative array of namespace prefixes and their base URI
   */
@@ -302,7 +302,7 @@ class Namespaces
       fclose($handle);
     } 
     
-    $namespaces += $coreNamespaces;   
+    $namespaces = $coreNamespaces + $namespaces;   
     
     return($namespaces);
   }  

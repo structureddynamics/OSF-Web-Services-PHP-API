@@ -2,6 +2,7 @@ address,http://schemas.talis.com/2005/address/schema#
 asn,http://purl.org/ASN/schema/core/
 bkn,http://purl.org/ontology/bkn#
 bkn_temp,http://purl.org/ontology/bkn/temp#
+cognonto,http://purl.org/ontology/cognonto#
 bkn_base,http://purl.org/ontology/bkn/base/
 cyc,http://sw.cyc.com/2006/07/27/cyc/
 eor,http://dublincore.org/2000/03/13/eor#

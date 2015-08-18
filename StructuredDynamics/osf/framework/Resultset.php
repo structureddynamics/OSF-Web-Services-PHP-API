@@ -192,7 +192,7 @@ class Resultset
     }
     
     return($subjects);
-  }  
+  }   
   
   /**
   * Get a subject by its URI
@@ -499,9 +499,8 @@ class Resultset
       
       if(isset($subject[Namespaces::$dcterms."isPartOf"]) && 
          is_array($subject[Namespaces::$dcterms."isPartOf"]) &&
-         isset($subject[Namespaces::$dcterms."isPartOf"][0]["uri"]))    
+         isset($subject[Namespaces::$dcterms."isPartOf"][0]["uri"]))     
       {
-        
         $dataset = $subject[Namespaces::$dcterms."isPartOf"][0]["uri"];
       }
       
@@ -510,9 +509,9 @@ class Resultset
         $resultset[$dataset] = array();
       }
       
-      $resultset[$dataset][$uri] = $subject;    
+      $resultset[$dataset][$uri] = $subject;
     }
-
+    
     $this->resultset = $resultset;
   } 
   
@@ -557,7 +556,7 @@ class Resultset
               }
             break;
             case "prefLabel":
-              if($attributeValues != "")
+              if($attributeValues != "" && !isset($record[Namespaces::$iron."prefLabel"]))
               {
                 $xml .= '    <predicate type="iron:prefLabel">'."\n";
                 $xml .= '      <object type="rdfs:Literal">'.$this->xmlEncode($attributeValues).'</object>'."\n";
@@ -565,18 +564,21 @@ class Resultset
               }
             break;
             case "altLabel":     
-              foreach($attributeValues as $altLabel)
+              if(!isset($record[Namespaces::$iron."altLabel"]))
               {
-                if($altLabel != "")
+                foreach($attributeValues as $altLabel)
                 {
-                  $xml .= '    <predicate type="iron:altLabel">'."\n";
-                  $xml .= '      <object type="rdfs:Literal">'.$this->xmlEncode($altLabel).'</object>'."\n";
-                  $xml .= '    </predicate>'."\n";
-                }
-              }          
+                  if($altLabel != "")
+                  {
+                    $xml .= '    <predicate type="iron:altLabel">'."\n";
+                    $xml .= '      <object type="rdfs:Literal">'.$this->xmlEncode($altLabel).'</object>'."\n";
+                    $xml .= '    </predicate>'."\n";
+                  }
+                }          
+              }
             break;
             case "description":   
-              if($attributeValues != "")
+              if($attributeValues != "" && !isset($record[Namespaces::$iron."description"]))
               {
                 $xml .= '    <predicate type="iron:description">'."\n";
                 $xml .= '      <object type="rdfs:Literal">'.$this->xmlEncode($attributeValues).'</object>'."\n";
@@ -584,7 +586,7 @@ class Resultset
               }
             break;
             case "prefURL":
-              if($attributeValues != "")
+              if($attributeValues != "" && !isset($record[Namespaces::$iron."prefURL"]))
               {
                 $xml .= '    <predicate type="iron:prefURL">'."\n";
                 $xml .= '      <object type="rdfs:Literal">'.$this->xmlEncode($attributeValues).'</object>'."\n";
@@ -603,14 +605,14 @@ class Resultset
                   // It is a literal value, or a literal value of some type (int, bool, etc)
                   if($value["value"] !== "")
                   {
-                    $xml .= '      <object type="'.$this->xmlEncode($this->prefixize($value["type"])).'"'.(isset($value["lang"]) && $value["lang"] != "" ? ' lang="'.$this->xmlEncode($value["lang"]).'"' : "").'>'.$this->xmlEncode($value["value"]).'</object>'."\n";
-                                                           
+                    $xml .= '      <object '.(!empty($value["type"]) ? 'type="'.$this->xmlEncode($this->prefixize($value["type"])).'"' : 'type="rdfs:Literal"').(isset($value["lang"]) && $value["lang"] != "" ? ' lang="'.$this->xmlEncode($value["lang"]).'"' : "").'>'.$this->xmlEncode($value["value"]).'</object>'."\n";
+                    
                     if(isset($value["reify"]))
-                    {
+                    {                    
                       foreach($value["reify"] as $reifyAttributeUri => $reifiedValues)
                       {
                         foreach($reifiedValues as $reifiedValue)
-                        {
+                        {                                                        
                           if($reifiedValue != "")
                           {
                             $xml .= '      <reify type="'.$this->xmlEncode($this->prefixize($reifyAttributeUri)).'" value="'.$this->xmlEncode($reifiedValue).'" />'."\n";
@@ -725,7 +727,7 @@ class Resultset
               }
             break;
             case "prefLabel":
-              if($attributeValues != "")
+              if($attributeValues != "" && !isset($record[Namespaces::$iron."prefLabel"]))
               {
                 $json .= '          { '."\n";            
                 $json .= '            "iron:prefLabel": "'.$this->jsonEncode($attributeValues).'" '."\n";            
@@ -733,18 +735,21 @@ class Resultset
               }
             break;
             case "altLabel":
-              foreach($attributeValues as $altLabel)
+              if(!isset($record[Namespaces::$iron."altLabel"]))
               {
-                if($altLabel != "")
+                foreach($attributeValues as $altLabel)
                 {
-                  $json .= '          { '."\n";            
-                  $json .= '            "iron:altLabel": "'.$this->jsonEncode($altLabel).'" '."\n";            
-                  $json .= '          }, '."\n";            
-                }
-              }          
+                  if($altLabel != "")
+                  {
+                    $json .= '          { '."\n";            
+                    $json .= '            "iron:altLabel": "'.$this->jsonEncode($altLabel).'" '."\n";            
+                    $json .= '          }, '."\n";            
+                  }
+                }          
+              }
             break;
             case "description":
-              if($attributeValues != "")
+              if($attributeValues != "" && !isset($record[Namespaces::$iron."description"]))
               {
                 $json .= '          { '."\n";            
                 $json .= '            "iron:description": "'.$this->jsonEncode($attributeValues).'" '."\n";            
@@ -752,7 +757,7 @@ class Resultset
               }
             break;
             case "prefURL":
-              if($attributeValues != "")
+              if($attributeValues != "" && !isset($record[Namespaces::$iron."prefURL"]))
               {
                 $json .= '          { '."\n";            
                 $json .= '            "iron:prefURL": "'.$this->jsonEncode($attributeValues).'" '."\n";            
@@ -1066,7 +1071,6 @@ class Resultset
                 }              
               }
             break;
-            
             case "prefLabel":
               if($attributeValues != "")
               {
@@ -1233,7 +1237,7 @@ class Resultset
         $json .= '<'.$recordURI.'> a '.$this->prefixize($firstType).' ;'."\n";
         
         $jsonPaddingSize = "";
-        
+                           
         for($i = 0; $i < strlen('<'.$recordURI.'> '); $i++)
         {
           $jsonPaddingSize .= " ";
