@@ -46,10 +46,10 @@
            $propertyUri != 'prefURL' && 
            $propertyUri != 'description')
         {
+          $property = new Property($propertyUri);
           foreach($propertyValues as $propertyValue)
           {
             $value;
-            $property = new Property($propertyUri);
             
             if(isset($propertyValue['uri']))
             {
